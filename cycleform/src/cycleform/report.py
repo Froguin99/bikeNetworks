@@ -9,6 +9,8 @@ per-place files with `assemble.build_analysis_table()` (which calls
 
 from __future__ import annotations
 
+from pathlib import Path
+
 import pandas as pd
 
 from cycleform import describe, figures
@@ -187,3 +189,243 @@ def summary_tables() -> dict[str, pd.DataFrame]:
         "by_country": describe.by_country(wide),
         "correlations": describe.correlate_with_outcome(table),
     }
+
+
+# --- plain-text results digest (for pasting into an LLM) ----------------------
+
+
+def _fmt(v) -> str:
+    """Compact cell formatting: ints as ints, floats to 3 dp, NaN blank."""
+    if pd.isna(v):
+        return ""
+    if isinstance(v, str):
+        return v
+    if isinstance(v, bool):
+        return "yes" if v else "no"
+    f = float(v)
+    return str(int(f)) if f.is_integer() else f"{f:.3f}"
+
+
+def _md_table(df: pd.DataFrame, cols: list[str] | None = None) -> str:
+    """Render a DataFrame as a GitHub-flavoured markdown table (no dependency)."""
+    cols = cols or list(df.columns)
+    head = "| " + " | ".join(cols) + " |"
+    rule = "| " + " | ".join("---" for _ in cols) + " |"
+    rows = ["| " + " | ".join(_fmt(r[c]) for c in cols) + " |" for _, r in df.iterrows()]
+    return "\n".join([head, rule, *rows])
+
+
+def text_report(path: Path | str | None = None, top_corr: int = 20, top_pred: int = 12) -> Path:
+    """Write a markdown digest of the results to results/report.md and return the path.
+
+    Assembles the dataset snapshot, metric-vs-cycling correlations, model
+    performance/predictors (from the saved model CSVs), UK-vs-rest and
+    bike-vs-road contrasts, the typology, and the grown-network what-if (if run).
+    Reads only saved tables -- fast, no recompute -- so it is safe to call any
+    time. Designed to be self-describing so an LLM can reason about it directly.
+    """
+    import datetime as _dt
+
+    from cycleform import scenarios
+
+    wide = load_wide()
+    table = load_analysis()
+    ver = str(wide["metric_version"].dropna().iloc[0]) if "metric_version" in wide.columns else "?"
+    out = []
+
+    def w(*lines):
+        out.extend(lines)
+
+    # --- header + study framing -------------------------------------------
+    w(
+        "# cycleform — results summary",
+        "",
+        f"_Generated {_dt.date.today().isoformat()} · metric_version {ver} · "
+        f"snapshot {settings.snapshot_date}_",
+        "",
+        "**Study question.** Is the *form/structure* of a city's cycle network "
+        "(and the road network it sits in) associated with its cycling rate across "
+        "many cities, and can cycling rate be predicted from network form? Metrics "
+        "are computed identically on real OSM cities and on Chapter-5 grown "
+        "networks. This is a descriptive + predictive screen, not causal inference.",
+        "",
+    )
+
+    # --- 1. dataset -------------------------------------------------------
+    labelled = table.dropna(subset=["value"])
+    n_out = labelled["place_key"].nunique() if "place_key" in labelled.columns else len(labelled)
+    src = (
+        labelled.drop_duplicates("place_key")["source"].value_counts().to_dict()
+        if "place_key" in labelled.columns and "source" in labelled.columns
+        else {}
+    )
+    top_countries = wide["country"].value_counts().head(8).to_dict() if "country" in wide else {}
+    w(
+        "## 1. Dataset",
+        "",
+        f"- **{len(wide)} places** with metrics; **{n_out}** have a cycling rate.",
+        f"- UK places: **{int(wide['is_uk'].sum()) if 'is_uk' in wide else 0}**.",
+        f"- Outcome sources (deduped per place): {src or 'n/a'}.",
+        f"- Top countries by place count: {top_countries}.",
+        "",
+    )
+
+    # --- 2. cycling rate outcome ------------------------------------------
+    if not labelled.empty:
+        v = labelled.drop_duplicates("place_key")["value"].astype(float)
+        w(
+            "## 2. Cycling rate (outcome, % mode share)",
+            "",
+            f"- n={len(v)}, min={v.min():.1f}, median={v.median():.1f}, "
+            f"mean={v.mean():.1f}, max={v.max():.1f}, sd={v.std():.1f}.",
+            "- Right-skewed; correlations below use Spearman (rank-based, robust).",
+            "",
+        )
+
+    # --- 3. correlations with cycling rate --------------------------------
+    corr = describe.correlate_with_outcome(table)
+    if not corr.empty:
+        show = corr.head(top_corr)[
+            ["metric", "spearman", "spearman_p", "pearson", "n", "significant"]
+        ].copy()
+        show["spearman_p"] = show["spearman_p"].map(lambda p: "<0.001" if p < 0.001 else f"{p:.3f}")
+        pos = corr[corr["spearman"] > 0].head(3)["metric"].tolist()
+        neg = corr[corr["spearman"] < 0].head(3)["metric"].tolist()
+        w(
+            "## 3. Metric correlations with cycling rate",
+            "",
+            f"Ranked by |Spearman rho|, top {len(show)} of {len(corr)} analysed metrics. "
+            "`significant` = two-sided p < 0.05. Correlation is a signpost, not a model.",
+            "",
+            _md_table(show),
+            "",
+            f"- Strongest **positive**: {', '.join(pos)}.",
+            f"- Strongest **negative**: {', '.join(neg)}.",
+            "",
+        )
+
+    # --- 4. predictive model (read saved CSVs) ----------------------------
+    perf_p = settings.results / "model_performance.csv"
+    imp_p = settings.results / "model_feature_importance.csv"
+    if perf_p.exists():
+        perf = pd.read_csv(perf_p)
+        w(
+            "## 4. Predictive model (cross-validated)",
+            "",
+            "Out-of-sample R² for three feature sets: network **form** only, "
+            "**country** (national context) only, and **form+country**. "
+            "Compares how much network form predicts beyond national context.",
+            "",
+            _md_table(perf),
+            "",
+        )
+        if imp_p.exists():
+            imp = pd.read_csv(imp_p).head(top_pred)
+            w(
+                f"Top {len(imp)} network-form predictors (random-forest permutation "
+                "importance, form-only model):",
+                "",
+                _md_table(imp[["metric", "importance", "importance_sd"]]),
+                "",
+            )
+    else:
+        w(
+            "## 4. Predictive model",
+            "",
+            "_Not available — run `report.make_model_report()` to generate "
+            "model_performance.csv / model_feature_importance.csv._",
+            "",
+        )
+
+    # --- 5. UK vs rest ----------------------------------------------------
+    key = [
+        "bikeable_length_share", "low_stress_coverage", "bike_lcc_share_of_road",
+        "meshedness_bike", "circuity_avg_bike", "components_per_km_bike",
+        "intersection_density_per_km_road",
+    ]
+    uvr = describe.uk_vs_rest(wide)
+    uvr_k = uvr[uvr.index.isin(key)].reset_index().rename(columns={"index": "metric"})
+    if not uvr_k.empty:
+        w(
+            "## 5. UK vs rest of sample (key metrics)",
+            "",
+            _md_table(uvr_k[["metric", "uk_mean", "rest_mean", "uk_minus_rest", "n_uk", "n_rest"]]),
+            "",
+        )
+
+    # --- 6. bike vs road --------------------------------------------------
+    bvr = describe.bike_vs_road(wide)
+    if not bvr.empty:
+        w(
+            "## 6. Bike vs road network form",
+            "",
+            "`bike_gt_road_share` = fraction of cities where the cycle network "
+            "exceeds the road network on that metric.",
+            "",
+            _md_table(bvr[["metric", "road_mean", "bike_mean", "bike_minus_road_mean",
+                           "bike_gt_road_share", "n"]]),
+            "",
+        )
+
+    # --- 7. typology ------------------------------------------------------
+    try:
+        typ = build_typology(wide)
+        sizes = pd.Series(typ.labels).value_counts().sort_index().to_dict()
+        prof = typ.profiles.reset_index().rename(columns={"cluster": "type"})
+        w(
+            "## 7. Network-form typology",
+            "",
+            f"Standardise → PCA → k-means. **k={typ.k}** (silhouette "
+            f"{typ.silhouette}); cluster sizes {sizes}. Profiles are mean "
+            "standardised (z) values per cluster (features: "
+            f"{', '.join(typ.features)}):",
+            "",
+            _md_table(prof.round(2)),
+            "",
+        )
+    except Exception as exc:  # typology needs enough complete rows
+        w("## 7. Network-form typology", "", f"_Unavailable: {exc}_", "")
+
+    # --- 8. grown-network what-if -----------------------------------------
+    try:
+        comp = scenarios.build_scenario_table()
+    except Exception:
+        comp = pd.DataFrame()
+    pred_p = settings.results / "scenario_predictions.csv"
+    if not comp.empty:
+        w(
+            "## 8. Grown-network what-if (Tyne & Wear)",
+            "",
+            "Merging each borough's Chapter-5 grown cycle network, then re-measuring.",
+            "",
+        )
+        if pred_p.exists():
+            pred = pd.read_csv(pred_p)
+            cols = [c for c in ["place_id", "observed", "baseline_pred", "scenario_pred", "shift"]
+                    if c in pred.columns]
+            w("Predicted cycling rate now vs with the grown network:", "",
+              _md_table(pred[cols]), "")
+
+    # --- 9. caveats -------------------------------------------------------
+    w(
+        "## 9. Key caveats",
+        "",
+        "- Correlations/predictions are descriptive + predictive, **not causal** "
+        "(no confounder control yet; that is future work).",
+        "- Spearman is primary (cycling rate is skewed); Pearson shown alongside.",
+        "- A few metrics (entropy_gap_kl, bike centralities, components_per_km_bike) "
+        "have extreme values driven by cities with a near-empty cycle network; these "
+        "are kept (rank-based stats are robust), so plots show real outliers.",
+        "- Bike layer is raw OSM; road layer is neatnet-simplified — so raw *count* "
+        "metrics are comparable within a layer across cities, not bike-vs-road.",
+        "- Densities are normalised by network length, not built-up area.",
+        "- `n` varies by metric: ~45 places predate newer metrics (fixed by "
+        "re-running) and some metrics are genuinely undefined (e.g. gini on a "
+        "single-component network).",
+        "",
+    )
+
+    text = "\n".join(out)
+    path = Path(path or (settings.results / "report.md"))
+    path.write_text(text, encoding="utf-8")
+    return path

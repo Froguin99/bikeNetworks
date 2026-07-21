@@ -1,7 +1,7 @@
 feature_set,model,cv_r2,cv_r2_sd,cv_rmse,n
-form,elasticnet,0.393,0.062,3.543,209
-form,random_forest,0.475,0.035,3.278,209
-country,elasticnet,0.409,0.145,3.458,209
-country,random_forest,0.389,0.172,3.506,209
-form+country,elasticnet,0.404,0.073,3.513,209
-form+country,random_forest,0.486,0.036,3.249,209
+form,elasticnet,0.37,0.089,3.567,225
+form,random_forest,0.43,0.154,3.335,225
+country,elasticnet,0.327,0.187,3.615,225
+country,random_forest,0.308,0.198,3.659,225
+form+country,elasticnet,0.385,0.098,3.514,225
+form+country,random_forest,0.449,0.147,3.287,225
