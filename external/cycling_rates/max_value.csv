@@ -1,0 +1,277 @@
+Place,max_value
+Berlin,12.8
+Hamburg,11.6
+München,12.8
+Köln,13.6
+Frankfurt am Main,11.3
+Essen,2.6
+Stuttgart,5.1
+Leipzig,16.4
+Dresden,15
+Dortmund,3.6
+Düsseldorf,9.6
+Bremen,21.3
+Hannover,18.9
+Nürnberg,8.8
+Bochum,2.5
+Bielefeld,6.9
+Halle an der Saale,12.9
+Magdeburg,11.5
+Wiesbaden,4.3
+Göttingen,26.2
+Mülheim a.d.Ruhr,3
+Moers,8.1
+Darmstadt,19.5
+Trier,8.8
+Freiburg im Breisgau,29.9
+Regensburg,19.3
+Frankfurt (Oder),8.4
+Weimar,7.5
+Schwerin,12.1
+Erfurt,11.2
+Augsburg,13.9
+Bonn,17.4
+Karlsruhe,21.8
+Mönchengladbach,5
+Mainz,8.7
+Kiel,21.9
+Saarbrücken,3.7
+Potsdam,18.9
+Koblenz,9.6
+Rostock,19.9
+Kaiserslautern,4
+Iserlohn,1.2
+Esslingen am Neckar,6.7
+Hanau,5.7
+Wilhelmshaven,19.4
+Ludwigsburg,3.9
+Tübingen,19
+Villingen-Schwenningen,5.3
+Flensburg,10.9
+Marburg,9.8
+Konstanz,26.2
+Neumünster,15.4
+Brandenburg an der Havel,19.5
+Gießen,15
+Lüneburg,25.3
+Bayreuth,18.5
+Celle,25.9
+Aschaffenburg,9.2
+Bamberg,23.2
+Plauen,2.7
+Neubrandenburg,15.9
+Fulda,5.3
+Kempten (Allgäu),9.4
+Landshut,11.8
+Sindelfingen,9.7
+Rosenheim,25.8
+Frankenthal (Pfalz),11.5
+Stralsund,21.7
+Friedrichshafen,16.6
+Offenburg,20.2
+Görlitz,7.9
+Sankt Augustin,6.1
+Neu-Ulm,10
+Schweinfurt,10.4
+Greifswald,38.1
+Wetzlar,3.2
+Speyer,16.6
+Passau,4.2
+Dessau-Roßlau,20.1
+Duisburg,5.9
+Mannheim,12
+Gelsenkirchen,4.3
+Münster,36.6
+Chemnitz,5.8
+Braunschweig,19.4
+Aachen,10.5
+Krefeld,12.1
+Oberhausen,4.1
+Lübeck,22.8
+Hagen,1.3
+Kassel,8.7
+Hamm,10.9
+Herne,4.8
+Solingen,1.9
+Osnabrück,17.9
+Ludwigshafen am Rhein,12.2
+Leverkusen,10.3
+Oldenburg (Oldenburg),29.9
+Neuss,6.9
+Heidelberg,25.2
+Paderborn,13
+Würzburg,14.6
+Recklinghausen,6.4
+Wolfsburg,11.2
+Bremerhaven,12.5
+Bottrop,4.3
+Heilbronn,5.9
+Remscheid,0
+Offenbach am Main,9.4
+Ulm,11.2
+Pforzheim,1.1
+Ingolstadt,20.5
+Gera,4.9
+Salzgitter,6
+Reutlingen,7.7
+Fürth,5.9
+Cottbus,24.4
+Siegen,1.6
+Bergisch Gladbach,4.3
+Hildesheim,16.4
+Witten,2.9
+Zwickau,4.5
+Erlangen,29.2
+Wuppertal,1.6
+Jena,16.1
+"Düren, Stadt",6.8
+"Bocholt, Stadt",34.1
+Tallinn,1.5
+Tartu,5.5
+Paris,2.8
+Lyon,5.9
+Lille,3.8
+Marseille,1.7
+Bordeaux,8.6
+Toulouse,7.3
+Nantes,8.7
+Nice,2.2
+Strasbourg,15
+Rouen,2.6
+Montpellier,7.3
+Grenoble,12.5
+Tours,6
+Cannes-Antibes,1.5
+Toulon,3.4
+Rennes,9.5
+Reims,3.3
+Orléans,4.5
+Nancy,3.5
+Dijon,5.7
+Clermont-Ferrand,3.6
+Le Havre,2.6
+Saint-Étienne,1.5
+Angers,7.3
+Mulhouse,3.2
+Lens,1.5
+Metz,2.4
+Nîmes,4.6
+Le Mans,5.2
+Saint-Denis,1.6
+Caen,4.9
+Limoges,1.5
+Aix-en-Provence,3.3
+Brest,3
+Amiens,5.2
+Dunkerque,3.3
+Perpignan,2.5
+Annecy,6.9
+Besançon,5.3
+Bayonne,2.4
+La Seyne-sur-Mer,2.6
+Pau,4.9
+Avignon,5.2
+Troyes,4.4
+Valenciennes,2
+Fort-de-France,0.3
+Poitiers,4.5
+Valence,5.4
+Fréjus,1.4
+Chambéry,7
+Mantes-la-Jolie,0.9
+Douai,3.4
+Melun,1
+La Rochelle,11.5
+Lorient,5.7
+Cherbourg-en-Cotentin,4.5
+Béziers,1.1
+Chartres,4.3
+Creil,1.4
+Boulogne-sur-Mer,0.8
+Calais,2.9
+Mamoudzou,0.6
+Montbéliard,2.1
+Arras,2.5
+Colmar,9
+Martigues,0.5
+Meaux,1.2
+Bourges,3.9
+Saint-Brieuc,3.3
+Quimper,1.9
+Belfort,4.1
+Cayenne,3.7
+Hayange,0.7
+Saint-Louis,1.1
+Vannes,4.3
+Annemasse-Geneva (French part),6
+Saint-Louis-Basel (French part),10.5
+Riga,4.7
+Helsinki,17
+Tampere,14
+Espoo,10
+Vantaa,11
+Lahti,17
+Bern,10.75
+Zürich,6.63
+Genève,9.74
+Basel,18.32
+Lausanne,3.22
+Luzern,12.06
+Winterthur,9.04
+Lugano,3.61
+St. Gallen,5
+Bienne,6.89
+Birmingham,1.3
+Leeds,1.4
+Glasgow,8
+Sheffield,1.5
+Bradford,0.7
+Manchester,3.1
+Edinburgh,13
+Liverpool,2.4
+Bristol,5.2
+Cardiff,2.9
+Belfast,2
+Leicester,3.5
+Wakefield,1.1
+Coventry,1.9
+Doncaster,1.8
+Nottingham,2.8
+Newcastle upon Tyne,2.3
+Sunderland,1.3
+Brighton and Hove,3.8
+Kingston Upon Hull,6.9
+Plymouth,2.1
+Wolverhampton,1.5
+Stoke-on-Trent,1.4
+Milton Keynes,2
+Derby,2.5
+Swansea,1.1
+Southampton,3
+Salford,2.2
+Aberdeen,7
+Portsmouth,5.2
+York,7.3
+Colchester,2.5
+Peterborough,3.8
+Southend-On-Sea,2.1
+Chelmsford,1.9
+Oxford,10.5
+Canterbury,1.7
+Dundee,4
+Newport,1.3
+St Albans,1
+Preston,1.7
+Lancaster,2.7
+Wrexham,1.1
+Norwich,6.2
+Exeter,4.7
+Cambridge,16.8
+Gloucester,3.3
+Winchester,1.3
+Derry,0.5
+Carlisle,2.2
+Greater London,3
+South Tyneside,1.8
+North Tyneside,1.9
+Gateshead,1.2

@@ -1,0 +1,19 @@
+# data is gitignored; manifests are committed (CLAUDE.md §7)
+data/
+!data/**/manifest*.json
+!data/**/*.manifest
+
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+build/
+dist/
+
+# notebooks: strip outputs with nbstripout before committing
+.ipynb_checkpoints/
+
+# env
+.env

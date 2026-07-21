@@ -1,0 +1,1136 @@
+place_id,place_key,geom_source,year,value,numerator,denominator,measure_type,source,sample_n,notes
+Berlin,berlin,legacy,,12.8,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Hamburg,hamburg,legacy,,11.6,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+München,munchen,legacy,,12.8,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Köln,koln,legacy,,13.6,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Frankfurt am Main,frankfurt am main,legacy,,11.3,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Essen,essen,legacy,,2.6,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Stuttgart,stuttgart,legacy,,5.1,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Leipzig,leipzig,legacy,,16.4,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Dresden,dresden,legacy,,15.0,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Dortmund,dortmund,legacy,,3.6,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Düsseldorf,dusseldorf,legacy,,9.6,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Bremen,bremen,legacy,,21.3,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Hannover,hannover,legacy,,18.9,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Nürnberg,nurnberg,legacy,,8.8,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Bochum,bochum,legacy,,2.5,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Bielefeld,bielefeld,legacy,,6.9,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Halle an der Saale,halle an der saale,legacy,,12.9,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Magdeburg,magdeburg,legacy,,11.5,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Wiesbaden,wiesbaden,legacy,,4.3,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Göttingen,gottingen,legacy,,26.2,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Mülheim a.d.Ruhr,mulheim a.d.ruhr,legacy,,3.0,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Moers,moers,legacy,,8.1,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Darmstadt,darmstadt,legacy,,19.5,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Trier,trier,legacy,,8.8,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Freiburg im Breisgau,freiburg im breisgau,legacy,,29.9,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Regensburg,regensburg,legacy,,19.3,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Frankfurt (Oder),frankfurt (oder),legacy,,8.4,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Weimar,weimar,legacy,,7.5,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Schwerin,schwerin,legacy,,12.1,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Erfurt,erfurt,legacy,,11.2,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Augsburg,augsburg,legacy,,13.9,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Bonn,bonn,legacy,,17.4,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Karlsruhe,karlsruhe,legacy,,21.8,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Mönchengladbach,monchengladbach,legacy,,5.0,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Mainz,mainz,legacy,,8.7,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Kiel,kiel,legacy,,21.9,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Saarbrücken,saarbrucken,legacy,,3.7,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Potsdam,potsdam,legacy,,18.9,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Koblenz,koblenz,legacy,,9.6,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Rostock,rostock,legacy,,19.9,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Kaiserslautern,kaiserslautern,legacy,,4.0,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Iserlohn,iserlohn,legacy,,1.2,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Esslingen am Neckar,esslingen am neckar,legacy,,6.7,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Hanau,hanau,legacy,,5.7,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Wilhelmshaven,wilhelmshaven,legacy,,19.4,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Ludwigsburg,ludwigsburg,legacy,,3.9,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Tübingen,tubingen,legacy,,19.0,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Villingen-Schwenningen,villingen-schwenningen,legacy,,5.3,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Flensburg,flensburg,legacy,,10.9,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Marburg,marburg,legacy,,9.8,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Konstanz,konstanz,legacy,,26.2,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Neumünster,neumunster,legacy,,15.4,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Brandenburg an der Havel,brandenburg an der havel,legacy,,19.5,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Gießen,gießen,legacy,,15.0,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Lüneburg,luneburg,legacy,,25.3,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Bayreuth,bayreuth,legacy,,18.5,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Celle,celle,legacy,,25.9,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Aschaffenburg,aschaffenburg,legacy,,9.2,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Bamberg,bamberg,legacy,,23.2,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Plauen,plauen,legacy,,2.7,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Neubrandenburg,neubrandenburg,legacy,,15.9,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Fulda,fulda,legacy,,5.3,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Kempten (Allgäu),kempten (allgau),legacy,,9.4,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Landshut,landshut,legacy,,11.8,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Sindelfingen,sindelfingen,legacy,,9.7,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Rosenheim,rosenheim,legacy,,25.8,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Frankenthal (Pfalz),frankenthal (pfalz),legacy,,11.5,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Stralsund,stralsund,legacy,,21.7,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Friedrichshafen,friedrichshafen,legacy,,16.6,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Offenburg,offenburg,legacy,,20.2,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Görlitz,gorlitz,legacy,,7.9,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Sankt Augustin,sankt augustin,legacy,,6.1,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Neu-Ulm,neu-ulm,legacy,,10.0,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Schweinfurt,schweinfurt,legacy,,10.4,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Greifswald,greifswald,legacy,,38.1,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Wetzlar,wetzlar,legacy,,3.2,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Speyer,speyer,legacy,,16.6,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Passau,passau,legacy,,4.2,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Dessau-Roßlau,dessau-roßlau,legacy,,20.1,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Duisburg,duisburg,legacy,,5.9,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Mannheim,mannheim,legacy,,12.0,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Gelsenkirchen,gelsenkirchen,legacy,,4.3,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Münster,munster,legacy,,36.6,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Chemnitz,chemnitz,legacy,,5.8,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Braunschweig,braunschweig,legacy,,19.4,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Aachen,aachen,legacy,,10.5,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Krefeld,krefeld,legacy,,12.1,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Oberhausen,oberhausen,legacy,,4.1,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Lübeck,lubeck,legacy,,22.8,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Hagen,hagen,legacy,,1.3,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Kassel,kassel,legacy,,8.7,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Hamm,hamm,legacy,,10.9,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Herne,herne,legacy,,4.8,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Solingen,solingen,legacy,,1.9,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Osnabrück,osnabruck,legacy,,17.9,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Ludwigshafen am Rhein,ludwigshafen am rhein,legacy,,12.2,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Leverkusen,leverkusen,legacy,,10.3,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Oldenburg (Oldenburg),oldenburg (oldenburg),legacy,,29.9,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Neuss,neuss,legacy,,6.9,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Heidelberg,heidelberg,legacy,,25.2,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Paderborn,paderborn,legacy,,13.0,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Würzburg,wurzburg,legacy,,14.6,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Recklinghausen,recklinghausen,legacy,,6.4,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Wolfsburg,wolfsburg,legacy,,11.2,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Bremerhaven,bremerhaven,legacy,,12.5,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Bottrop,bottrop,legacy,,4.3,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Heilbronn,heilbronn,legacy,,5.9,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Remscheid,remscheid,legacy,,0.0,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Offenbach am Main,offenbach am main,legacy,,9.4,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Ulm,ulm,legacy,,11.2,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Pforzheim,pforzheim,legacy,,1.1,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Ingolstadt,ingolstadt,legacy,,20.5,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Gera,gera,legacy,,4.9,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Salzgitter,salzgitter,legacy,,6.0,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Reutlingen,reutlingen,legacy,,7.7,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Fürth,furth,legacy,,5.9,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Cottbus,cottbus,legacy,,24.4,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Siegen,siegen,legacy,,1.6,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Bergisch Gladbach,bergisch gladbach,legacy,,4.3,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Hildesheim,hildesheim,legacy,,16.4,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Witten,witten,legacy,,2.9,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Zwickau,zwickau,legacy,,4.5,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Erlangen,erlangen,legacy,,29.2,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Wuppertal,wuppertal,legacy,,1.6,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Jena,jena,legacy,,16.1,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+"Düren, Stadt",duren,legacy,,6.8,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+"Bocholt, Stadt",bocholt,legacy,,34.1,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Tallinn,tallinn,legacy,,1.5,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Tartu,tartu,legacy,,5.5,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Paris,paris,legacy,,2.8,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Lyon,lyon,legacy,,5.9,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Lille,lille,legacy,,3.8,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Marseille,marseille,legacy,,1.7,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Bordeaux,bordeaux,legacy,,8.6,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Toulouse,toulouse,legacy,,7.3,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Nantes,nantes,legacy,,8.7,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Nice,nice,legacy,,2.2,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Strasbourg,strasbourg,legacy,,15.0,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Rouen,rouen,legacy,,2.6,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Montpellier,montpellier,legacy,,7.3,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Grenoble,grenoble,legacy,,12.5,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Tours,tours,legacy,,6.0,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Cannes-Antibes,cannes-antibes,legacy,,1.5,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Toulon,toulon,legacy,,3.4,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Rennes,rennes,legacy,,9.5,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Reims,reims,legacy,,3.3,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Orléans,orleans,legacy,,4.5,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Nancy,nancy,legacy,,3.5,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Dijon,dijon,legacy,,5.7,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Clermont-Ferrand,clermont-ferrand,legacy,,3.6,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Le Havre,le havre,legacy,,2.6,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Saint-Étienne,saint-etienne,legacy,,1.5,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Angers,angers,legacy,,7.3,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Mulhouse,mulhouse,legacy,,3.2,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Lens,lens,legacy,,1.5,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Metz,metz,legacy,,2.4,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Nîmes,nimes,legacy,,4.6,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Le Mans,le mans,legacy,,5.2,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Saint-Denis,saint-denis,legacy,,1.6,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Caen,caen,legacy,,4.9,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Limoges,limoges,legacy,,1.5,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Aix-en-Provence,aix-en-provence,legacy,,3.3,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Brest,brest,legacy,,3.0,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Amiens,amiens,legacy,,5.2,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Dunkerque,dunkerque,legacy,,3.3,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Perpignan,perpignan,legacy,,2.5,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Annecy,annecy,legacy,,6.9,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Besançon,besancon,legacy,,5.3,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Bayonne,bayonne,legacy,,2.4,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+La Seyne-sur-Mer,la seyne-sur-mer,legacy,,2.6,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Pau,pau,legacy,,4.9,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Avignon,avignon,legacy,,5.2,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Troyes,troyes,legacy,,4.4,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Valenciennes,valenciennes,legacy,,2.0,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Fort-de-France,fort-de-france,legacy,,0.3,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Poitiers,poitiers,legacy,,4.5,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Valence,valence,legacy,,5.4,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Fréjus,frejus,legacy,,1.4,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Chambéry,chambery,legacy,,7.0,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Mantes-la-Jolie,mantes-la-jolie,legacy,,0.9,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Douai,douai,legacy,,3.4,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Melun,melun,legacy,,1.0,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+La Rochelle,la rochelle,legacy,,11.5,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Lorient,lorient,legacy,,5.7,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Cherbourg-en-Cotentin,cherbourg-en-cotentin,legacy,,4.5,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Béziers,beziers,legacy,,1.1,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Chartres,chartres,legacy,,4.3,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Creil,creil,legacy,,1.4,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Boulogne-sur-Mer,boulogne-sur-mer,legacy,,0.8,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Calais,calais,legacy,,2.9,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Mamoudzou,mamoudzou,legacy,,0.6,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Montbéliard,montbeliard,legacy,,2.1,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Arras,arras,legacy,,2.5,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Colmar,colmar,legacy,,9.0,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Martigues,martigues,legacy,,0.5,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Meaux,meaux,legacy,,1.2,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Bourges,bourges,legacy,,3.9,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Saint-Brieuc,saint-brieuc,legacy,,3.3,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Quimper,quimper,legacy,,1.9,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Belfort,belfort,legacy,,4.1,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Cayenne,cayenne,legacy,,3.7,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Hayange,hayange,legacy,,0.7,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Saint-Louis,saint-louis,legacy,,1.1,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Vannes,vannes,legacy,,4.3,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Annemasse-Geneva (French part),annemasse-geneva (french part),legacy,,6.0,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Saint-Louis-Basel (French part),saint-louis-basel (french part),legacy,,10.5,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Riga,riga,legacy,,4.7,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Helsinki,helsinki,legacy,,17.0,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Tampere,tampere,legacy,,14.0,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Espoo,espoo,legacy,,10.0,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Vantaa,vantaa,legacy,,11.0,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Lahti,lahti,legacy,,17.0,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Bern,bern,legacy,,10.75,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Zürich,zurich,legacy,,6.63,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Genève,geneve,legacy,,9.74,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Basel,basel,legacy,,18.32,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Lausanne,lausanne,legacy,,3.22,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Luzern,luzern,legacy,,12.06,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Winterthur,winterthur,legacy,,9.04,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Lugano,lugano,legacy,,3.61,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+St. Gallen,st. gallen,legacy,,5.0,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Bienne,bienne,legacy,,6.89,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Birmingham,birmingham,legacy,,1.3,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Leeds,leeds,legacy,,1.4,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Glasgow,glasgow,legacy,,8.0,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Sheffield,sheffield,legacy,,1.5,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Bradford,bradford,legacy,,0.7,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Manchester,manchester,legacy,,3.1,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Edinburgh,edinburgh,legacy,,13.0,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Liverpool,liverpool,legacy,,2.4,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Bristol,bristol,legacy,,5.2,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Cardiff,cardiff,legacy,,2.9,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Belfast,belfast,legacy,,2.0,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Leicester,leicester,legacy,,3.5,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Wakefield,wakefield,legacy,,1.1,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Coventry,coventry,legacy,,1.9,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Doncaster,doncaster,legacy,,1.8,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Nottingham,nottingham,legacy,,2.8,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Newcastle upon Tyne,newcastle upon tyne,legacy,,2.3,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Sunderland,sunderland,legacy,,1.3,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Brighton and Hove,brighton and hove,legacy,,3.8,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Kingston Upon Hull,kingston upon hull,legacy,,6.9,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Plymouth,plymouth,legacy,,2.1,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Wolverhampton,wolverhampton,legacy,,1.5,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Stoke-on-Trent,stoke-on-trent,legacy,,1.4,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Milton Keynes,milton keynes,legacy,,2.0,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Derby,derby,legacy,,2.5,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Swansea,swansea,legacy,,1.1,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Southampton,southampton,legacy,,3.0,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Salford,salford,legacy,,2.2,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Aberdeen,aberdeen,legacy,,7.0,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Portsmouth,portsmouth,legacy,,5.2,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+York,york,legacy,,7.3,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Colchester,colchester,legacy,,2.5,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Peterborough,peterborough,legacy,,3.8,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Southend-On-Sea,southend-on-sea,legacy,,2.1,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Chelmsford,chelmsford,legacy,,1.9,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Oxford,oxford,legacy,,10.5,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Canterbury,canterbury,legacy,,1.7,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Dundee,dundee,legacy,,4.0,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Newport,newport,legacy,,1.3,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+St Albans,st albans,legacy,,1.0,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Preston,preston,legacy,,1.7,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Lancaster,lancaster,legacy,,2.7,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Wrexham,wrexham,legacy,,1.1,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Norwich,norwich,legacy,,6.2,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Exeter,exeter,legacy,,4.7,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Cambridge,cambridge,legacy,,16.8,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Gloucester,gloucester,legacy,,3.3,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Winchester,winchester,legacy,,1.3,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Derry,derry,legacy,,0.5,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Carlisle,carlisle,legacy,,2.2,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Greater London,greater london,legacy,,3.0,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+South Tyneside,south tyneside,legacy,,1.8,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+North Tyneside,north tyneside,legacy,,1.9,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Gateshead,gateshead,legacy,,1.2,,,commute_mode_share,legacy_max_value,,mixed Eurostat + 2011 census; year unknown
+Greater Sydney,greater sydney,oecd_fua,2021,0.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code AUS01F
+Greater Melbourne,greater melbourne,oecd_fua,2021,1.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code AUS02F
+Greater Brisbane,greater brisbane,oecd_fua,2021,1.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code AUS03F
+Greater Perth,greater perth,oecd_fua,2021,0.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code AUS04F
+Greater Adelaide,greater adelaide,oecd_fua,2021,1.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code AUS05F
+Gold Coast,gold coast,oecd_fua,2021,0.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code AUS06F
+Canberra,canberra,oecd_fua,2021,2.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code AUS07F
+Newcastle,newcastle,oecd_fua,2021,0.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code AUS08F
+Wollongong,wollongong,oecd_fua,2021,0.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code AUS10F
+Sunshine Coast,sunshine coast,oecd_fua,2021,1.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code AUS11F
+Greater Hobart,greater hobart,oecd_fua,2021,1.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code AUS12F
+Townsville,townsville,oecd_fua,2021,1.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code AUS13F
+Geelong,geelong,oecd_fua,2021,0.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code AUS14F
+Cairns,cairns,oecd_fua,2021,1.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code AUS15F
+Greater Darwin,greater darwin,oecd_fua,2021,2.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code AUS16F
+Toowoomba,toowoomba,oecd_fua,2021,0.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code AUS17F
+Ballarat,ballarat,oecd_fua,2021,0.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code AUS18F
+Bendigo,bendigo,oecd_fua,2021,0.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code AUS19F
+Bruxelles,bruxelles,oecd_fua,2011,4.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code BE001F
+Antwerpen,antwerpen,oecd_fua,2011,18.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code BE002F
+Gent,gent,oecd_fua,2011,14.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code BE003F
+Charleroi,charleroi,oecd_fua,2011,0.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code BE004F
+Liège,liege,oecd_fua,2011,1.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code BE005F
+Brugge,brugge,oecd_fua,2011,16.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code BE006F
+Namur,namur,oecd_fua,2011,1.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code BE007F
+Mons,mons,oecd_fua,2011,1.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code BE009F
+Oostende,oostende,oecd_fua,2011,16.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code BE011F
+Sofia,sofia,oecd_fua,2011,18.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code BG001F
+Plovdiv,plovdiv,oecd_fua,2011,12.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code BG002F
+Varna,varna,oecd_fua,2011,8.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code BG003F
+Burgas,burgas,oecd_fua,2011,18.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code BG004F
+Pleven,pleven,oecd_fua,2011,14.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code BG005F
+Ruse,ruse,oecd_fua,2011,10.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code BG006F
+Stara Zagora,stara zagora,oecd_fua,2011,17.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code BG008F
+Sliven,sliven,oecd_fua,2011,15.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code BG009F
+Dobrich,dobrich,oecd_fua,2011,15.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code BG010F
+Shumen,shumen,oecd_fua,2011,16.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code BG011F
+Haskovo,haskovo,oecd_fua,2011,18.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code BG014F
+Pazardzhik,pazardzhik,oecd_fua,2011,18.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code BG015F
+Veliko Tarnovo,veliko tarnovo,oecd_fua,2011,9.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code BG017F
+Toronto,toronto,oecd_fua,2021,0.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CAN01F
+Montreal,montreal,oecd_fua,2021,1.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CAN02F
+Vancouver,vancouver,oecd_fua,2021,1.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CAN03F
+Ottawa,ottawa,oecd_fua,2021,1.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CAN04F
+Calgary,calgary,oecd_fua,2021,0.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CAN05F
+Edmonton,edmonton,oecd_fua,2021,0.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CAN06F
+Quebec,quebec,oecd_fua,2021,1.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CAN07F
+Winnipeg,winnipeg,oecd_fua,2021,1.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CAN08F
+Hamilton,hamilton,oecd_fua,2021,0.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CAN09F
+London,london,oecd_fua,2021,0.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CAN10F
+Kitchener,kitchener,oecd_fua,2021,0.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CAN11F
+Halifax,halifax,oecd_fua,2021,0.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CAN12F
+Victoria,victoria,oecd_fua,2021,5.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CAN13F
+Windsor,windsor,oecd_fua,2021,0.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CAN14F
+Saskatoon,saskatoon,oecd_fua,2021,1.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CAN15F
+Sherbrooke,sherbrooke,oecd_fua,2021,0.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CAN16F
+St Catharines,st catharines,oecd_fua,2021,0.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CAN17F
+Trois Rivieres,trois rivieres,oecd_fua,2021,0.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CAN18F
+St Johns,st johns,oecd_fua,2021,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CAN19F
+Regina,regina,oecd_fua,2021,0.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CAN20F
+Abbotsford,abbotsford,oecd_fua,2021,0.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CAN21F
+Guelph,guelph,oecd_fua,2021,0.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CAN22F
+Red Deer,red deer,oecd_fua,2021,0.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CAN23F
+Brantford,brantford,oecd_fua,2021,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CAN24F
+Peterborough,peterborough,oecd_fua,2021,1.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CAN25F
+Niagara Falls,niagara falls,oecd_fua,2021,0.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CAN26F
+Bern,bern,oecd_fua,2024,11.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CH001F
+Zurich,zurich,oecd_fua,2024,7.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CH002F
+Geneva,geneva,oecd_fua,2024,10.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CH003F
+Basel,basel,oecd_fua,2024,16.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CH004F
+Lausanne,lausanne,oecd_fua,2024,3.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CH005F
+Lucerne,lucerne,oecd_fua,2024,12.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CH006F
+Lugano,lugano,oecd_fua,2024,4.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CH008F
+St. Gallen,st. gallen,oecd_fua,2024,7.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CH009F
+Biel/Bienne,biel/bienne,oecd_fua,2024,10.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CH010F
+Arica,arica,oecd_fua,2022,2.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CL001F
+Iquique,iquique,oecd_fua,2022,2.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CL002F
+Calama,calama,oecd_fua,2022,2.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CL003F
+Antofagasta,antofagasta,oecd_fua,2022,1.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CL004F
+Copiapó,copiapo,oecd_fua,2022,2.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CL005F
+Coquimbo-La Serena,coquimbo-la serena,oecd_fua,2022,2.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CL006F
+Ovalle,ovalle,oecd_fua,2022,2.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CL007F
+Calera,calera,oecd_fua,2022,7.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CL008F
+Quillota,quillota,oecd_fua,2022,8.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CL009F
+Valparaíso,valparaiso,oecd_fua,2022,1.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CL010F
+Santiago,santiago,oecd_fua,2022,4.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CL011F
+San Antonio,san antonio,oecd_fua,2022,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CL012F
+Melipilla,melipilla,oecd_fua,2022,11.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CL013F
+Rancagua,rancagua,oecd_fua,2022,8.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CL014F
+San Fernando,san fernando,oecd_fua,2022,13.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CL015F
+Curicó,curico,oecd_fua,2022,14.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CL016F
+Talca,talca,oecd_fua,2022,8.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CL017F
+Linares,linares,oecd_fua,2022,16.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CL018F
+Chillán,chillan,oecd_fua,2022,10.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CL019F
+Concepción,concepcion,oecd_fua,2022,2.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CL020F
+Los Angeles,los angeles,oecd_fua,2022,5.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CL021F
+Temuco,temuco,oecd_fua,2022,4.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CL022F
+Valdivia,valdivia,oecd_fua,2022,5.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CL023F
+Osorno,osorno,oecd_fua,2022,3.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CL024F
+Puerto Montt,puerto montt,oecd_fua,2022,0.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CL025F
+Punta Arenas,punta arenas,oecd_fua,2022,0.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CL026F
+Praha,praha,oecd_fua,2021,1.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CZ001F
+Brno,brno,oecd_fua,2021,2.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CZ002F
+Ostrava,ostrava,oecd_fua,2021,2.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CZ003F
+Plzeň,plzen,oecd_fua,2021,2.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CZ004F
+Ústí nad Labem,usti nad labem,oecd_fua,2021,0.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CZ005F
+Olomouc,olomouc,oecd_fua,2021,7.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CZ006F
+Liberec,liberec,oecd_fua,2021,1.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CZ007F
+České Budějovice,ceske budejovice,oecd_fua,2021,7.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CZ008F
+Hradec Králové,hradec kralove,oecd_fua,2021,10.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CZ009F
+Pardubice,pardubice,oecd_fua,2021,11.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CZ010F
+Most,most,oecd_fua,2021,0.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CZ016F
+Chomutov-Jirkov,chomutov-jirkov,oecd_fua,2021,1.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code CZ018F
+Berlin,berlin,oecd_fua,2016,11.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE001F
+Hamburg,hamburg,oecd_fua,2016,10.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE002F
+München,munchen,oecd_fua,2016,9.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE003F
+Köln,koln,oecd_fua,2016,10.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE004F
+Frankfurt am Main,frankfurt am main,oecd_fua,2016,7.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE005F
+Stuttgart,stuttgart,oecd_fua,2016,4.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE007F
+Leipzig,leipzig,oecd_fua,2016,13.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE008F
+Dresden,dresden,oecd_fua,2016,11.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE009F
+Düsseldorf,dusseldorf,oecd_fua,2016,7.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE011F
+Bremen,bremen,oecd_fua,2016,15.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE012F
+Hannover,hannover,oecd_fua,2016,12.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE013F
+Nürnberg,nurnberg,oecd_fua,2016,8.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE014F
+Bielefeld,bielefeld,oecd_fua,2016,6.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE016F
+Halle an der Saale,halle an der saale,oecd_fua,2016,9.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE017F
+Magdeburg,magdeburg,oecd_fua,2016,10.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE018F
+Wiesbaden,wiesbaden,oecd_fua,2016,2.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE019F
+Göttingen,gottingen,oecd_fua,2016,10.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE020F
+Darmstadt,darmstadt,oecd_fua,2016,10.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE023F
+Trier,trier,oecd_fua,2016,4.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE024F
+Freiburg im Breisgau,freiburg im breisgau,oecd_fua,2016,16.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE025F
+Regensburg,regensburg,oecd_fua,2016,8.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE026F
+Frankfurt (Oder),frankfurt (oder),oecd_fua,2016,8.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE027F
+Schwerin,schwerin,oecd_fua,2016,10.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE029F
+Erfurt,erfurt,oecd_fua,2016,8.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE030F
+Augsburg,augsburg,oecd_fua,2016,10.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE031F
+Bonn,bonn,oecd_fua,2016,9.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE032F
+Karlsruhe,karlsruhe,oecd_fua,2016,13.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE033F
+Mönchengladbach,monchengladbach,oecd_fua,2016,5.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE034F
+Mainz,mainz,oecd_fua,2016,6.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE035F
+Kiel,kiel,oecd_fua,2016,14.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE036F
+Saarbrücken,saarbrucken,oecd_fua,2016,1.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE037F
+Koblenz,koblenz,oecd_fua,2016,5.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE039F
+Rostock,rostock,oecd_fua,2016,15.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE040F
+Kaiserslautern,kaiserslautern,oecd_fua,2016,2.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE041F
+Iserlohn,iserlohn,oecd_fua,2016,1.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE042F
+Tübingen,tubingen,oecd_fua,2016,10.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE047F
+Flensburg,flensburg,oecd_fua,2016,9.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE049F
+Konstanz,konstanz,oecd_fua,2016,12.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE051F
+Neumünster,neumunster,oecd_fua,2016,15.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE052F
+Gießen,gießen,oecd_fua,2016,7.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE054F
+Bayreuth,bayreuth,oecd_fua,2016,6.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE056F
+Aschaffenburg,aschaffenburg,oecd_fua,2016,5.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE058F
+Bamberg,bamberg,oecd_fua,2016,10.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE059F
+Plauen,plauen,oecd_fua,2016,2.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE060F
+Kempten (Allgäu),kempten (allgau),oecd_fua,2016,10.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE063F
+Landshut,landshut,oecd_fua,2016,7.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE064F
+Rosenheim,rosenheim,oecd_fua,2016,11.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE066F
+Görlitz,gorlitz,oecd_fua,2016,9.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE071F
+Schweinfurt,schweinfurt,oecd_fua,2016,5.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE074F
+Münster,munster,oecd_fua,2016,28.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE083F
+Chemnitz,chemnitz,oecd_fua,2016,5.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE084F
+Aachen,aachen,oecd_fua,2016,5.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE086F
+Krefeld,krefeld,oecd_fua,2016,12.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE087F
+Lübeck,lubeck,oecd_fua,2016,16.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE089F
+Kassel,kassel,oecd_fua,2016,5.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE091F
+Osnabrück,osnabruck,oecd_fua,2016,12.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE095F
+Oldenburg (Oldenburg),oldenburg (oldenburg),oecd_fua,2016,20.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE098F
+Heidelberg,heidelberg,oecd_fua,2016,11.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE100F
+Paderborn,paderborn,oecd_fua,2016,9.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE101F
+Würzburg,wurzburg,oecd_fua,2016,7.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE102F
+Bremerhaven,bremerhaven,oecd_fua,2016,11.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE105F
+Heilbronn,heilbronn,oecd_fua,2016,4.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE107F
+Remscheid,remscheid,oecd_fua,2016,0.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE108F
+Ulm,ulm,oecd_fua,2016,8.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE110F
+Pforzheim,pforzheim,oecd_fua,2016,2.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE111F
+Ingolstadt,ingolstadt,oecd_fua,2016,11.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE112F
+Gera,gera,oecd_fua,2016,5.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE113F
+Reutlingen,reutlingen,oecd_fua,2016,6.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE115F
+Cottbus,cottbus,oecd_fua,2016,19.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE117F
+Siegen,siegen,oecd_fua,2016,1.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE118F
+Hildesheim,hildesheim,oecd_fua,2016,10.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE120F
+Wuppertal,wuppertal,oecd_fua,2016,1.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE124F
+Jena,jena,oecd_fua,2016,10.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE125F
+"Düren, Stadt",duren,oecd_fua,2016,5.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE126F
+"Bocholt, Stadt",bocholt,oecd_fua,2016,24.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code DE127F
+Tallinn,tallinn,oecd_fua,2018,1.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code EE001F
+Tartu,tartu,oecd_fua,2018,4.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code EE002F
+Helsinki,helsinki,oecd_fua,2018,13.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FI001F
+Tampere,tampere,oecd_fua,2018,11.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FI002F
+Oulu,oulu,oecd_fua,2011,18.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FI004F
+Paris,paris,oecd_fua,2022,4.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR001F
+Lyon,lyon,oecd_fua,2022,5.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR002F
+Lille,lille,oecd_fua,2022,4.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR003F
+Marseille,marseille,oecd_fua,2022,2.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR004F
+Bordeaux,bordeaux,oecd_fua,2022,7.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR005F
+Toulouse,toulouse,oecd_fua,2022,5.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR006F
+Nantes,nantes,oecd_fua,2022,7.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR007F
+Nice,nice,oecd_fua,2022,2.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR008F
+Strasbourg,strasbourg,oecd_fua,2022,10.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR009F
+Rouen,rouen,oecd_fua,2022,2.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR010F
+Montpellier,montpellier,oecd_fua,2022,6.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR011F
+Grenoble,grenoble,oecd_fua,2022,9.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR012F
+Tours,tours,oecd_fua,2022,4.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR013F
+Cannes-Antibes,cannes-antibes,oecd_fua,2022,1.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR014F
+Toulon,toulon,oecd_fua,2022,3.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR015F
+Rennes,rennes,oecd_fua,2022,5.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR016F
+Reims,reims,oecd_fua,2022,3.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR017F
+Orléans,orleans,oecd_fua,2022,3.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR018F
+Nancy,nancy,oecd_fua,2022,2.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR019F
+Dijon,dijon,oecd_fua,2022,4.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR020F
+Clermont-Ferrand,clermont-ferrand,oecd_fua,2022,2.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR021F
+Le Havre,le havre,oecd_fua,2022,2.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR022F
+Saint-Étienne,saint-etienne,oecd_fua,2022,1.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR023F
+Angers,angers,oecd_fua,2022,5.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR024F
+Mulhouse,mulhouse,oecd_fua,2022,2.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR025F
+Lens,lens,oecd_fua,2022,1.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR026F
+Metz,metz,oecd_fua,2022,2.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR027F
+Nîmes,nimes,oecd_fua,2022,2.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR028F
+Le Mans,le mans,oecd_fua,2022,3.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR029F
+Saint-Denis,saint-denis,oecd_fua,2022,1.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR030F
+Caen,caen,oecd_fua,2022,3.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR031F
+Limoges,limoges,oecd_fua,2022,1.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR032F
+Brest,brest,oecd_fua,2022,3.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR034F
+Amiens,amiens,oecd_fua,2022,3.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR035F
+Dunkerque,dunkerque,oecd_fua,2022,2.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR036F
+Perpignan,perpignan,oecd_fua,2022,2.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR037F
+Annecy,annecy,oecd_fua,2022,5.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR038F
+Besançon,besancon,oecd_fua,2022,3.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR039F
+Bayonne,bayonne,oecd_fua,2022,2.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR040F
+Pau,pau,oecd_fua,2022,3.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR042F
+Avignon,avignon,oecd_fua,2022,3.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR043F
+Troyes,troyes,oecd_fua,2022,3.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR044F
+Valenciennes,valenciennes,oecd_fua,2022,2.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR045F
+Fort-de-France,fort-de-france,oecd_fua,2022,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR046F
+Poitiers,poitiers,oecd_fua,2022,2.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR047F
+Valence,valence,oecd_fua,2022,4.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR048F
+Fréjus,frejus,oecd_fua,2022,1.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR049F
+Chambéry,chambery,oecd_fua,2022,5.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR050F
+Douai,douai,oecd_fua,2022,2.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR052F
+La Rochelle,la rochelle,oecd_fua,2022,7.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR054F
+Lorient,lorient,oecd_fua,2022,4.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR055F
+Cherbourg-en-Cotentin,cherbourg-en-cotentin,oecd_fua,2022,3.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR056F
+Béziers,beziers,oecd_fua,2022,1.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR057F
+Chartres,chartres,oecd_fua,2022,3.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR058F
+Boulogne-sur-Mer,boulogne-sur-mer,oecd_fua,2022,1.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR060F
+Calais,calais,oecd_fua,2022,1.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR061F
+Montbéliard,montbeliard,oecd_fua,2022,1.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR063F
+Arras,arras,oecd_fua,2022,1.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR064F
+Colmar,colmar,oecd_fua,2022,5.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR065F
+Bourges,bourges,oecd_fua,2022,2.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR068F
+Saint-Brieuc,saint-brieuc,oecd_fua,2022,2.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR069F
+Quimper,quimper,oecd_fua,2022,1.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR070F
+Belfort,belfort,oecd_fua,2022,3.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR071F
+Cayenne,cayenne,oecd_fua,2022,2.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR072F
+Saint-Louis,saint-louis,oecd_fua,2022,1.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR074F
+Vannes,vannes,oecd_fua,2022,3.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR075F
+Annemasse-Geneva (French part),annemasse-geneva (french part),oecd_fua,2022,5.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR076F
+Saint-Louis-Bâle (French part),saint-louis-bale (french part),oecd_fua,2022,7.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code FR077F
+Dublin,dublin,oecd_fua,2022,5.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IE001F
+Cork,cork,oecd_fua,2022,1.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IE002F
+Limerick,limerick,oecd_fua,2022,1.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IE003F
+Galway,galway,oecd_fua,2022,2.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IE004F
+Waterford,waterford,oecd_fua,2022,1.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IE005F
+Roma,roma,oecd_fua,2011,0.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT001F
+Milano,milano,oecd_fua,2011,5.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT002F
+Napoli,napoli,oecd_fua,2011,1.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT003F
+Torino,torino,oecd_fua,2011,2.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT004F
+Palermo,palermo,oecd_fua,2011,1.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT005F
+Genova,genova,oecd_fua,2011,0.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT006F
+Firenze,firenze,oecd_fua,2011,4.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT007F
+Bari,bari,oecd_fua,2011,2.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT008F
+Bologna,bologna,oecd_fua,2011,4.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT009F
+Catania,catania,oecd_fua,2011,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT010F
+Venezia,venezia,oecd_fua,2011,7.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT011F
+Verona,verona,oecd_fua,2011,5.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT012F
+Cremona,cremona,oecd_fua,2011,12.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT013F
+Trento,trento,oecd_fua,2011,5.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT014F
+Trieste,trieste,oecd_fua,2011,0.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT015F
+Perugia,perugia,oecd_fua,2011,0.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT016F
+Ancona,ancona,oecd_fua,2011,0.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT017F
+Pescara,pescara,oecd_fua,2011,2.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT018F
+Campobasso,campobasso,oecd_fua,2011,0.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT019F
+Caserta,caserta,oecd_fua,2011,3.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT020F
+Taranto,taranto,oecd_fua,2011,1.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT021F
+Potenza,potenza,oecd_fua,2011,0.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT022F
+Catanzaro,catanzaro,oecd_fua,2011,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT023F
+Reggio di Calabria,reggio di calabria,oecd_fua,2011,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT024F
+Sassari,sassari,oecd_fua,2011,0.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT025F
+Cagliari,cagliari,oecd_fua,2011,1.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT026F
+Padova,padova,oecd_fua,2011,8.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT027F
+Brescia,brescia,oecd_fua,2011,6.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT028F
+Modena,modena,oecd_fua,2011,8.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT029F
+Foggia,foggia,oecd_fua,2011,1.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT030F
+Salerno,salerno,oecd_fua,2011,0.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT031F
+Piacenza,piacenza,oecd_fua,2011,9.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT032F
+Bolzano,bolzano,oecd_fua,2011,17.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT033F
+Udine,udine,oecd_fua,2011,6.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT034F
+La Spezia,la spezia,oecd_fua,2011,2.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT035F
+Lecce,lecce,oecd_fua,2011,4.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT036F
+Barletta,barletta,oecd_fua,2011,4.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT037F
+Pesaro,pesaro,oecd_fua,2011,9.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT038F
+Como,como,oecd_fua,2011,2.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT039F
+Pisa,pisa,oecd_fua,2011,6.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT040F
+Treviso,treviso,oecd_fua,2011,8.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT041F
+Varese,varese,oecd_fua,2011,1.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT042F
+Asti,asti,oecd_fua,2011,1.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT043F
+Pavia,pavia,oecd_fua,2011,6.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT044F
+Cosenza,cosenza,oecd_fua,2011,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT046F
+Savona,savona,oecd_fua,2011,1.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT047F
+Matera,matera,oecd_fua,2011,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT048F
+Avellino,avellino,oecd_fua,2011,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT050F
+Pordenone,pordenone,oecd_fua,2011,7.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT051F
+Lecco,lecco,oecd_fua,2011,1.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT052F
+Altamura,altamura,oecd_fua,2011,0.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT053F
+Battipaglia,battipaglia,oecd_fua,2011,1.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT056F
+Bisceglie,bisceglie,oecd_fua,2011,2.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT057F
+Carpi,carpi,oecd_fua,2011,10.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT058F
+Cerignola,cerignola,oecd_fua,2011,1.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT059F
+Gela,gela,oecd_fua,2011,0.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT060F
+Sassuolo,sassuolo,oecd_fua,2011,2.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT063F
+Messina,messina,oecd_fua,2011,0.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT064F
+Prato,prato,oecd_fua,2011,3.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT065F
+Parma,parma,oecd_fua,2011,9.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT066F
+Livorno,livorno,oecd_fua,2011,8.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT067F
+Reggio nell'Emilia,reggio nell'emilia,oecd_fua,2011,7.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT068F
+Ravenna,ravenna,oecd_fua,2011,11.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT069F
+Ferrara,ferrara,oecd_fua,2011,14.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT070F
+Rimini,rimini,oecd_fua,2011,10.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT071F
+Siracusa,siracusa,oecd_fua,2011,0.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT072F
+Bergamo,bergamo,oecd_fua,2011,4.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT073F
+Forlì,forli,oecd_fua,2011,8.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT074F
+Latina,latina,oecd_fua,2011,1.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT075F
+Vicenza,vicenza,oecd_fua,2011,7.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT076F
+Terni,terni,oecd_fua,2011,3.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT077F
+Novara,novara,oecd_fua,2011,9.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT078F
+Alessandria,alessandria,oecd_fua,2011,6.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT079F
+Arezzo,arezzo,oecd_fua,2011,2.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT080F
+Grosseto,grosseto,oecd_fua,2011,6.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT081F
+Brindisi,brindisi,oecd_fua,2011,2.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT082F
+Trapani,trapani,oecd_fua,2011,1.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT083F
+Ragusa,ragusa,oecd_fua,2011,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT084F
+Andria,andria,oecd_fua,2011,3.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT085F
+L'Aquila,l'aquila,oecd_fua,2011,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code IT087F
+Tokyo,tokyo,oecd_fua,2020,11.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN01F
+Osaka,osaka,oecd_fua,2020,16.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN02F
+Nagoya,nagoya,oecd_fua,2020,9.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN03F
+Fukuoka,fukuoka,oecd_fua,2020,11.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN04F
+Sapporo,sapporo,oecd_fua,2020,6.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN05F
+Sendai,sendai,oecd_fua,2020,8.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN06F
+Okayama,okayama,oecd_fua,2020,13.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN07F
+Hiroshima,hiroshima,oecd_fua,2020,15.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN08F
+Kitakyushu,kitakyushu,oecd_fua,2020,5.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN09F
+Naha,naha,oecd_fua,2020,2.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN10F
+Kumamoto,kumamoto,oecd_fua,2020,10.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN11F
+Yokkaichi,yokkaichi,oecd_fua,2020,7.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN12F
+Takasaki,takasaki,oecd_fua,2020,8.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN13F
+Niigata,niigata,oecd_fua,2020,6.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN15F
+Utsunomiya,utsunomiya,oecd_fua,2020,9.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN16F
+Kanazawa,kanazawa,oecd_fua,2020,6.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN17F
+Oita,oita,oecd_fua,2020,8.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN18F
+Kagoshima,kagoshima,oecd_fua,2020,7.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN19F
+Himeji,himeji,oecd_fua,2020,11.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN20F
+Mito,mito,oecd_fua,2020,6.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN21F
+Shizuoka,shizuoka,oecd_fua,2020,17.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN22F
+Toyohashi,toyohashi,oecd_fua,2020,8.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN23F
+Nagasaki,nagasaki,oecd_fua,2020,1.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN24F
+Matsuyama,matsuyama,oecd_fua,2020,18.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN25F
+Toyama,toyama,oecd_fua,2020,6.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN26F
+Kofu,kofu,oecd_fua,2020,8.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN27F
+Takamatsu,takamatsu,oecd_fua,2020,14.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN28F
+Nagano,nagano,oecd_fua,2020,9.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN29F
+Tokushima,tokushima,oecd_fua,2020,13.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN30F
+Numazu,numazu,oecd_fua,2020,8.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN31F
+Fukui,fukui,oecd_fua,2020,6.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN32F
+Wakayama,wakayama,oecd_fua,2020,11.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN33F
+Koriyama,koriyama,oecd_fua,2020,6.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN34F
+Kochi,kochi,oecd_fua,2020,15.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN35F
+Miyazaki,miyazaki,oecd_fua,2020,10.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN36F
+Morioka,morioka,oecd_fua,2020,8.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN37F
+Fujieda,fujieda,oecd_fua,2020,8.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN38F
+Fukushima,fukushima,oecd_fua,2020,7.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN39F
+Matsumoto,matsumoto,oecd_fua,2020,8.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN40F
+Yamagata,yamagata,oecd_fua,2020,7.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN41F
+Kurume,kurume,oecd_fua,2020,9.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN42F
+Akita,akita,oecd_fua,2020,8.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN43F
+Asahikawa,asahikawa,oecd_fua,2020,7.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN44F
+Kusatsu,kusatsu,oecd_fua,2020,12.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN45F
+Fuji,fuji,oecd_fua,2020,5.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN46F
+Isesaki,isesaki,oecd_fua,2020,7.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN47F
+Hakodate,hakodate,oecd_fua,2020,5.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN48F
+Hachinohe,hachinohe,oecd_fua,2020,2.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN49F
+Hitachi,hitachi,oecd_fua,2020,3.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN50F
+Aomori,aomori,oecd_fua,2020,10.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN51F
+Shimonoseki,shimonoseki,oecd_fua,2020,4.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN52F
+Obihiro,obihiro,oecd_fua,2020,5.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN53F
+Shunan,shunan,oecd_fua,2020,10.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN54F
+Ube,ube,oecd_fua,2020,8.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN55F
+Yonago,yonago,oecd_fua,2020,8.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN56F
+Ashikaga,ashikaga,oecd_fua,2020,8.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN57F
+Omuta,omuta,oecd_fua,2020,7.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN58F
+Marugame,marugame,oecd_fua,2020,10.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN59F
+Kushiro,kushiro,oecd_fua,2020,4.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN60F
+Tomakomai,tomakomai,oecd_fua,2020,4.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code JPN61F
+Seoul,seoul,oecd_fua,2020,1.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code KOR01F
+Busan,busan,oecd_fua,2020,0.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code KOR02F
+Daegu,daegu,oecd_fua,2020,1.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code KOR03F
+Gwangju,gwangju,oecd_fua,2020,1.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code KOR04F
+Daejeon,daejeon,oecd_fua,2020,1.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code KOR05F
+Changwon,changwon,oecd_fua,2020,1.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code KOR06F
+Ulsan,ulsan,oecd_fua,2020,2.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code KOR07F
+Cheongju,cheongju,oecd_fua,2020,1.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code KOR08F
+Jeonju,jeonju,oecd_fua,2020,1.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code KOR09F
+Cheonan,cheonan,oecd_fua,2020,0.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code KOR10F
+Gyeongsan,gyeongsan,oecd_fua,2020,1.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code KOR11F
+Pohang,pohang,oecd_fua,2020,2.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code KOR12F
+Gumi,gumi,oecd_fua,2020,1.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code KOR13F
+Jeju,jeju,oecd_fua,2020,0.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code KOR14F
+Jinju,jinju,oecd_fua,2020,2.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code KOR15F
+Wonju,wonju,oecd_fua,2020,0.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code KOR16F
+Iksan,iksan,oecd_fua,2020,1.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code KOR17F
+Chuncheon,chuncheon,oecd_fua,2020,1.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code KOR18F
+Gunsan,gunsan,oecd_fua,2020,1.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code KOR19F
+Suncheon,suncheon,oecd_fua,2020,0.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code KOR20F
+Gangneung,gangneung,oecd_fua,2020,1.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code KOR21F
+Naju,naju,oecd_fua,2020,1.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code KOR22F
+Rīga,riga,oecd_fua,2017,4.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code LV001F
+Ciudad de Mexico,ciudad de mexico,oecd_fua,2015,2.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX01F
+Guadalajara,guadalajara,oecd_fua,2015,3.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX02F
+Monterrey,monterrey,oecd_fua,2015,1.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX03F
+Puebla,puebla,oecd_fua,2015,5.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX04F
+Toluca,toluca,oecd_fua,2015,5.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX05F
+Tijuana,tijuana,oecd_fua,2015,0.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX06F
+Leon,leon,oecd_fua,2015,10.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX07F
+Queretaro,queretaro,oecd_fua,2015,2.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX08F
+Merida,merida,oecd_fua,2015,9.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX09F
+Juarez,juarez,oecd_fua,2015,0.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX10F
+San Luis Potosi,san luis potosi,oecd_fua,2015,9.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX11F
+Torreon,torreon,oecd_fua,2015,10.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX12F
+Mexicali,mexicali,oecd_fua,2015,4.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX13F
+Cuernavaca,cuernavaca,oecd_fua,2015,1.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX14F
+Villahermosa,villahermosa,oecd_fua,2015,2.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX15F
+Culiacan,culiacan,oecd_fua,2015,2.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX16F
+Morelia,morelia,oecd_fua,2015,1.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX17F
+Chihuahua,chihuahua,oecd_fua,2015,0.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX18F
+Veracruz,veracruz,oecd_fua,2015,2.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX19F
+Hermosillo,hermosillo,oecd_fua,2015,3.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX20F
+Aguascalientes,aguascalientes,oecd_fua,2015,4.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX21F
+Acapulco de Juarez,acapulco de juarez,oecd_fua,2015,0.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX22F
+Tampico,tampico,oecd_fua,2015,2.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX23F
+Oaxaca de Juarez,oaxaca de juarez,oecd_fua,2015,4.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX24F
+Reynosa,reynosa,oecd_fua,2015,2.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX25F
+Xalapa,xalapa,oecd_fua,2015,0.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX26F
+Saltillo,saltillo,oecd_fua,2015,0.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX27F
+Benito Juarez,benito juarez,oecd_fua,2015,3.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX28F
+Celaya,celaya,oecd_fua,2015,16.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX29F
+Durango,durango,oecd_fua,2015,8.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX30F
+Tuxtla Gutierrez,tuxtla gutierrez,oecd_fua,2015,0.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX31F
+Pachuca de Soto,pachuca de soto,oecd_fua,2015,1.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX32F
+Irapuato,irapuato,oecd_fua,2015,14.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX33F
+Ahome,ahome,oecd_fua,2015,10.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX34F
+Matamoros,matamoros,oecd_fua,2015,5.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX35F
+Ensenada,ensenada,oecd_fua,2015,2.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX36F
+Poza Rica de Hidalgo,poza rica de hidalgo,oecd_fua,2015,1.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX37F
+Tepic,tepic,oecd_fua,2015,1.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX38F
+Orizaba,orizaba,oecd_fua,2015,6.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX39F
+Mazatlan,mazatlan,oecd_fua,2015,7.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX40F
+Cajeme,cajeme,oecd_fua,2015,9.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX41F
+Nuevo Laredo,nuevo laredo,oecd_fua,2015,4.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX42F
+Guadalupe,guadalupe,oecd_fua,2015,2.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX43F
+Coatzacoalcos,coatzacoalcos,oecd_fua,2015,1.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX44F
+Tapachula,tapachula,oecd_fua,2015,5.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX45F
+Victoria,victoria,oecd_fua,2015,5.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX46F
+Tlaxcala,tlaxcala,oecd_fua,2015,5.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX47F
+Cordoba,cordoba,oecd_fua,2015,1.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX48F
+Uruapan,uruapan,oecd_fua,2015,3.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX49F
+Tehuacan,tehuacan,oecd_fua,2015,12.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX50F
+Minatitlan,minatitlan,oecd_fua,2015,3.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX51F
+Cuautla,cuautla,oecd_fua,2015,7.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX52F
+Chilpancingo de los Bravo,chilpancingo de los bravo,oecd_fua,2015,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX53F
+Monclova,monclova,oecd_fua,2015,3.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX54F
+Los Cabos,los cabos,oecd_fua,2015,0.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX55F
+Colima,colima,oecd_fua,2015,2.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX56F
+La Paz,la paz,oecd_fua,2015,1.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX57F
+Campeche,campeche,oecd_fua,2015,3.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX58F
+Puerto Vallarta,puerto vallarta,oecd_fua,2015,1.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX59F
+Salamanca,salamanca,oecd_fua,2015,19.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX60F
+San Juan del Rio,san juan del rio,oecd_fua,2015,4.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX61F
+Zamora,zamora,oecd_fua,2015,12.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX62F
+Tulancingo de Bravo,tulancingo de bravo,oecd_fua,2015,6.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX63F
+Carmen,carmen,oecd_fua,2015,5.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX64F
+Nogales,nogales,oecd_fua,2015,0.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX65F
+Othon P. Blanco,othon p. blanco,oecd_fua,2015,8.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX66F
+Fresnillo,fresnillo,oecd_fua,2015,13.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX67F
+San Cristobal de las Casas,san cristobal de las casas,oecd_fua,2015,10.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX68F
+Solidaridad,solidaridad,oecd_fua,2015,7.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX69F
+Apizaco,apizaco,oecd_fua,2015,5.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX70F
+San Luis Rio Colorado,san luis rio colorado,oecd_fua,2015,3.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX71F
+San Francisco del Rincon,san francisco del rincon,oecd_fua,2015,30.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX72F
+San Martin Texmelucan,san martin texmelucan,oecd_fua,2015,23.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX73F
+Lazaro Cardenas,lazaro cardenas,oecd_fua,2015,1.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX74F
+Ciudad Valles,ciudad valles,oecd_fua,2015,6.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX75F
+Tianguistenco,tianguistenco,oecd_fua,2015,3.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX76F
+Cuauhtemoc,cuauhtemoc,oecd_fua,2015,2.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX77F
+Navojoa,navojoa,oecd_fua,2015,13.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX78F
+Zitacuaro,zitacuaro,oecd_fua,2015,0.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX79F
+Lagos de Moreno,lagos de moreno,oecd_fua,2015,11.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX80F
+Piedras Negras,piedras negras,oecd_fua,2015,7.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX81F
+Comitan de Dominguez,comitan de dominguez,oecd_fua,2015,7.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX82F
+Delicias,delicias,oecd_fua,2015,5.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX83F
+Tuxpan,tuxpan,oecd_fua,2015,3.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX84F
+Iguala de la Independencia,iguala de la independencia,oecd_fua,2015,4.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX85F
+Acuna,acuna,oecd_fua,2015,2.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX86F
+Uriangato,uriangato,oecd_fua,2015,13.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX87F
+Teziutlan,teziutlan,oecd_fua,2015,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX88F
+Apatzingan,apatzingan,oecd_fua,2015,3.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX89F
+Zapotlan el Grande,zapotlan el grande,oecd_fua,2015,12.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX90F
+Hidalgo del Parral,hidalgo del parral,oecd_fua,2015,0.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX91F
+Chiautla,chiautla,oecd_fua,2015,20.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code MEX92F
+Oslo,oslo,oecd_fua,2009,6.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code NO001F
+Bergen,bergen,oecd_fua,2009,4.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code NO002F
+Trondheim,trondheim,oecd_fua,2009,13.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code NO003F
+Stavanger,stavanger,oecd_fua,2009,9.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code NO004F
+Auckland,auckland,oecd_fua,2023,1.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code NZL01F
+Christchurch,christchurch,oecd_fua,2023,5.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code NZL02F
+Wellington,wellington,oecd_fua,2023,3.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code NZL03F
+Hamilton,hamilton,oecd_fua,2023,2.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code NZL04F
+Tauranga,tauranga,oecd_fua,2023,2.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code NZL05F
+Dunedin,dunedin,oecd_fua,2023,3.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code NZL06F
+Palmerston North,palmerston north,oecd_fua,2023,2.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code NZL07F
+New Plymouth,new plymouth,oecd_fua,2023,2.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code NZL08F
+Nelson,nelson,oecd_fua,2023,7.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code NZL09F
+Whangārei,whangarei,oecd_fua,2023,1.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code NZL10F
+Hastings,hastings,oecd_fua,2023,2.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code NZL11F
+Rotorua,rotorua,oecd_fua,2023,1.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code NZL12F
+Napier,napier,oecd_fua,2023,2.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code NZL13F
+Invercargill,invercargill,oecd_fua,2023,2.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code NZL14F
+Lisboa,lisboa,oecd_fua,2021,0.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code PT001F
+Porto,porto,oecd_fua,2021,0.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code PT002F
+Braga,braga,oecd_fua,2021,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code PT003F
+Funchal,funchal,oecd_fua,2021,0.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code PT004F
+Coimbra,coimbra,oecd_fua,2021,0.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code PT005F
+Ponta Delgada,ponta delgada,oecd_fua,2021,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code PT007F
+Aveiro,aveiro,oecd_fua,2021,3.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code PT008F
+Faro,faro,oecd_fua,2021,1.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code PT009F
+Viseu,viseu,oecd_fua,2021,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code PT010F
+Viana do Castelo,viana do castelo,oecd_fua,2021,0.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code PT011F
+Póvoa de Varzim,povoa de varzim,oecd_fua,2021,1.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code PT013F
+Guimarães,guimaraes,oecd_fua,2021,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code PT015F
+Stockholm,stockholm,oecd_fua,2005,6.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code SE001F
+Göteborg,goteborg,oecd_fua,2005,12.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code SE002F
+Malmö,malmo,oecd_fua,2005,17.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code SE003F
+Umeå,umea,oecd_fua,2005,23.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code SE005F
+Uppsala,uppsala,oecd_fua,2005,20.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code SE006F
+Linköping,linkoping,oecd_fua,2005,16.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code SE007F
+Örebro,orebro,oecd_fua,2005,20.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code SE008F
+Bratislava,bratislava,oecd_fua,2021,3.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code SK001F
+Košice,kosice,oecd_fua,2021,2.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code SK002F
+Banská Bystrica,banska bystrica,oecd_fua,2021,1.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code SK003F
+Nitra,nitra,oecd_fua,2021,2.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code SK004F
+Prešov,presov,oecd_fua,2021,1.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code SK005F
+Žilina,zilina,oecd_fua,2021,3.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code SK006F
+Trenčín,trencin,oecd_fua,2021,6.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code SK008F
+London,london,oecd_fua,2021,4.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK001F
+West Midlands urban area,west midlands urban area,oecd_fua,2021,1.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK002F
+Leeds,leeds,oecd_fua,2021,1.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK003F
+Glasgow,glasgow,oecd_fua,2021,1.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK004F
+Liverpool,liverpool,oecd_fua,2021,2.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK006F
+Edinburgh,edinburgh,oecd_fua,2021,4.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK007F
+Manchester,manchester,oecd_fua,2021,2.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK008F
+Cardiff,cardiff,oecd_fua,2021,2.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK009F
+Sheffield,sheffield,oecd_fua,2021,1.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK010F
+Bristol,bristol,oecd_fua,2021,5.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK011F
+Belfast,belfast,oecd_fua,2021,1.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK012F
+Newcastle upon Tyne,newcastle upon tyne,oecd_fua,2021,2.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK013F
+Leicester,leicester,oecd_fua,2021,3.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK014F
+Aberdeen,aberdeen,oecd_fua,2021,1.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK016F
+Cambridge,cambridge,oecd_fua,2021,14.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK017F
+Exeter,exeter,oecd_fua,2021,3.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK018F
+Lincoln,lincoln,oecd_fua,2021,3.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK019F
+Stevenage,stevenage,oecd_fua,2021,2.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK021F
+Wrexham,wrexham,oecd_fua,2021,1.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK022F
+Portsmouth,portsmouth,oecd_fua,2021,5.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK023F
+Worcester,worcester,oecd_fua,2021,2.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK024F
+Coventry,coventry,oecd_fua,2021,2.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK025F
+Kingston upon Hull,kingston upon hull,oecd_fua,2021,5.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK026F
+Stoke-on-Trent,stoke-on-trent,oecd_fua,2021,1.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK027F
+Nottingham,nottingham,oecd_fua,2021,3.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK029F
+Bath and North East Somerset,bath and north east somerset,oecd_fua,2021,3.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK031F
+Guildford,guildford,oecd_fua,2021,2.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK033F
+Thanet,thanet,oecd_fua,2021,2.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK034F
+Ashford,ashford,oecd_fua,2021,2.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK041F
+East Staffordshire,east staffordshire,oecd_fua,2021,2.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK043F
+Darlington,darlington,oecd_fua,2021,2.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK044F
+Worthing,worthing,oecd_fua,2021,4.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK045F
+Mansfield,mansfield,oecd_fua,2021,1.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK046F
+Chesterfield,chesterfield,oecd_fua,2021,1.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK047F
+Burnley,burnley,oecd_fua,2021,1.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK050F
+Great Yarmouth,great yarmouth,oecd_fua,2021,3.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK051F
+Eastbourne,eastbourne,oecd_fua,2021,3.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK055F
+Hastings,hastings,oecd_fua,2021,1.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK056F
+Redditch,redditch,oecd_fua,2021,1.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK059F
+Halton,halton,oecd_fua,2021,2.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK062F
+Doncaster,doncaster,oecd_fua,2021,2.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK506F
+Sunderland,sunderland,oecd_fua,2021,1.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK510F
+Medway,medway,oecd_fua,2021,1.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK513F
+Brighton and Hove,brighton and hove,oecd_fua,2021,5.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK515F
+Plymouth,plymouth,oecd_fua,2021,2.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK516F
+Swansea,swansea,oecd_fua,2021,1.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK517F
+Derby,derby,oecd_fua,2021,2.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK518F
+Southampton,southampton,oecd_fua,2021,3.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK520F
+Milton Keynes,milton keynes,oecd_fua,2021,3.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK525F
+Northampton,northampton,oecd_fua,2021,2.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK528F
+Warrington,warrington,oecd_fua,2021,3.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK531F
+Luton,luton,oecd_fua,2021,1.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK532F
+York,york,oecd_fua,2021,11.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK533F
+Swindon,swindon,oecd_fua,2021,4.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK535F
+Bournemouth,bournemouth,oecd_fua,2021,4.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK539F
+Telford and Wrekin,telford and wrekin,oecd_fua,2021,2.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK542F
+North East Lincolnshire,north east lincolnshire,oecd_fua,2021,5.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK543F
+Peterborough,peterborough,oecd_fua,2021,5.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK545F
+Colchester,colchester,oecd_fua,2021,3.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK546F
+Basingstoke and Deane,basingstoke and deane,oecd_fua,2021,2.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK548F
+Bedford,bedford,oecd_fua,2021,4.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK549F
+Dundee City,dundee city,oecd_fua,2021,1.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK550F
+Falkirk,falkirk,oecd_fua,2021,1.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK551F
+Reading,reading,oecd_fua,2021,3.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK552F
+Blackpool,blackpool,oecd_fua,2021,2.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK553F
+Maidstone,maidstone,oecd_fua,2021,1.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK554F
+Dacorum,dacorum,oecd_fua,2021,1.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK556F
+Blackburn with Darwen,blackburn with darwen,oecd_fua,2021,1.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK557F
+Newport,newport,oecd_fua,2021,1.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK558F
+Middlesbrough,middlesbrough,oecd_fua,2021,1.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK559F
+Oxford,oxford,oecd_fua,2021,7.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK560F
+Torbay,torbay,oecd_fua,2021,1.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK561F
+Preston,preston,oecd_fua,2021,2.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK562F
+Norwich,norwich,oecd_fua,2021,5.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK566F
+Slough,slough,oecd_fua,2021,2.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK567F
+Cheshire West and Chester,cheshire west and chester,oecd_fua,2021,2.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK568F
+Ipswich,ipswich,oecd_fua,2021,4.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK569F
+Cheltenham,cheltenham,oecd_fua,2021,5.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK571F
+Gloucester,gloucester,oecd_fua,2021,4.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK572F
+Bracknell Forest,bracknell forest,oecd_fua,2021,2.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK573F
+Crawley,crawley,oecd_fua,2021,2.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK576F
+Rushmoor,rushmoor,oecd_fua,2021,2.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK580F
+Derry & Strabane Local Government District,derry & strabane local government district,oecd_fua,2021,0.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code UK586F
+New York (Greater),new york (greater),oecd_fua,2023,0.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA01F
+Los Angeles (Greater),los angeles (greater),oecd_fua,2023,0.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA02F
+Chicago,chicago,oecd_fua,2023,0.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA03F
+Washington (Greater),washington (greater),oecd_fua,2023,0.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA04F
+San Francisco (Greater),san francisco (greater),oecd_fua,2023,1.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA05F
+Philadelphia (Greater),philadelphia (greater),oecd_fua,2023,0.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA06F
+Dallas,dallas,oecd_fua,2023,0.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA07F
+Houston,houston,oecd_fua,2023,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA08F
+Miami (Greater),miami (greater),oecd_fua,2023,0.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA09F
+Escambia,escambia,oecd_fua,2023,0.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA100F
+Caddo,caddo,oecd_fua,2023,0.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA101F
+Tulare,tulare,oecd_fua,2023,0.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA102F
+Newport News,newport news,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA103F
+York,york,oecd_fua,2023,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA104F
+Genesee,genesee,oecd_fua,2023,0.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA105F
+Jefferson (TX),jefferson (tx),oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA106F
+Santa Barbara,santa barbara,oecd_fua,2023,2.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA107F
+Lafayette,lafayette,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA108F
+Monterey,monterey,oecd_fua,2023,0.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA109F
+Atlanta,atlanta,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA10F
+Mobile,mobile,oecd_fua,2023,0.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA110F
+Berks,berks,oecd_fua,2023,0.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA111F
+Cameron,cameron,oecd_fua,2023,0.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA112F
+Bell,bell,oecd_fua,2023,0.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA113F
+Nueces,nueces,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA114F
+Marion (OR),marion (or),oecd_fua,2023,0.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA115F
+Allen,allen,oecd_fua,2023,0.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA116F
+Scott,scott,oecd_fua,2023,0.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA117F
+Stark,stark,oecd_fua,2023,0.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA118F
+Tallahassee,tallahassee,oecd_fua,2023,0.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA119F
+Boston,boston,oecd_fua,2023,1.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA11F
+Cumberland (NC),cumberland (nc),oecd_fua,2023,0.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA120F
+Lane,lane,oecd_fua,2023,3.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA121F
+Winnebago (IL),winnebago (il),oecd_fua,2023,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA122F
+Chatham,chatham,oecd_fua,2023,0.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA123F
+Vanderburgh,vanderburgh,oecd_fua,2023,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA124F
+Washtenaw,washtenaw,oecd_fua,2023,1.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA125F
+Lubbock,lubbock,oecd_fua,2023,0.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA126F
+Madison,madison,oecd_fua,2023,0.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA127F
+Marion (FL),marion (fl),oecd_fua,2023,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA128F
+Peoria,peoria,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA129F
+Phoenix,phoenix,oecd_fua,2023,0.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA12F
+Collier,collier,oecd_fua,2023,0.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA130F
+Luzerne,luzerne,oecd_fua,2023,0.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA131F
+Lancaster (NE),lancaster (ne),oecd_fua,2023,0.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA132F
+Thurston,thurston,oecd_fua,2023,0.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA133F
+Sebastian,sebastian,oecd_fua,2023,0.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA134F
+Roanoke,roanoke,oecd_fua,2023,0.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA135F
+Muscogee,muscogee,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA136F
+Brown,brown,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA137F
+Alachua,alachua,oecd_fua,2023,1.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA138F
+Larimer,larimer,oecd_fua,2023,2.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA139F
+Detroit (Greater),detroit (greater),oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA13F
+Boulder,boulder,oecd_fua,2023,4.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA140F
+Potter,potter,oecd_fua,2023,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA141F
+Cumberland (ME),cumberland (me),oecd_fua,2023,0.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA142F
+Erie (PA),erie (pa),oecd_fua,2023,0.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA143F
+St. Lucie,st. lucie,oecd_fua,2023,0.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA144F
+Nashville,nashville,oecd_fua,2023,0.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA145F
+Atlantic City,atlantic city,oecd_fua,2023,0.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA146F
+McLennan,mclennan,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA147F
+Durham,durham,oecd_fua,2023,0.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA148F
+Lackawanna,lackawanna,oecd_fua,2023,0.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA149F
+Seattle,seattle,oecd_fua,2023,1.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA14F
+St. Joseph,st. joseph,oecd_fua,2023,0.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA150F
+Santa Cruz,santa cruz,oecd_fua,2023,2.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA151F
+Webb,webb,oecd_fua,2023,0.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA152F
+Minnehaha,minnehaha,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA153F
+Merced,merced,oecd_fua,2023,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA154F
+Benton (WA),benton (wa),oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA155F
+Weld,weld,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA156F
+Kalamazoo,kalamazoo,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA157F
+Butte,butte,oecd_fua,2023,1.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA158F
+Sangamon,sangamon,oecd_fua,2023,0.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA159F
+Minneapolis,minneapolis,oecd_fua,2023,0.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA15F
+Yakima,yakima,oecd_fua,2023,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA160F
+Brazos,brazos,oecd_fua,2023,1.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA161F
+Tuscaloosa,tuscaloosa,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA162F
+Champaign,champaign,oecd_fua,2023,1.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA163F
+Linn,linn,oecd_fua,2023,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA164F
+Lafayette (IN),lafayette (in),oecd_fua,2023,0.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA165F
+Shawnee,shawnee,oecd_fua,2023,0.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA166F
+Weber,weber,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA167F
+Outagamie,outagamie,oecd_fua,2023,0.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA168F
+Cass,cass,oecd_fua,2023,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA169F
+San Diego,san diego,oecd_fua,2023,0.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA16F
+Benton (AR),benton (ar),oecd_fua,2023,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA170F
+Las Cruces,las cruces,oecd_fua,2023,1.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA171F
+Rochester (MN),rochester (mn),oecd_fua,2023,0.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA172F
+Jackson (OR),jackson (or),oecd_fua,2023,0.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA173F
+New Hanover,new hanover,oecd_fua,2023,0.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA174F
+Whatcom,whatcom,oecd_fua,2023,2.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA175F
+Broome,broome,oecd_fua,2023,0.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA176F
+Saginaw,saginaw,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA177F
+Yuma,yuma,oecd_fua,2023,0.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA178F
+Racine,racine,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA179F
+St. Louis,st. louis,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA17F
+Punta Gorda,punta gorda,oecd_fua,2023,0.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA180F
+Benton (MN),benton (mn),oecd_fua,2023,0.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA181F
+Harrison,harrison,oecd_fua,2023,0.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA182F
+McLean,mclean,oecd_fua,2023,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA183F
+Woodbury,woodbury,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA184F
+Tampa-Hernando,tampa-hernando,oecd_fua,2023,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA185F
+Muskegon,muskegon,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA186F
+Johnson,johnson,oecd_fua,2023,1.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA187F
+Taylor,taylor,oecd_fua,2023,0.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA188F
+Pitt,pitt,oecd_fua,2023,0.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA189F
+Denver,denver,oecd_fua,2023,0.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA18F
+Winnebago (WI),winnebago (wi),oecd_fua,2023,0.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA190F
+Sutter,sutter,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA191F
+Rock,rock,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA192F
+Pueblo,pueblo,oecd_fua,2023,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA193F
+Centre,centre,oecd_fua,2023,2.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA194F
+Yellowstone,yellowstone,oecd_fua,2023,0.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA195F
+Wichita,wichita,oecd_fua,2023,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA196F
+Washington (MD),washington (md),oecd_fua,2023,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA197F
+Mesa,mesa,oecd_fua,2023,1.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA198F
+Midland,midland,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA199F
+San Antonio,san antonio,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA19F
+Ector,ector,oecd_fua,2023,0.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA200F
+Comanche,comanche,oecd_fua,2023,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA201F
+Indian River,indian river,oecd_fua,2023,0.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA202F
+Monroe (IN),monroe (in),oecd_fua,2023,1.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA203F
+Napa,napa,oecd_fua,2023,0.9,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA204F
+Delaware,delaware,oecd_fua,2023,0.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA205F
+Kankakee,kankakee,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA206F
+Terrebonne,terrebonne,oecd_fua,2023,0.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA207F
+Douglas (KS),douglas (ks),oecd_fua,2023,1.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA208F
+Flagler-Daytona Beach,flagler-daytona beach,oecd_fua,2023,0.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA209F
+Portland,portland,oecd_fua,2023,1.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA20F
+Sumter,sumter,oecd_fua,2023,1.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA210F
+Maverick,maverick,oecd_fua,2023,0.0,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA211F
+Cincinnati,cincinnati,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA21F
+Las Vegas,las vegas,oecd_fua,2023,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA22F
+Orange,orange,oecd_fua,2023,0.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA23F
+Jackson (MO),jackson (mo),oecd_fua,2023,0.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA24F
+Indianapolis,indianapolis,oecd_fua,2023,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA25F
+Cuyahoga,cuyahoga,oecd_fua,2023,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA26F
+New Haven,new haven,oecd_fua,2023,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA27F
+Charlotte,charlotte,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA28F
+Sacramento,sacramento,oecd_fua,2023,1.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA29F
+Austin,austin,oecd_fua,2023,0.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA30F
+Columbus,columbus,oecd_fua,2023,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA31F
+Milwaukee,milwaukee,oecd_fua,2023,0.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA32F
+Jacksonville,jacksonville,oecd_fua,2023,0.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA33F
+Salt Lake,salt lake,oecd_fua,2023,0.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA34F
+Tampa-Pinellas,tampa-pinellas,oecd_fua,2023,0.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA35F
+Jefferson (KY),jefferson (ky),oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA36F
+Memphis,memphis,oecd_fua,2023,0.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA37F
+Davidson,davidson,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA38F
+Oklahoma,oklahoma,oecd_fua,2023,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA39F
+Hartford,hartford,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA40F
+Pittsburgh,pittsburgh,oecd_fua,2023,0.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA41F
+New Orleans,new orleans,oecd_fua,2023,0.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA42F
+Virginia Beach,virginia beach,oecd_fua,2023,0.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA43F
+Erie (NY),erie (ny),oecd_fua,2023,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA44F
+Fresno (Greater),fresno (greater),oecd_fua,2023,0.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA45F
+Richmond (Greater),richmond (greater),oecd_fua,2023,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA46F
+Wake,wake,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA47F
+Jefferson (AL),jefferson (al),oecd_fua,2023,0.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA48F
+Tampa-Hillsborough,tampa-hillsborough,oecd_fua,2023,0.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA49F
+Pima,pima,oecd_fua,2023,1.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA50F
+Tulsa,tulsa,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA51F
+Albany,albany,oecd_fua,2023,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA52F
+Providence,providence,oecd_fua,2023,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA53F
+Albuquerque,albuquerque,oecd_fua,2023,0.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA54F
+Douglas (NE),douglas (ne),oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA55F
+Rochester (NY),rochester (ny),oecd_fua,2023,0.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA56F
+Kern,kern,oecd_fua,2023,0.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA57F
+Ventura,ventura,oecd_fua,2023,0.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA58F
+El Paso (TX),el paso (tx),oecd_fua,2023,0.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA59F
+East Baton Rouge,east baton rouge,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA60F
+Worcester,worcester,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA61F
+Hidalgo,hidalgo,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA62F
+Richland,richland,oecd_fua,2023,0.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA63F
+Lehigh,lehigh,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA64F
+Sarasota,sarasota,oecd_fua,2023,0.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA65F
+Montgomery (OH),montgomery (oh),oecd_fua,2023,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA66F
+San Joaquin,san joaquin,oecd_fua,2023,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA67F
+Kent,kent,oecd_fua,2023,0.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA68F
+Charleston,charleston,oecd_fua,2023,0.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA69F
+Onondaga,onondaga,oecd_fua,2023,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA70F
+El Paso (CO),el paso (co),oecd_fua,2023,0.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA71F
+Ada,ada,oecd_fua,2023,1.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA72F
+Hampden,hampden,oecd_fua,2023,0.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA73F
+Lee,lee,oecd_fua,2023,0.7,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA74F
+Sedgwick,sedgwick,oecd_fua,2023,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA75F
+Polk,polk,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA76F
+Dauphin,dauphin,oecd_fua,2023,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA77F
+Lucas,lucas,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA78F
+Pulaski,pulaski,oecd_fua,2023,0.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA79F
+Dane,dane,oecd_fua,2023,2.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA80F
+Brevard,brevard,oecd_fua,2023,0.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA81F
+Summit,summit,oecd_fua,2023,0.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA82F
+Hamilton (TN),hamilton (tn),oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA83F
+Utah,utah,oecd_fua,2023,0.6,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA84F
+Lancaster (PA),lancaster (pa),oecd_fua,2023,0.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA85F
+Stanislaus,stanislaus,oecd_fua,2023,0.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA86F
+Greene,greene,oecd_fua,2023,0.3,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA87F
+Fayette,fayette,oecd_fua,2023,0.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA88F
+Spokane,spokane,oecd_fua,2023,0.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA89F
+Volusia-Daytona Beach,volusia-daytona beach,oecd_fua,2023,0.5,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA90F
+Guilford,guilford,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA91F
+Sonoma,sonoma,oecd_fua,2023,0.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA92F
+Forsyth,forsyth,oecd_fua,2023,0.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA93F
+Washoe,washoe,oecd_fua,2023,0.4,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA94F
+Ingham,ingham,oecd_fua,2023,0.8,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA95F
+Montgomery (AL),montgomery (al),oecd_fua,2023,0.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA96F
+Knox,knox,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA97F
+Greenville,greenville,oecd_fua,2023,0.2,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA98F
+Mahoning,mahoning,oecd_fua,2023,0.1,,employed persons commuting to work,commute_mode_share,oecd_fua,,FUA code USA99F

@@ -1,0 +1,42 @@
+# ---------------------------------------------------------------------------
+# cycleform (2026 edition) .gitignore
+# Tracks: code (cycleform/), the per-place results dataset, and input data.
+# Excludes: the OSM cache (~11 GB), regenerable figures, and logs.
+# ---------------------------------------------------------------------------
+
+# --- large / regenerable data (never commit) -------------------------------
+# osmnx Overpass cache (huge, regenerable by re-fetching)
+cache/
+# pipeline data dirs (raw / interim / processed / cache) -- regenerable
+cycleform/data/
+# figures are regenerated from the CSVs (notebooks/03-figures.ipynb)
+results/figures/
+# run logs
+*.log
+
+# Note: results/places/, results/scenarios/ and results/*.csv ARE tracked --
+# they are the expensive-to-recompute analysis dataset.
+
+# --- Python ----------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# --- environments / secrets ------------------------------------------------
+.env
+.venv/
+venv/
+env/
+
+# --- OS / editor -----------------------------------------------------------
+.DS_Store
+Thumbs.db
+*~
+.vscode/

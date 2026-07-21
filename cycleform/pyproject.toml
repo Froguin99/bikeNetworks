@@ -1,0 +1,44 @@
+[project]
+name = "cycleform"
+version = "0.1.0"
+description = "Form and structure of urban cycle networks against the road networks they inhabit."
+requires-python = "==3.12.6"
+dependencies = [
+    "geopandas>=1.0",
+    "osmnx>=2.0",
+    "neatnet",
+    "momepy>=0.8",
+    "rustworkx>=0.15",
+    "networkx>=3.3",
+    "shapely>=2.0",
+    "pyproj>=3.7",
+    "pandas>=2.2",
+    "numpy>=1.26",
+    "scipy>=1.13",
+    "pyarrow>=17",
+    "joblib>=1.4",
+    "pydantic-settings>=2.0",
+    "matplotlib>=3.8",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6", "nbstripout"]
+
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+extend-exclude = ["notebooks", "*.ipynb"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "PTH"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore::DeprecationWarning"]
