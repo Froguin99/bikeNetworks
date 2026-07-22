@@ -342,11 +342,14 @@ def _save_variant(
 ) -> None:
     settings.results_scenarios.mkdir(parents=True, exist_ok=True)
     frame = results_to_frame(results)
+    # results_to_frame already carries the context's place_id (which for the
+    # scenario variant is "<place> [grown]"); overwrite it with the base id so
+    # both variants share one id and build_scenario_table can pair them.
+    frame["place_id"] = spec.place_id
     frame.insert(0, "grown_edges", grown_edges)
     frame.insert(0, "metric_version", settings.metric_version)
     frame.insert(0, "variant", variant)
     frame.insert(0, "country", spec.country)
-    frame.insert(0, "place_id", spec.place_id)  # base id for both variants
     frame.to_csv(_scenario_path(spec.place_id, variant), index=False)
 
 

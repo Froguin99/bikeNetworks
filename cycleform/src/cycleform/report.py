@@ -134,7 +134,7 @@ def make_scenario_report() -> dict:
     form-space. Writes scenario_comparison.csv + scenario_predictions.csv. Assumes
     `scenarios.run_scenarios()` has already produced the per-place files.
     """
-    from cycleform import figures, models, scenarios, typology
+    from cycleform import figures, models, outcomes, scenarios, typology
     from cycleform.outcomes import place_key
 
     comp = scenarios.build_scenario_table()
@@ -161,14 +161,47 @@ def make_scenario_report() -> dict:
         }
     )
     pred["shift"] = pred["scenario_pred"] - pred["baseline_pred"]
-    observed = (
-        table.assign(_k=table["place_id"].map(place_key))
-        .dropna(subset=["value"])
-        .groupby("_k")["value"]
-        .first()
-    )
+    # Observed rate from the harmonised outcomes, NOT the analysis table: a borough
+    # can have an observed rate without being in the metric dataset (e.g. Gateshead
+    # is in max_value.csv but has no computed metrics, so a table-based lookup left
+    # it blank). Prefer the OECD FUA construct where a place has several, to match
+    # the outcome the model is trained on.
+    obs = outcomes.build_outcomes(save=False).dropna(subset=["value"])
+    obs = obs.sort_values("source", key=lambda s: s.ne("oecd_fua"))
+    observed = obs.drop_duplicates("place_key").set_index("place_key")["value"].astype(float)
     pred["observed"] = pred["place_id"].map(place_key).map(observed)
     paths.append(figures.fig_scenario_prediction_shift(pred))
+
+    # 2b. out-of-fold predicted shift: refit with each borough held out, so its
+    # current-network and grown-network estimates come from a model that never saw
+    # it (the full-fit numbers above are optimistic for places in the dataset).
+    scen_aligned = scen_w.reindex(base_w.index)
+    keys = table["place_id"].map(place_key)
+    oof_rows = []
+    for pid in base_w.index:
+        train = table[keys != place_key(pid)]
+        loo_pipe, loo_feats = models.fit_predictor(train, feature_set="form")
+        oof_rows.append(
+            {
+                "place_id": pid,
+                "baseline_oof": float(
+                    models.predict_rate(loo_pipe, base_w.loc[[pid]], loo_feats)[0]
+                ),
+                "scenario_oof": float(
+                    models.predict_rate(loo_pipe, scen_aligned.loc[[pid]], loo_feats)[0]
+                ),
+            }
+        )
+    pred_oof = pd.DataFrame(oof_rows)
+    pred_oof["shift"] = pred_oof["scenario_oof"] - pred_oof["baseline_oof"]
+    pred_oof["observed"] = pred_oof["place_id"].map(place_key).map(observed)
+    paths.append(figures.fig_scenario_oof_prediction_shift(pred_oof))
+
+    # 2c. the same out-of-fold shift against the whole predicted-vs-observed cloud
+    # (all cities grey); each borough is an arrow from its current prediction up to
+    # its grown-network prediction, at its observed rate on the x-axis.
+    dataset_oof = models.predictions(table, feature_set="form")
+    paths.append(figures.fig_scenario_pred_vs_actual_shift(pred_oof, dataset_oof))
 
     # 3. movement in form-space (PCA fit on the full dataset)
     proj = typology.project_scenario(dataset_wide, base_w, scen_w.reindex(base_w.index))
@@ -176,7 +209,13 @@ def make_scenario_report() -> dict:
 
     comp.to_csv(settings.results / "scenario_comparison.csv", index=False)
     pred.to_csv(settings.results / "scenario_predictions.csv", index=False)
-    return {"comparison": comp, "predictions": pred, "figures": paths}
+    pred_oof.to_csv(settings.results / "scenario_predictions_oof.csv", index=False)
+    return {
+        "comparison": comp,
+        "predictions": pred,
+        "predictions_oof": pred_oof,
+        "figures": paths,
+    }
 
 
 def summary_tables() -> dict[str, pd.DataFrame]:
@@ -252,21 +291,55 @@ def text_report(path: Path | str | None = None, top_corr: int = 20, top_pred: in
     )
 
     # --- 1. dataset -------------------------------------------------------
+    from cycleform import outcomes
+
     labelled = table.dropna(subset=["value"])
     n_out = labelled["place_key"].nunique() if "place_key" in labelled.columns else len(labelled)
-    src = (
-        labelled.drop_duplicates("place_key")["source"].value_counts().to_dict()
-        if "place_key" in labelled.columns and "source" in labelled.columns
-        else {}
-    )
+    used = labelled.drop_duplicates("place_key") if "place_key" in labelled.columns else labelled
+    src_counts = used["source"].value_counts().to_dict() if "source" in used.columns else {}
     top_countries = wide["country"].value_counts().head(8).to_dict() if "country" in wide else {}
+
+    # friendly source labels + year range per source (from the harmonised outcomes,
+    # which carry the definitive year info). Eurostat and the 2011 UK census are
+    # combined in the legacy max_value.csv and cannot be split from it.
+    src_labels = {
+        "oecd_fua": "OECD FUA (bicycle commute mode share)",
+        "legacy_max_value": "Eurostat + 2011 UK census (legacy max_value.csv, mixed)",
+        "uk_census": "UK Census",
+    }
+    try:
+        allout = outcomes.build_outcomes(save=False)
+    except Exception:
+        allout = pd.DataFrame(columns=["source", "year"])
+
+    def _year_range(source: str) -> str:
+        ys = pd.to_numeric(allout.loc[allout["source"] == source, "year"], errors="coerce").dropna()
+        if ys.empty:
+            return "unspecified"
+        return str(int(ys.min())) if ys.min() == ys.max() else f"{int(ys.min())}–{int(ys.max())}"
+
+    src_table = pd.DataFrame(
+        [
+            {"source": src_labels.get(s, s), "places used": n, "years": _year_range(s)}
+            for s, n in sorted(src_counts.items(), key=lambda kv: -kv[1])
+        ]
+    )
     w(
         "## 1. Dataset",
         "",
-        f"- **{len(wide)} places** with metrics; **{n_out}** have a cycling rate.",
+        f"- **{len(wide)} input places** with network metrics computed.",
+        f"- **{n_out}** of them have an observed cycling rate (the modelled sample).",
         f"- UK places: **{int(wide['is_uk'].sum()) if 'is_uk' in wide else 0}**.",
-        f"- Outcome sources (deduped per place): {src or 'n/a'}.",
         f"- Top countries by place count: {top_countries}.",
+        "",
+        "Cycling-rate outcome by source (one preferred source per place, OECD FUA "
+        "first where a place has several):",
+        "",
+        _md_table(src_table) if not src_table.empty else "_no outcome sources_",
+        "",
+        "_Eurostat and the 2011 UK census are combined in the legacy `max_value.csv` "
+        "(year unspecified) and are not separable within it; supplying them as "
+        "separate files would let them be reported (and modelled) apart._",
         "",
     )
 
@@ -403,8 +476,16 @@ def text_report(path: Path | str | None = None, top_corr: int = 20, top_pred: in
             pred = pd.read_csv(pred_p)
             cols = [c for c in ["place_id", "observed", "baseline_pred", "scenario_pred", "shift"]
                     if c in pred.columns]
-            w("Predicted cycling rate now vs with the grown network:", "",
+            w("Predicted cycling rate now vs with the grown network "
+              "(model fit on the full dataset, borough included):", "",
               _md_table(pred[cols]), "")
+        oof_p = settings.results / "scenario_predictions_oof.csv"
+        if oof_p.exists():
+            oof = pd.read_csv(oof_p)
+            cols = [c for c in ["place_id", "observed", "baseline_oof", "scenario_oof", "shift"]
+                    if c in oof.columns]
+            w("Out-of-fold predicted rate (each borough held out of training -- the "
+              "honest estimate):", "", _md_table(oof[cols]), "")
 
     # --- 9. caveats -------------------------------------------------------
     w(

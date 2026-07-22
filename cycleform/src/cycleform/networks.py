@@ -15,11 +15,14 @@ The `all` fetch is done once and split into bike and street (see ingest.py).
 
 from __future__ import annotations
 
+import logging
+import random
 import time
 
 import geopandas as gpd
 import osmnx as ox
 import pandas as pd
+import requests
 from shapely.geometry.base import BaseGeometry
 
 from cycleform.config import settings
@@ -27,6 +30,8 @@ from cycleform.lts import add_lts
 from cycleform.metrics.base import Network
 from cycleform.osm import configure_osmnx
 from cycleform.simplify import renode, simplify_streets, transfer_attribute
+
+log = logging.getLogger(__name__)
 
 # Country-agnostic cycle-infrastructure classifier (CLAUDE.md §8). Definition
 # (user, 2026-07-17): PROTECTED / SEGREGATED, or MIXED-USE WITH PEDESTRIANS only.
@@ -114,31 +119,71 @@ def is_cyclable(edges: gpd.GeoDataFrame) -> pd.Series:
     return keep & ~_has(_col(edges, "bicycle"), {"no", "dismount"})
 
 
+def _overpass_reachable(endpoint: str, timeout: float) -> bool:
+    """True if the endpoint answers a /status probe within `timeout` (any HTTP
+    response counts -- we only care that the TCP connect succeeded, not the code).
+
+    Lets a stalled/overloaded mirror be skipped in ~`timeout`s instead of waiting
+    out the full requests_timeout (which is also the server-side query timeout, so
+    it cannot be shortened just for the connect)."""
+    try:
+        requests.get(f"{endpoint}/status", timeout=timeout)
+        return True
+    except requests.RequestException:
+        return False
+
+
 def _edges_from_polygon(
-    polygon: BaseGeometry, network_type: str, crs: object, retries: int = 3
+    polygon: BaseGeometry, network_type: str, crs: object, retries: int | None = None
 ) -> gpd.GeoDataFrame:
     """Fetch a graph within a WGS84 polygon; return projected edges.
 
-    Retries with backoff on transient Overpass errors (timeouts, throttling),
-    which are common over a long batch. An empty result (no such network) is not
-    retried -- it re-raises so the place is logged as failed, not hung.
+    Rotates through settings.overpass_endpoints (a quick reachability probe skips a
+    dead mirror fast) and retries with backoff on transient Overpass errors
+    (timeouts, throttling), which are common over a long batch. Only ever called
+    with "drive"/"all", so a real place always has data: an empty response
+    (InsufficientResponseError) is a bad mirror reply, not a genuinely empty area,
+    so it rotates like any other error. osmnx caches HTTP-200 replies (empty ones
+    included), so after a failure the cache is bypassed to stop a poisoned empty
+    entry from failing the place on every future run.
     """
     configure_osmnx()
+    endpoints = list(settings.overpass_endpoints) or [ox.settings.overpass_url]
+    retries = settings.network_retries if retries is None else retries
+    probe_timeout = settings.overpass_probe_timeout
+    cache_setting = ox.settings.use_cache
+    start = random.randrange(len(endpoints))  # spread batch load across mirrors
     last: Exception | None = None
-    for attempt in range(retries):
-        try:
-            graph = ox.graph_from_polygon(
-                polygon, network_type=network_type, simplify=True, retain_all=False
-            )
-            edges = ox.convert.graph_to_gdfs(graph, nodes=False)
-            return edges.to_crs(crs)
-        except ox._errors.InsufficientResponseError:
-            raise  # genuinely empty; retrying won't help
-        except Exception as exc:  # timeout / connection / server error -> back off
-            last = exc
-            if attempt < retries - 1:
-                time.sleep(10 * (attempt + 1))
-    raise last
+    try:
+        for attempt in range(retries):
+            endpoint = endpoints[(start + attempt) % len(endpoints)]
+            if len(endpoints) > 1 and not _overpass_reachable(endpoint, probe_timeout):
+                log.warning(
+                    "overpass %s: %s unreachable (attempt %d/%d), rotating mirror",
+                    network_type, endpoint, attempt + 1, retries,
+                )
+                last = last or ConnectionError(f"{endpoint} unreachable")
+                time.sleep(2)
+                continue
+            ox.settings.overpass_url = endpoint
+            try:
+                graph = ox.graph_from_polygon(
+                    polygon, network_type=network_type, simplify=True, retain_all=False
+                )
+                edges = ox.convert.graph_to_gdfs(graph, nodes=False)
+                return edges.to_crs(crs)
+            except Exception as exc:  # timeout / connection / server / empty response
+                last = exc
+                log.warning(
+                    "overpass %s via %s failed (attempt %d/%d): %s",
+                    network_type, endpoint, attempt + 1, retries, type(exc).__name__,
+                )
+                ox.settings.use_cache = False  # don't re-read a poisoned/empty cache
+                if attempt < retries - 1:
+                    time.sleep(min(60, 10 * (attempt + 1)))
+        raise last
+    finally:
+        ox.settings.use_cache = cache_setting
 
 
 class NetworkTooLarge(RuntimeError):

@@ -57,6 +57,26 @@ class Settings(BaseSettings):
     batch_pause_seconds: float = 1.0
     """Small pause between places in a batch, easing sustained Overpass load."""
 
+    # --- Overpass fetching (long batches hit transient timeouts/overload) -
+    overpass_endpoints: tuple[str, ...] = (
+        "https://overpass-api.de/api",
+        "https://overpass.kumi.systems/api",
+        "https://overpass.private.coffee/api",
+    )
+    """GLOBAL Overpass mirrors rotated (from a random start, to spread load) for
+    each network fetch. A hard-down endpoint is skipped after a quick reachability
+    probe; a slow/failing one is retried on the next mirror. Only global mirrors
+    belong here: probing (2026-07) showed overpass.openstreetmap.fr returns 403
+    (blocks this use) and overpass.osm.ch is a Switzerland-only extract (empty for
+    everywhere else), so both are excluded. Override with CYCLEFORM_OVERPASS_ENDPOINTS
+    (a JSON list) to add/reorder mirrors."""
+    network_retries: int = 6
+    """Attempts per network fetch, rotating through overpass_endpoints with
+    backoff. Raise it for flakier connections (CYCLEFORM_NETWORK_RETRIES)."""
+    overpass_probe_timeout: float = 5.0
+    """Seconds to wait on the /status reachability probe before skipping a mirror
+    (so a dead endpoint costs ~5s, not the full requests_timeout)."""
+
     # --- grown-network what-if (cycleform.scenarios) ----------------------
     scenario_prune_measure: str = "demand"
     """Which grown-network variant to read (demand | betweenness | ...)."""

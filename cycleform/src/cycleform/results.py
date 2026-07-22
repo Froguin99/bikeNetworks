@@ -28,6 +28,24 @@ def _safe_name(place_id: str) -> str:
     return "".join(c if c.isalnum() or c in " -_,." else "_" for c in place_id).strip()
 
 
+# Legacy metric names -> current registry names. The classic gamma/alpha indices
+# were renamed to connectivity_ratio/meshedness. A place computed by an older
+# interpreter (e.g. a long-running build started before the rename, which keeps
+# the pre-rename code in memory) still emits the old names, so we canonicalise on
+# load rather than depend on every per-place file being rewritten. Prefix-based so
+# it catches every layer suffix (_bike, _road).
+_LEGACY_METRIC_PREFIXES = {"gamma_index": "connectivity_ratio", "alpha_index": "meshedness"}
+
+
+def _canonicalize_metric_names(metrics: pd.Series) -> pd.Series:
+    """Map any legacy metric names in a `metric` column to their current names."""
+    out = metrics.astype("string")
+    for old, new in _LEGACY_METRIC_PREFIXES.items():
+        hit = out.str.startswith(old + "_")
+        out = out.where(~hit, new + "_" + out.str.slice(len(old) + 1))
+    return out
+
+
 def place_path(place_id: str) -> Path:
     """Path to a place's per-place results CSV (whether or not it exists)."""
     return settings.results_places / f"{_safe_name(place_id)}.csv"
@@ -79,6 +97,7 @@ def build_combined() -> pd.DataFrame:
         return pd.DataFrame()
     frames = [pd.read_csv(f) for f in files]
     long = pd.concat(frames, ignore_index=True)
+    long["metric"] = _canonicalize_metric_names(long["metric"])
     wide = long.pivot_table(
         index="place_id", columns="metric", values="value", aggfunc="first"
     ).rename_axis(columns=None)

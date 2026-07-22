@@ -58,14 +58,23 @@ def main() -> int:
         logging.info("runs: %s", status["status"].value_counts().to_dict())
 
     res = report.make_scenario_report()
-    pred = res["predictions"]
     logging.info("wrote %d figures; predicted cycling-rate shift:", len(res["figures"]))
-    for _, r in pred.iterrows():
+    logging.info("  full-fit (borough in training):")
+    for _, r in res["predictions"].iterrows():
         logging.info(
-            "  %-32s now %.1f%% -> grown %.1f%%  (%+.1f)",
+            "    %-24s now %.1f%% -> grown %.1f%%  (%+.1f)",
             str(r["place_id"]).split(",")[0],
             r["baseline_pred"],
             r["scenario_pred"],
+            r["shift"],
+        )
+    logging.info("  out-of-fold (borough held out):")
+    for _, r in res["predictions_oof"].iterrows():
+        logging.info(
+            "    %-24s now %.1f%% -> grown %.1f%%  (%+.1f)",
+            str(r["place_id"]).split(",")[0],
+            r["baseline_oof"],
+            r["scenario_oof"],
             r["shift"],
         )
     return 0

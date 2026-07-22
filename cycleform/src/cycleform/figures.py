@@ -407,23 +407,24 @@ def fig_scenario_shift(
     return save(fig, f"scenario_shift_{_safe(place_id)}")
 
 
-def fig_scenario_prediction_shift(pred: pd.DataFrame) -> Path:
-    """Predicted cycling rate now vs with the grown network, one row per place.
-
-    Grey dot = predicted from the current network, blue = predicted with the grown
-    network added; the tick (if present) marks the observed current rate. Directly
-    answers 'would these places be predicted to cycle more if the network were built'.
-    """
+def _prediction_dumbbell(
+    pred: pd.DataFrame,
+    base_col: str,
+    scen_col: str,
+    *,
+    title: str,
+    fname: str,
+    base_label: str,
+    scen_label: str,
+) -> Path:
+    """Shared dumbbell: baseline -> scenario predicted rate, one row per place."""
     set_style()
-    d = pred.dropna(subset=["baseline_pred", "scenario_pred"]).sort_values("scenario_pred")
+    d = pred.dropna(subset=[base_col, scen_col]).sort_values(scen_col)
     y = np.arange(len(d))
     fig, ax = plt.subplots(figsize=(5.6, max(2.2, 0.5 * len(d) + 1)))
-    ax.hlines(y, d["baseline_pred"], d["scenario_pred"], color="0.8", lw=2.0, zorder=1)
-    ax.scatter(d["baseline_pred"], y, s=42, color=NEUTRAL, label="predicted now", zorder=2)
-    ax.scatter(
-        d["scenario_pred"], y, s=42, color=OKABE_ITO[0], label="predicted with grown network",
-        zorder=3,
-    )
+    ax.hlines(y, d[base_col], d[scen_col], color="0.8", lw=2.0, zorder=1)
+    ax.scatter(d[base_col], y, s=42, color=NEUTRAL, label=base_label, zorder=2)
+    ax.scatter(d[scen_col], y, s=42, color=OKABE_ITO[0], label=scen_label, zorder=3)
     if "observed" in d.columns and d["observed"].notna().any():
         ax.scatter(
             d["observed"], y, marker="|", s=180, color="0.15", label="observed now", zorder=4
@@ -431,10 +432,114 @@ def fig_scenario_prediction_shift(pred: pd.DataFrame) -> Path:
     ax.set_yticks(y)
     ax.set_yticklabels([_short(p) for p in d["place_id"]])
     ax.set_xlabel("cycling rate (% mode share)")
-    ax.set_title("Predicted effect of building the grown cycle network")
+    ax.set_title(title)
     ax.grid(axis="y", visible=False)
-    ax.legend(title="", loc="lower right")
-    return save(fig, "scenario_prediction_shift")
+    # legend outside, below the plot (it collided with the dumbbells in the middle)
+    ax.legend(
+        title="",
+        loc="upper center",
+        bbox_to_anchor=(0.5, -0.18),
+        ncol=3,
+        frameon=False,
+        fontsize=8,
+    )
+    return save(fig, fname)
+
+
+def fig_scenario_prediction_shift(pred: pd.DataFrame) -> Path:
+    """Predicted cycling rate now vs with the grown network, one row per place.
+
+    Grey dot = predicted from the current network, blue = predicted with the grown
+    network added; the tick (if present) marks the observed current rate. Directly
+    answers 'would these places be predicted to cycle more if the network were built'.
+    Predictions here come from a model fit on the full dataset (the borough included);
+    see fig_scenario_oof_prediction_shift for the held-out version.
+    """
+    return _prediction_dumbbell(
+        pred,
+        "baseline_pred",
+        "scenario_pred",
+        title="Predicted effect of building the grown cycle network",
+        fname="scenario_prediction_shift",
+        base_label="predicted now",
+        scen_label="predicted with grown network",
+    )
+
+
+def fig_scenario_oof_prediction_shift(pred: pd.DataFrame) -> Path:
+    """Out-of-fold predicted shift: each borough is scored by a model trained with
+    that borough held out, so neither the current-network nor the grown-network
+    estimate is inflated by the model having already seen the place. This is the
+    honest read of the predicted change (cf. fig_scenario_prediction_shift, which
+    uses a model fit on the full dataset).
+    """
+    return _prediction_dumbbell(
+        pred,
+        "baseline_oof",
+        "scenario_oof",
+        title="Predicted effect of the grown network (out-of-fold)",
+        fname="scenario_oof_prediction_shift",
+        base_label="predicted now (held out)",
+        scen_label="predicted with grown network (held out)",
+    )
+
+
+def fig_scenario_pred_vs_actual_shift(oof: pd.DataFrame, dataset_oof: pd.DataFrame) -> Path:
+    """Out-of-fold predicted vs observed cycling rate (same axes as
+    model_pred_vs_actual): every city is a grey point, and each grown borough is an
+    arrow (style borrowed from fig_scenario_typology_shift) from its current
+    out-of-fold prediction up to its grown-network prediction, at its observed rate
+    on the x-axis. Open marker = current, filled = with the grown network.
+
+    A borough needs an observed rate to sit on the actual axis; any without one are
+    dropped here (make_scenario_report reports which).
+    """
+    set_style()
+    ds = dataset_oof.dropna(subset=["actual", "predicted"])
+    d = oof.dropna(subset=["observed", "baseline_oof", "scenario_oof"]).copy()
+    fig, ax = plt.subplots(figsize=(5.2, 5.2))
+    span = [
+        *ds["actual"], *ds["predicted"],
+        *d["observed"], *d["baseline_oof"], *d["scenario_oof"],
+    ]
+    lo, hi = (min(span), max(span)) if span else (0.0, 1.0)
+    ax.plot(
+        [lo, hi], [lo, hi], color="0.6", lw=0.8, ls="--", zorder=1, label="predicted = observed"
+    )
+    ax.scatter(
+        ds["actual"], ds["predicted"], s=18, color="0.8", zorder=2,
+        label="all cities (out-of-fold)",
+    )
+    for _, r in d.iterrows():
+        x, y0, y1 = float(r["observed"]), float(r["baseline_oof"]), float(r["scenario_oof"])
+        ax.annotate(
+            "", xy=(x, y1), xytext=(x, y0),
+            arrowprops={"arrowstyle": "->", "color": OKABE_ITO[3], "lw": 1.4}, zorder=3,
+        )
+        ax.scatter([x], [y0], s=44, facecolor="white", edgecolor=OKABE_ITO[0], zorder=4)
+        ax.scatter([x], [y1], s=44, color=OKABE_ITO[0], zorder=4)
+    # labels de-cluttered into a vertical stack to the right (the boroughs cluster
+    # tightly, so in-place labels overlapped); a thin leader ties each to its marker
+    ds_lab = d.sort_values("scenario_oof", ascending=False).reset_index(drop=True)
+    if len(ds_lab):
+        label_x = float(d["observed"].max()) + (hi - lo) * 0.06
+        ytop = float(ds_lab["scenario_oof"].max())
+        ybot = float(ds_lab["scenario_oof"].min())
+        gap = max((hi - lo) * 0.055, (ytop - ybot) / max(1, len(ds_lab) - 1))
+        for i, r in ds_lab.iterrows():
+            ax.annotate(
+                _short(r["place_id"]),
+                xy=(float(r["observed"]), float(r["scenario_oof"])),
+                xytext=(label_x, ytop - i * gap),
+                fontsize=7, color="0.25", va="center", ha="left",
+                arrowprops={"arrowstyle": "-", "color": "0.6", "lw": 0.5},
+            )
+    ax.set_xlabel("observed cycling rate (%)")
+    ax.set_ylabel("predicted (out-of-fold) %")
+    ax.set_aspect("equal", adjustable="datalim")
+    ax.set_title("Grown-network predicted shift vs observed rate")
+    ax.legend(title="", loc="lower right", fontsize=7)
+    return save(fig, "scenario_pred_vs_actual_shift")
 
 
 def fig_scenario_typology_shift(proj: dict, place_ids: list[str]) -> Path:
