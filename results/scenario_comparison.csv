@@ -1,0 +1,353 @@
+place_id,country,metric,baseline,scenario,delta
+"Gateshead, United Kingdom",UK,betweenness_mean_bike,0.0017091456657208,0.028931547797886,0.0272224021321652
+"Gateshead, United Kingdom",UK,betweenness_mean_road,0.0083807937379419,0.0083807937379419,0.0
+"Gateshead, United Kingdom",UK,betweenness_median_bike,8.606554489389393e-05,0.0121345609379395,0.012048495393045606
+"Gateshead, United Kingdom",UK,betweenness_median_road,0.0002665955650433,0.0002665955650433,0.0
+"Gateshead, United Kingdom",UK,bike_lcc_share_of_road,0.1222456149391872,0.5805915061255559,0.4583458911863687
+"Gateshead, United Kingdom",UK,bike_offroad_share,0.9466455378358306,0.9644883451272676,0.017842807291436946
+"Gateshead, United Kingdom",UK,bikeable_length_share,0.4539397266230859,0.6820214393196846,0.22808171269659872
+"Gateshead, United Kingdom",UK,circuity_avg_bike,1.0546227778263626,1.0357036236402668,-0.0189191541860958
+"Gateshead, United Kingdom",UK,circuity_avg_road,1.0836573310384563,1.0836573310384563,0.0
+"Gateshead, United Kingdom",UK,closeness_mean_bike,4.590105390753886e-05,9.910978278438746e-05,5.3208728876848596e-05
+"Gateshead, United Kingdom",UK,closeness_mean_road,0.000115358729883,0.000115358729883,0.0
+"Gateshead, United Kingdom",UK,closeness_median_bike,4.448197799327577e-05,0.0001045153878829,6.0033409889624235e-05
+"Gateshead, United Kingdom",UK,closeness_median_road,0.000116497032891,0.000116497032891,0.0
+"Gateshead, United Kingdom",UK,clustering_mean_bike,0.0142311365807067,0.0205448421805609,0.0063137055998542
+"Gateshead, United Kingdom",UK,clustering_mean_road,0.0120053297801465,0.0120053297801465,0.0
+"Gateshead, United Kingdom",UK,component_size_gini_bike,0.8144119990949878,0.9346761209088752,0.12026412181388735
+"Gateshead, United Kingdom",UK,component_size_gini_road,0.4999418328878879,0.4999418328878879,0.0
+"Gateshead, United Kingdom",UK,components_per_km_bike,0.3859042465737792,0.1631345167344884,-0.2227697298392908
+"Gateshead, United Kingdom",UK,components_per_km_road,0.0023672603809782,0.0023672603809782,0.0
+"Gateshead, United Kingdom",UK,connectivity_ratio_bike,0.651372388365424,0.4351697273233166,-0.2162026610421074
+"Gateshead, United Kingdom",UK,connectivity_ratio_road,0.3788262472788662,0.3788262472788662,0.0
+"Gateshead, United Kingdom",UK,cycle_network_density_km2,2.661556633791596,3.998853988200559,1.337297354408963
+"Gateshead, United Kingdom",UK,dead_end_proportion_bike,0.0200573065902578,0.0100146046317546,-0.010042701958503202
+"Gateshead, United Kingdom",UK,dead_end_proportion_road,0.3806795469686875,0.3806795469686875,0.0
+"Gateshead, United Kingdom",UK,edge_length_avg_m_bike,80.40143103952899,46.05271694899918,-34.3487140905298
+"Gateshead, United Kingdom",UK,edge_length_avg_m_road,99.08038899292508,99.08038899292508,0.0
+"Gateshead, United Kingdom",UK,entropy_gap_kl,0.0388409078426622,0.0195794655064255,-0.0192614423362367
+"Gateshead, United Kingdom",UK,four_way_proportion_bike,0.713876381498158,0.1922595451700396,-0.5216168363281184
+"Gateshead, United Kingdom",UK,four_way_proportion_road,0.0334443704197201,0.0334443704197201,0.0
+"Gateshead, United Kingdom",UK,intersection_count_bike,1778.0,2001.0,223.0
+"Gateshead, United Kingdom",UK,intersection_count_road,4648.0,4648.0,0.0
+"Gateshead, United Kingdom",UK,intersection_density_km2_bike,12.339151900633324,13.886750817304437,1.547598916671113
+"Gateshead, United Kingdom",UK,intersection_density_km2_road,32.25668055913594,32.25668055913594,0.0
+"Gateshead, United Kingdom",UK,intersection_density_per_km_bike,4.636065881136347,3.4726826381458658,-1.1633832429904816
+"Gateshead, United Kingdom",UK,intersection_density_per_km_road,5.501513125393415,5.501513125393415,0.0
+"Gateshead, United Kingdom",UK,intersection_ratio_bike_road,0.3825301204819277,0.4305077452667814,0.047977624784853734
+"Gateshead, United Kingdom",UK,k_avg_bike,3.9050347932869434,2.6104736073440438,-1.2945611859428996
+"Gateshead, United Kingdom",UK,k_avg_road,2.272351765489673,2.272351765489673,0.0
+"Gateshead, United Kingdom",UK,lcc_length_km_bike,103.28024405044206,490.5176555910893,387.23741154064726
+"Gateshead, United Kingdom",UK,lcc_length_km_road,844.8093339649298,844.8093339649298,0.0
+"Gateshead, United Kingdom",UK,lcc_length_share_bike,0.2692992213935263,0.8512804329211339,0.5819812115276075
+"Gateshead, United Kingdom",UK,lcc_length_share_road,0.9999418328878936,0.9999418328878936,0.0
+"Gateshead, United Kingdom",UK,length_km_bike,383.5148260585533,576.2115944658777,192.69676840732444
+"Gateshead, United Kingdom",UK,length_km_road,844.858476942672,844.858476942672,0.0
+"Gateshead, United Kingdom",UK,linearity_mean_bike,0.9658983170548666,0.9869992784807956,0.021100961425928988
+"Gateshead, United Kingdom",UK,linearity_mean_road,0.9599370505114954,0.9599370505114954,0.0
+"Gateshead, United Kingdom",UK,linearity_median_bike,0.9993181209461298,1.0,0.0006818790538701824
+"Gateshead, United Kingdom",UK,linearity_median_road,0.999614187746186,0.999614187746186,0.0
+"Gateshead, United Kingdom",UK,low_stress_coverage,0.7535840759610574,0.8170888074790593,0.06350473151800196
+"Gateshead, United Kingdom",UK,low_stress_route_fraction,0.1004645393212916,0.4632608888270065,0.36279634950571493
+"Gateshead, United Kingdom",UK,lts1_coverage,0.3715596252369653,0.4895193330704944,0.1179597078335291
+"Gateshead, United Kingdom",UK,lts2_coverage,0.3820244507240923,0.327569474408565,-0.054454976315527315
+"Gateshead, United Kingdom",UK,mean_route_lts,1.3701262011012003,1.077331762066483,-0.29279443903471725
+"Gateshead, United Kingdom",UK,meshedness_bike,0.5070682237246465,0.15756247717431,-0.34950574655033656
+"Gateshead, United Kingdom",UK,meshedness_road,0.0682439186937687,0.0682439186937687,0.0
+"Gateshead, United Kingdom",UK,modal_directness_gap,1.1798416208143323,1.14637380722578,-0.03346781358855222
+"Gateshead, United Kingdom",UK,n_components_bike,148.0,94.0,-54.0
+"Gateshead, United Kingdom",UK,n_components_road,2.0,2.0,0.0
+"Gateshead, United Kingdom",UK,n_edges_bike,4770.0,12512.0,7742.0
+"Gateshead, United Kingdom",UK,n_edges_road,8527.0,8527.0,0.0
+"Gateshead, United Kingdom",UK,n_nodes_bike,2443.0,9586.0,7143.0
+"Gateshead, United Kingdom",UK,n_nodes_road,7505.0,7505.0,0.0
+"Gateshead, United Kingdom",UK,orientation_entropy_bike,3.5569414704585287,3.564478261148519,0.007536790689990358
+"Gateshead, United Kingdom",UK,orientation_entropy_road,3.560991895971767,3.560991895971767,0.0
+"Gateshead, United Kingdom",UK,orientation_order_bike,0.0240455424668464,0.0172564755452278,-0.006789066921618601
+"Gateshead, United Kingdom",UK,orientation_order_road,0.0203998839961698,0.0203998839961698,0.0
+"Gateshead, United Kingdom",UK,self_loop_proportion_bike,0.0,0.0,0.0
+"Gateshead, United Kingdom",UK,self_loop_proportion_road,0.0012900199366717,0.0012900199366717,0.0
+"Gateshead, United Kingdom",UK,street_density_km2,5.863237953618306,5.863237953618306,0.0
+"Gateshead, United Kingdom",UK,three_way_proportion_bike,0.0139173147769136,0.0164823701230961,0.0025650553461824994
+"Gateshead, United Kingdom",UK,three_way_proportion_road,0.5858760826115923,0.5858760826115923,0.0
+"Newcastle upon Tyne, United Kingdom",UK,betweenness_mean_bike,0.0009899398630961,0.0234086400535202,0.0224187001904241
+"Newcastle upon Tyne, United Kingdom",UK,betweenness_mean_road,0.0056601894113694,0.0056601894113694,0.0
+"Newcastle upon Tyne, United Kingdom",UK,betweenness_median_bike,4.126454993792484e-05,0.0082460011896285,0.008204736639690575
+"Newcastle upon Tyne, United Kingdom",UK,betweenness_median_road,0.0002183406061509,0.0002183406061509,0.0
+"Newcastle upon Tyne, United Kingdom",UK,bike_lcc_share_of_road,0.0945326811378506,0.5203439683548524,0.4258112872170018
+"Newcastle upon Tyne, United Kingdom",UK,bike_offroad_share,0.9804482172663492,0.9874435867455826,0.006995369479233404
+"Newcastle upon Tyne, United Kingdom",UK,bikeable_length_share,0.3759664642269937,0.5854231200234691,0.20945665579647538
+"Newcastle upon Tyne, United Kingdom",UK,circuity_avg_bike,1.0410108068405344,1.0259568145464144,-0.015053992294119967
+"Newcastle upon Tyne, United Kingdom",UK,circuity_avg_road,1.0709558258920937,1.0709558258920937,0.0
+"Newcastle upon Tyne, United Kingdom",UK,closeness_mean_bike,4.910994429248293e-05,0.0001091345732752,6.002462898271707e-05
+"Newcastle upon Tyne, United Kingdom",UK,closeness_mean_road,0.000153554659222,0.000153554659222,0.0
+"Newcastle upon Tyne, United Kingdom",UK,closeness_median_bike,4.755109720839841e-05,0.0001119626797238,6.441158251540159e-05
+"Newcastle upon Tyne, United Kingdom",UK,closeness_median_road,0.0001575857585445,0.0001575857585445,0.0
+"Newcastle upon Tyne, United Kingdom",UK,clustering_mean_bike,0.0114472517730496,0.020050245299192,0.008602993526142398
+"Newcastle upon Tyne, United Kingdom",UK,clustering_mean_road,0.014263887373131,0.014263887373131,0.0
+"Newcastle upon Tyne, United Kingdom",UK,component_size_gini_bike,0.8511774007113326,0.9508569856657684,0.09967958495443574
+"Newcastle upon Tyne, United Kingdom",UK,components_per_km_bike,0.5138348062537855,0.2030716941922185,-0.31076311206156704
+"Newcastle upon Tyne, United Kingdom",UK,components_per_km_road,0.0010614541500219,0.0010614541500219,0.0
+"Newcastle upon Tyne, United Kingdom",UK,connectivity_ratio_bike,0.6393878908848969,0.4426355104386132,-0.19675238044628368
+"Newcastle upon Tyne, United Kingdom",UK,connectivity_ratio_road,0.3902776261689044,0.3902776261689044,0.0
+"Newcastle upon Tyne, United Kingdom",UK,cycle_network_density_km2,3.0766587858710386,4.790712356155203,1.7140535702841646
+"Newcastle upon Tyne, United Kingdom",UK,dead_end_proportion_bike,0.0345744680851063,0.014266564534661,-0.020307903550445303
+"Newcastle upon Tyne, United Kingdom",UK,dead_end_proportion_road,0.3594892502455528,0.3594892502455528,0.0
+"Newcastle upon Tyne, United Kingdom",UK,edge_length_avg_m_bike,61.42896961127248,39.7756636705692,-21.653305940703277
+"Newcastle upon Tyne, United Kingdom",UK,edge_length_avg_m_road,87.83365756655955,87.83365756655955,0.0
+"Newcastle upon Tyne, United Kingdom",UK,entropy_gap_kl,0.0250031018292862,0.0133662460514094,-0.0116368557778768
+"Newcastle upon Tyne, United Kingdom",UK,four_way_proportion_bike,0.6848404255319149,0.2096897740329375,-0.4751506514989774
+"Newcastle upon Tyne, United Kingdom",UK,four_way_proportion_road,0.0591509331005129,0.0591509331005129,0.0
+"Newcastle upon Tyne, United Kingdom",UK,intersection_count_bike,2120.0,2420.0,300.0
+"Newcastle upon Tyne, United Kingdom",UK,intersection_count_road,5869.0,5869.0,0.0
+"Newcastle upon Tyne, United Kingdom",UK,intersection_density_km2_bike,18.414813554020608,21.020683396570693,2.605869842550085
+"Newcastle upon Tyne, United Kingdom",UK,intersection_density_km2_road,50.97950035308818,50.97950035308818,0.0
+"Newcastle upon Tyne, United Kingdom",UK,intersection_density_per_km_bike,5.985328512406732,4.3877991066532935,-1.5975294057534386
+"Newcastle upon Tyne, United Kingdom",UK,intersection_density_per_km_road,6.229674406478928,6.229674406478928,0.0
+"Newcastle upon Tyne, United Kingdom",UK,intersection_ratio_bike_road,0.36121996933038,0.4123360027261884,0.05111603339580845
+"Newcastle upon Tyne, United Kingdom",UK,k_avg_bike,3.833776595744681,2.6553044810417465,-1.1784721147029344
+"Newcastle upon Tyne, United Kingdom",UK,k_avg_road,2.3411546436756523,2.3411546436756523,0.0
+"Newcastle upon Tyne, United Kingdom",UK,lcc_length_km_bike,89.05959916958659,490.21803564862734,401.15843647904074
+"Newcastle upon Tyne, United Kingdom",UK,lcc_length_km_road,942.1038110589172,942.1038110589172,0.0
+"Newcastle upon Tyne, United Kingdom",UK,lcc_length_share_bike,0.2514391312326611,0.888833991274537,0.637394860041876
+"Newcastle upon Tyne, United Kingdom",UK,lcc_length_share_road,0.9999999999999992,0.9999999999999992,0.0
+"Newcastle upon Tyne, United Kingdom",UK,length_km_bike,354.1994387785971,551.5293524561125,197.32991367751544
+"Newcastle upon Tyne, United Kingdom",UK,length_km_road,942.1038110589178,942.1038110589178,0.0
+"Newcastle upon Tyne, United Kingdom",UK,linearity_mean_bike,0.9709533006035294,0.9879212989528308,0.016967998349301405
+"Newcastle upon Tyne, United Kingdom",UK,linearity_mean_road,0.9669049062083416,0.9669049062083416,0.0
+"Newcastle upon Tyne, United Kingdom",UK,linearity_median_bike,0.9996442883740492,1.0,0.0003557116259508275
+"Newcastle upon Tyne, United Kingdom",UK,linearity_median_road,0.999978486055518,0.999978486055518,0.0
+"Newcastle upon Tyne, United Kingdom",UK,low_stress_coverage,0.7901911779273482,0.8335366290437001,0.04334545111635191
+"Newcastle upon Tyne, United Kingdom",UK,low_stress_route_fraction,0.0274812030075187,0.5253007518796993,0.49781954887218055
+"Newcastle upon Tyne, United Kingdom",UK,lts1_coverage,0.3513325754687029,0.462025101691397,0.1106925262226941
+"Newcastle upon Tyne, United Kingdom",UK,lts2_coverage,0.4388586024586451,0.3715115273523031,-0.06734707510634202
+"Newcastle upon Tyne, United Kingdom",UK,mean_route_lts,1.4691966289083476,1.1062512967483458,-0.3629453321600018
+"Newcastle upon Tyne, United Kingdom",UK,meshedness_bike,0.4891033105972384,0.1692285591150696,-0.3198747514821688
+"Newcastle upon Tyne, United Kingdom",UK,meshedness_road,0.0853665192947983,0.0853665192947983,0.0
+"Newcastle upon Tyne, United Kingdom",UK,modal_directness_gap,1.1985132106435636,1.195060198510286,-0.0034530121332776442
+"Newcastle upon Tyne, United Kingdom",UK,n_components_bike,182.0,112.0,-70.0
+"Newcastle upon Tyne, United Kingdom",UK,n_components_road,1.0,1.0,0.0
+"Newcastle upon Tyne, United Kingdom",UK,n_edges_bike,5766.0,13866.0,8100.0
+"Newcastle upon Tyne, United Kingdom",UK,n_edges_road,10726.0,10726.0,0.0
+"Newcastle upon Tyne, United Kingdom",UK,n_nodes_bike,3008.0,10444.0,7436.0
+"Newcastle upon Tyne, United Kingdom",UK,n_nodes_road,9163.0,9163.0,0.0
+"Newcastle upon Tyne, United Kingdom",UK,orientation_entropy_bike,3.534038601401855,3.537953696945977,0.003915095544121616
+"Newcastle upon Tyne, United Kingdom",UK,orientation_entropy_road,3.54617414916952,3.54617414916952,0.0
+"Newcastle upon Tyne, United Kingdom",UK,orientation_order_bike,0.0445318171203428,0.0410452206838474,-0.003486596436495397
+"Newcastle upon Tyne, United Kingdom",UK,orientation_order_road,0.0337038163393975,0.0337038163393975,0.0
+"Newcastle upon Tyne, United Kingdom",UK,self_loop_proportion_bike,0.0,0.0,0.0
+"Newcastle upon Tyne, United Kingdom",UK,self_loop_proportion_road,0.0016781652060413,0.0016781652060413,0.0
+"Newcastle upon Tyne, United Kingdom",UK,street_density_km2,8.183333032633128,8.183333032633128,0.0
+"Newcastle upon Tyne, United Kingdom",UK,three_way_proportion_bike,0.0199468085106383,0.0220222137112217,0.0020754052005833995
+"Newcastle upon Tyne, United Kingdom",UK,three_way_proportion_road,0.5813598166539343,0.5813598166539343,0.0
+"North Tyneside, United Kingdom",UK,betweenness_mean_bike,0.0034378110691312,0.0240345727760234,0.0205967617068922
+"North Tyneside, United Kingdom",UK,betweenness_mean_road,0.0055942016013174,0.0055942016013174,0.0
+"North Tyneside, United Kingdom",UK,betweenness_median_bike,0.0003010185418893,0.008865112307399,0.0085640937655097
+"North Tyneside, United Kingdom",UK,betweenness_median_road,0.0002392344429171,0.0002392344429171,0.0
+"North Tyneside, United Kingdom",UK,bike_lcc_share_of_road,0.2604959078233254,0.6981001957046532,0.4376042878813278
+"North Tyneside, United Kingdom",UK,bike_offroad_share,0.9824862440149582,0.9872794362867148,0.004793192271756563
+"North Tyneside, United Kingdom",UK,bikeable_length_share,0.5366979345048466,0.7389292545877417,0.20223132008289513
+"North Tyneside, United Kingdom",UK,circuity_avg_bike,1.0428976292135488,1.0307957871199047,-0.012101842093644066
+"North Tyneside, United Kingdom",UK,circuity_avg_road,1.0820380283950557,1.0820380283950557,0.0
+"North Tyneside, United Kingdom",UK,closeness_mean_bike,6.76552111792401e-05,0.0001268788865559,5.922367537665991e-05
+"North Tyneside, United Kingdom",UK,closeness_mean_road,0.0001488550869212,0.0001488550869212,0.0
+"North Tyneside, United Kingdom",UK,closeness_median_bike,5.341590010728826e-05,0.0001275943367402,7.417843663291176e-05
+"North Tyneside, United Kingdom",UK,closeness_median_road,0.0001508337310153,0.0001508337310153,0.0
+"North Tyneside, United Kingdom",UK,clustering_mean_bike,0.0121637426900584,0.0235735124499626,0.0114097697599042
+"North Tyneside, United Kingdom",UK,clustering_mean_road,0.0128382956674239,0.0128382956674239,0.0
+"North Tyneside, United Kingdom",UK,component_size_gini_bike,0.8830074341237166,0.9568667546639228,0.07385932054020616
+"North Tyneside, United Kingdom",UK,component_size_gini_road,0.4998210874281141,0.4998210874281141,0.0
+"North Tyneside, United Kingdom",UK,components_per_km_bike,0.2265800763445984,0.0892875907105039,-0.1372924856340945
+"North Tyneside, United Kingdom",UK,components_per_km_road,0.0025873416802999,0.0025873416802999,0.0
+"North Tyneside, United Kingdom",UK,connectivity_ratio_bike,0.6875,0.4619638979370249,-0.22553610206297509
+"North Tyneside, United Kingdom",UK,connectivity_ratio_road,0.3808555595423195,0.3808555595423195,0.0
+"North Tyneside, United Kingdom",UK,cycle_network_density_km2,4.869866772641914,6.704864678806407,1.8349979061644932
+"North Tyneside, United Kingdom",UK,dead_end_proportion_bike,0.0094736842105263,0.0084469774068797,-0.0010267068036466011
+"North Tyneside, United Kingdom",UK,dead_end_proportion_road,0.3780939854119335,0.3780939854119335,0.0
+"North Tyneside, United Kingdom",UK,edge_length_avg_m_bike,70.62723310038245,41.952845827195766,-28.67438727318669
+"North Tyneside, United Kingdom",UK,edge_length_avg_m_road,80.9163777452325,80.9163777452325,0.0
+"North Tyneside, United Kingdom",UK,entropy_gap_kl,0.0223718453919994,0.0139721310448514,-0.008399714347147999
+"North Tyneside, United Kingdom",UK,four_way_proportion_bike,0.771578947368421,0.2331569305923061,-0.5384220167761149
+"North Tyneside, United Kingdom",UK,four_way_proportion_road,0.0401769699868468,0.0401769699868468,0.0
+"North Tyneside, United Kingdom",UK,intersection_count_bike,2224.0,2414.0,190.0
+"North Tyneside, United Kingdom",UK,intersection_count_road,5200.0,5200.0,0.0
+"North Tyneside, United Kingdom",UK,intersection_density_km2_bike,26.106324278045737,28.33663075863418,2.2303064805884425
+"North Tyneside, United Kingdom",UK,intersection_density_km2_road,61.0399668371573,61.0399668371573,0.0
+"North Tyneside, United Kingdom",UK,intersection_density_per_km_bike,5.360788189259435,4.226279293630522,-1.1345088956289135
+"North Tyneside, United Kingdom",UK,intersection_density_per_km_road,6.727088368779804,6.727088368779804,0.0
+"North Tyneside, United Kingdom",UK,intersection_ratio_bike_road,0.4276923076923077,0.4642307692307692,0.03653846153846152
+"North Tyneside, United Kingdom",UK,k_avg_bike,4.122105263157895,2.77121921432933,-1.3508860488285648
+"North Tyneside, United Kingdom",UK,k_avg_road,2.284586870740165,2.284586870740165,0.0
+"North Tyneside, United Kingdom",UK,lcc_length_km_bike,201.36181456569645,539.6273720011571,338.26555743546066
+"North Tyneside, United Kingdom",UK,lcc_length_km_road,772.8558582275954,772.8558582275954,0.0
+"North Tyneside, United Kingdom",UK,lcc_length_share_bike,0.4853678225232168,0.9447456456357683,0.45937782311255154
+"North Tyneside, United Kingdom",UK,lcc_length_share_road,0.9998210874281134,0.9998210874281134,0.0
+"North Tyneside, United Kingdom",UK,length_km_bike,414.86436723164655,571.1879959372703,156.32362870562378
+"North Tyneside, United Kingdom",UK,length_km_road,772.994156600206,772.994156600206,0.0
+"North Tyneside, United Kingdom",UK,linearity_mean_bike,0.969913805535599,0.9870197351242092,0.017105929588610125
+"North Tyneside, United Kingdom",UK,linearity_mean_road,0.964564810578323,0.964564810578323,0.0
+"North Tyneside, United Kingdom",UK,linearity_median_bike,0.9988614485442042,1.0,0.0011385514557957777
+"North Tyneside, United Kingdom",UK,linearity_median_road,0.9999678894379406,0.9999678894379406,0.0
+"North Tyneside, United Kingdom",UK,low_stress_coverage,0.8000324602240837,0.8546573061224457,0.05462484589836203
+"North Tyneside, United Kingdom",UK,low_stress_route_fraction,0.1231328320802005,0.5435588972431078,0.4204260651629073
+"North Tyneside, United Kingdom",UK,lts1_coverage,0.3769484528765941,0.4813413904946916,0.10439293761809748
+"North Tyneside, United Kingdom",UK,lts2_coverage,0.4230840073474895,0.373315915627754,-0.04976809171973551
+"North Tyneside, United Kingdom",UK,mean_route_lts,1.307900989857217,1.0985444753824645,-0.20935651447475245
+"North Tyneside, United Kingdom",UK,meshedness_bike,0.5474978050921862,0.1954496869751107,-0.3520481181170755
+"North Tyneside, United Kingdom",UK,meshedness_road,0.0712876024161234,0.0712876024161234,0.0
+"North Tyneside, United Kingdom",UK,modal_directness_gap,1.1539081601750931,1.1373120775475352,-0.016596082627557962
+"North Tyneside, United Kingdom",UK,n_components_bike,94.0,51.0,-43.0
+"North Tyneside, United Kingdom",UK,n_components_road,2.0,2.0,0.0
+"North Tyneside, United Kingdom",UK,n_edges_bike,5874.0,13615.0,7741.0
+"North Tyneside, United Kingdom",UK,n_edges_road,9553.0,9553.0,0.0
+"North Tyneside, United Kingdom",UK,n_nodes_bike,2850.0,9826.0,6976.0
+"North Tyneside, United Kingdom",UK,n_nodes_road,8363.0,8363.0,0.0
+"North Tyneside, United Kingdom",UK,orientation_entropy_bike,3.5626473341038887,3.555610174963757,-0.007037159140131699
+"North Tyneside, United Kingdom",UK,orientation_entropy_road,3.5393850406992344,3.5393850406992344,0.0
+"North Tyneside, United Kingdom",UK,orientation_order_bike,0.0189079205496361,0.0252423149225808,0.0063343943729446996
+"North Tyneside, United Kingdom",UK,orientation_order_road,0.0397689494321336,0.0397689494321336,0.0
+"North Tyneside, United Kingdom",UK,self_loop_proportion_bike,0.0003404834865509,0.0001468968049944,-0.00019358668155649997
+"North Tyneside, United Kingdom",UK,self_loop_proportion_road,0.0012561499005547,0.0012561499005547,0.0
+"North Tyneside, United Kingdom",UK,street_density_km2,9.073757246960184,9.073757246960184,0.0
+"North Tyneside, United Kingdom",UK,three_way_proportion_bike,0.0087719298245614,0.0125178098921229,0.0037458800675615
+"North Tyneside, United Kingdom",UK,three_way_proportion_road,0.5816094702857826,0.5816094702857826,0.0
+"South Tyneside, United Kingdom",UK,betweenness_mean_bike,0.0035287118573266,0.0279611138887448,0.0244324020314182
+"South Tyneside, United Kingdom",UK,betweenness_mean_road,0.0073172693289126,0.0073172693289126,0.0
+"South Tyneside, United Kingdom",UK,betweenness_median_bike,0.0001027776788541,0.0160744101117605,0.0159716324329064
+"South Tyneside, United Kingdom",UK,betweenness_median_road,0.0003587443715464,0.0003587443715464,0.0
+"South Tyneside, United Kingdom",UK,bike_lcc_share_of_road,0.1231460046478313,0.5252502966363523,0.40210429198852093
+"South Tyneside, United Kingdom",UK,bike_offroad_share,0.9629596991352676,0.9763678921902604,0.013408193054992856
+"South Tyneside, United Kingdom",UK,bikeable_length_share,0.3816482170816939,0.5981846773468368,0.2165364602651429
+"South Tyneside, United Kingdom",UK,circuity_avg_bike,1.0412429628397908,1.02592638282692,-0.015316580012870729
+"South Tyneside, United Kingdom",UK,circuity_avg_road,1.0739762788808442,1.0739762788808442,0.0
+"South Tyneside, United Kingdom",UK,closeness_mean_bike,5.988236456581891e-05,0.0001558809980089,9.599863344308108e-05
+"South Tyneside, United Kingdom",UK,closeness_mean_road,0.0001940155921685,0.0001940155921685,0.0
+"South Tyneside, United Kingdom",UK,closeness_median_bike,5.6990450886081226e-05,0.0001610260793695,0.00010403562848341878
+"South Tyneside, United Kingdom",UK,closeness_median_road,0.0001931029497633,0.0001931029497633,0.0
+"South Tyneside, United Kingdom",UK,clustering_mean_bike,0.019057519057519,0.0200225908091076,0.0009650717515886018
+"South Tyneside, United Kingdom",UK,clustering_mean_road,0.0139835066332018,0.0139835066332018,0.0
+"South Tyneside, United Kingdom",UK,component_size_gini_bike,0.8491784777782572,0.9523337132192,0.10315523544094285
+"South Tyneside, United Kingdom",UK,components_per_km_bike,0.5430570912764383,0.2644160687428311,-0.27864102253360723
+"South Tyneside, United Kingdom",UK,components_per_km_road,0.0018180418478879,0.0018180418478879,0.0
+"South Tyneside, United Kingdom",UK,connectivity_ratio_bike,0.6437659033078881,0.4341361879274457,-0.2096297153804424
+"South Tyneside, United Kingdom",UK,connectivity_ratio_road,0.3867766618842659,0.3867766618842659,0.0
+"South Tyneside, United Kingdom",UK,cycle_network_density_km2,3.125799589520746,4.89929032868533,1.773490739164584
+"South Tyneside, United Kingdom",UK,dead_end_proportion_bike,0.0083160083160083,0.0092741216336721,0.0009581133176637998
+"South Tyneside, United Kingdom",UK,dead_end_proportion_road,0.3666188598063822,0.3666188598063822,0.0
+"South Tyneside, United Kingdom",UK,edge_length_avg_m_bike,75.43035573535772,45.07217838855794,-30.358177346799785
+"South Tyneside, United Kingdom",UK,edge_length_avg_m_road,85.01427268527358,85.01427268527358,0.0
+"South Tyneside, United Kingdom",UK,entropy_gap_kl,0.0408618564520069,0.0225406508149354,-0.0183212056370715
+"South Tyneside, United Kingdom",UK,four_way_proportion_bike,0.6985446985446986,0.1906545389691457,-0.507890159575553
+"South Tyneside, United Kingdom",UK,four_way_proportion_road,0.0519899605593402,0.0519899605593402,0.0
+"South Tyneside, United Kingdom",UK,intersection_count_bike,1013.0,1170.0,157.0
+"South Tyneside, United Kingdom",UK,intersection_count_road,3533.0,3533.0,0.0
+"South Tyneside, United Kingdom",UK,intersection_density_km2_bike,15.083815545852616,17.42158360182385,2.3377680559712353
+"South Tyneside, United Kingdom",UK,intersection_density_km2_road,52.60722638055014,52.60722638055014,0.0
+"South Tyneside, United Kingdom",UK,intersection_density_per_km_bike,4.825586258447649,3.555940234817384,-1.2696460236302656
+"South Tyneside, United Kingdom",UK,intersection_density_per_km_road,6.423141848588038,6.423141848588038,0.0
+"South Tyneside, United Kingdom",UK,intersection_ratio_bike_road,0.2867251627512029,0.3311633172940843,0.044438154542881414
+"South Tyneside, United Kingdom",UK,k_avg_bike,3.857241857241857,2.603887997146424,-1.2533538600954333
+"South Tyneside, United Kingdom",UK,k_avg_road,2.319827895302976,2.319827895302976,0.0
+"South Tyneside, United Kingdom",UK,lcc_length_km_bike,67.73551708443559,288.909904492326,221.17438740789044
+"South Tyneside, United Kingdom",UK,lcc_length_km_road,550.0423442737206,550.0423442737206,0.0
+"South Tyneside, United Kingdom",UK,lcc_length_share_bike,0.3226688849471849,0.8780738065141109,0.5554049215669261
+"South Tyneside, United Kingdom",UK,lcc_length_share_road,1.0000000000000009,1.0000000000000009,0.0
+"South Tyneside, United Kingdom",UK,length_km_bike,209.92268001150052,329.0269022364729,119.10422222497237
+"South Tyneside, United Kingdom",UK,length_km_road,550.04234427372,550.04234427372,0.0
+"South Tyneside, United Kingdom",UK,linearity_mean_bike,0.9674688400402172,0.9875980523057432,0.020129212265525998
+"South Tyneside, United Kingdom",UK,linearity_mean_road,0.9639140533856836,0.9639140533856836,0.0
+"South Tyneside, United Kingdom",UK,linearity_median_bike,0.9992365950581258,1.0,0.0007634049418742128
+"South Tyneside, United Kingdom",UK,linearity_median_road,0.9999842662431871,0.9999842662431871,0.0
+"South Tyneside, United Kingdom",UK,low_stress_coverage,0.8236640408541621,0.8695587912355083,0.04589475038134616
+"South Tyneside, United Kingdom",UK,low_stress_route_fraction,0.0997619047619047,0.6042606516290727,0.504498746867168
+"South Tyneside, United Kingdom",UK,lts1_coverage,0.3665798273528967,0.4837548079311657,0.11717498057826903
+"South Tyneside, United Kingdom",UK,lts2_coverage,0.4570842135012653,0.3858039833043425,-0.07128023019692281
+"South Tyneside, United Kingdom",UK,mean_route_lts,1.4343063578728497,1.1232760302515632,-0.31103032762128646
+"South Tyneside, United Kingdom",UK,meshedness_bike,0.5046858729607775,0.158800963511464,-0.3458849094493135
+"South Tyneside, United Kingdom",UK,meshedness_road,0.0800825038113173,0.0800825038113173,0.0
+"South Tyneside, United Kingdom",UK,modal_directness_gap,1.1288953498479657,1.130648088189202,0.0017527383412363484
+"South Tyneside, United Kingdom",UK,n_components_bike,114.0,87.0,-27.0
+"South Tyneside, United Kingdom",UK,n_components_road,1.0,1.0,0.0
+"South Tyneside, United Kingdom",UK,n_edges_bike,2783.0,7300.0,4517.0
+"South Tyneside, United Kingdom",UK,n_edges_road,6470.0,6470.0,0.0
+"South Tyneside, United Kingdom",UK,n_nodes_bike,1443.0,5607.0,4164.0
+"South Tyneside, United Kingdom",UK,n_nodes_road,5578.0,5578.0,0.0
+"South Tyneside, United Kingdom",UK,orientation_entropy_bike,3.5566110392672825,3.5558191059244955,-0.0007919333427870434
+"South Tyneside, United Kingdom",UK,orientation_entropy_road,3.527234819436966,3.527234819436966,0.0
+"South Tyneside, United Kingdom",UK,orientation_order_bike,0.024342653173684,0.0250545443217016,0.0007118911480176009
+"South Tyneside, United Kingdom",UK,orientation_order_road,0.0505758331791863,0.0505758331791863,0.0
+"South Tyneside, United Kingdom",UK,self_loop_proportion_bike,0.0,0.0,0.0
+"South Tyneside, United Kingdom",UK,self_loop_proportion_road,0.0017001545595054,0.0017001545595054,0.0
+"South Tyneside, United Kingdom",UK,street_density_km2,8.1902638335964,8.1902638335964,0.0
+"South Tyneside, United Kingdom",UK,three_way_proportion_bike,0.0034650034650034,0.0180131977884786,0.0145481943234752
+"South Tyneside, United Kingdom",UK,three_way_proportion_road,0.5813911796342776,0.5813911796342776,0.0
+"Sunderland, United Kingdom",UK,betweenness_mean_bike,0.0009320378092791,0.0214366631006918,0.0205046252914127
+"Sunderland, United Kingdom",UK,betweenness_mean_road,0.0049983440195893,0.0049983440195893,0.0
+"Sunderland, United Kingdom",UK,betweenness_median_bike,3.5199980007111106e-05,0.0106895457690246,0.010654345789017488
+"Sunderland, United Kingdom",UK,betweenness_median_road,0.000172651931129,0.000172651931129,0.0
+"Sunderland, United Kingdom",UK,bike_lcc_share_of_road,0.0525468910888811,0.4780652171121334,0.4255183260232523
+"Sunderland, United Kingdom",UK,bike_offroad_share,0.9583473785540916,0.9759504753360044,0.017603096781912853
+"Sunderland, United Kingdom",UK,bikeable_length_share,0.3255422480517596,0.5638235354834336,0.23828128743167398
+"Sunderland, United Kingdom",UK,circuity_avg_bike,1.0584525931037043,1.0329359286014517,-0.02551666450225265
+"Sunderland, United Kingdom",UK,circuity_avg_road,1.0832246474333742,1.0832246474333742,0.0
+"Sunderland, United Kingdom",UK,closeness_mean_bike,3.3975634184668904e-05,0.0001033086351849,6.93330010002311e-05
+"Sunderland, United Kingdom",UK,closeness_mean_road,0.0001208609587808,0.0001208609587808,0.0
+"Sunderland, United Kingdom",UK,closeness_median_bike,2.962763148402797e-05,0.0001091757954447,7.954816396067203e-05
+"Sunderland, United Kingdom",UK,closeness_median_road,0.0001206660429093,0.0001206660429093,0.0
+"Sunderland, United Kingdom",UK,clustering_mean_bike,0.0112708555200567,0.0139790621975895,0.0027082066775328
+"Sunderland, United Kingdom",UK,clustering_mean_road,0.0140070768965219,0.0140070768965219,0.0
+"Sunderland, United Kingdom",UK,component_size_gini_bike,0.782474421241186,0.9418277019816226,0.15935328074043653
+"Sunderland, United Kingdom",UK,components_per_km_bike,0.4280881227713211,0.1585624631776958,-0.2695256595936253
+"Sunderland, United Kingdom",UK,components_per_km_road,0.000876482829253,0.000876482829253,0.0
+"Sunderland, United Kingdom",UK,connectivity_ratio_bike,0.6224235963041933,0.399442733538642,-0.2229808627655513
+"Sunderland, United Kingdom",UK,connectivity_ratio_road,0.3852107610415767,0.3852107610415767,0.0
+"Sunderland, United Kingdom",UK,cycle_network_density_km2,2.659680061188038,4.606438102360856,1.9467580411728176
+"Sunderland, United Kingdom",UK,dead_end_proportion_bike,0.020234291799787,0.0089733438902084,-0.011260947909578599
+"Sunderland, United Kingdom",UK,dead_end_proportion_road,0.3652369034262535,0.3652369034262535,0.0
+"Sunderland, United Kingdom",UK,edge_length_avg_m_bike,106.02879077030008,47.23398291503827,-58.79480785526181
+"Sunderland, United Kingdom",UK,edge_length_avg_m_road,85.21987323549443,85.21987323549443,0.0
+"Sunderland, United Kingdom",UK,entropy_gap_kl,0.0310091472108045,0.0143706017841496,-0.0166385454266549
+"Sunderland, United Kingdom",UK,four_way_proportion_bike,0.6922257720979765,0.1228116477522653,-0.5694141243457113
+"Sunderland, United Kingdom",UK,four_way_proportion_road,0.0405626995771122,0.0405626995771122,0.0
+"Sunderland, United Kingdom",UK,intersection_count_bike,1321.0,1675.0,354.0
+"Sunderland, United Kingdom",UK,intersection_count_road,7355.0,7355.0,0.0
+"Sunderland, United Kingdom",UK,intersection_density_km2_bike,9.45950191366089,11.994447922317937,2.5349460086570463
+"Sunderland, United Kingdom",UK,intersection_density_km2_road,52.6681578917304,52.6681578917304,0.0
+"Sunderland, United Kingdom",UK,intersection_density_per_km_bike,3.556631510571793,2.6038443708102004,-0.9527871397615928
+"Sunderland, United Kingdom",UK,intersection_density_per_km_road,6.4465312091561175,6.4465312091561175,0.0
+"Sunderland, United Kingdom",UK,intersection_ratio_bike_road,0.1796057104010877,0.2277362338545207,0.048130523453432994
+"Sunderland, United Kingdom",UK,k_avg_bike,3.730564430244941,2.3962347145245007,-1.3343297157204406
+"Sunderland, United Kingdom",UK,k_avg_road,2.310865625269699,2.310865625269699,0.0
+"Sunderland, United Kingdom",UK,lcc_length_km_bike,59.95199145391448,545.4359186015677,485.48392714765316
+"Sunderland, United Kingdom",UK,lcc_length_km_road,1140.9236628767962,1140.9236628767962,0.0
+"Sunderland, United Kingdom",UK,lcc_length_share_bike,0.16141343067867,0.8478986545005268,0.6864852238218568
+"Sunderland, United Kingdom",UK,lcc_length_share_road,0.9999999999999972,0.9999999999999972,0.0
+"Sunderland, United Kingdom",UK,length_km_bike,371.4188540683612,643.2796133199062,271.86075925154495
+"Sunderland, United Kingdom",UK,length_km_road,1140.9236628767994,1140.9236628767994,0.0
+"Sunderland, United Kingdom",UK,linearity_mean_bike,0.9662837841446258,0.9913277109816157,0.02504392683698986
+"Sunderland, United Kingdom",UK,linearity_mean_road,0.9612153423060412,0.9612153423060412,0.0
+"Sunderland, United Kingdom",UK,linearity_median_bike,0.997457546827894,1.0,0.002542453172105996
+"Sunderland, United Kingdom",UK,linearity_median_road,0.9999398263106728,0.9999398263106728,0.0
+"Sunderland, United Kingdom",UK,low_stress_coverage,0.7772595193373351,0.8487003587924653,0.07144083945513025
+"Sunderland, United Kingdom",UK,low_stress_route_fraction,0.0175060767496631,0.4852457777609854,0.4677397010113223
+"Sunderland, United Kingdom",UK,lts1_coverage,0.3534080691577483,0.4893979846609289,0.13598991550318057
+"Sunderland, United Kingdom",UK,lts2_coverage,0.4238514501795868,0.3593023741315363,-0.06454907604805049
+"Sunderland, United Kingdom",UK,mean_route_lts,1.3740084121676877,1.0636524666075182,-0.31035594556016943
+"Sunderland, United Kingdom",UK,meshedness_bike,0.4756065049320181,0.1035681288222095,-0.3720383761098086
+"Sunderland, United Kingdom",UK,meshedness_road,0.0777763390737623,0.0777763390737623,0.0
+"Sunderland, United Kingdom",UK,modal_directness_gap,1.197861681415874,1.1358499825227977,-0.06201169889307634
+"Sunderland, United Kingdom",UK,n_components_bike,159.0,102.0,-57.0
+"Sunderland, United Kingdom",UK,n_components_road,1.0,1.0,0.0
+"Sunderland, United Kingdom",UK,n_edges_bike,3503.0,13619.0,10116.0
+"Sunderland, United Kingdom",UK,n_edges_road,13388.0,13388.0,0.0
+"Sunderland, United Kingdom",UK,n_nodes_bike,1878.0,11367.0,9489.0
+"Sunderland, United Kingdom",UK,n_nodes_road,11587.0,11587.0,0.0
+"Sunderland, United Kingdom",UK,orientation_entropy_bike,3.5452958872814797,3.5473450454549806,0.002049158173500931
+"Sunderland, United Kingdom",UK,orientation_entropy_road,3.5531222516782117,3.5531222516782117,0.0
+"Sunderland, United Kingdom",UK,orientation_order_bike,0.0344894976275871,0.0326558512629695,-0.0018336463646176013
+"Sunderland, United Kingdom",UK,orientation_order_road,0.0274768735580159,0.0274768735580159,0.0
+"Sunderland, United Kingdom",UK,self_loop_proportion_bike,0.0,0.0,0.0
+"Sunderland, United Kingdom",UK,self_loop_proportion_road,0.002390200179265,0.002390200179265,0.0
+"Sunderland, United Kingdom",UK,street_density_km2,8.169999676248356,8.169999676248356,0.0
+"Sunderland, United Kingdom",UK,three_way_proportion_bike,0.011182108626198,0.0245447347585114,0.013362626132313402
+"Sunderland, United Kingdom",UK,three_way_proportion_road,0.5942003969966342,0.5942003969966342,0.0

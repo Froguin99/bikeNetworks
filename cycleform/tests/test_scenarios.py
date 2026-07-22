@@ -142,3 +142,35 @@ def test_street_upgrade_spatial_fallback_for_drifted_ids():
     grown = _grown_segment(9990, 9991, 777, [(100, 0), (200, 0)])
     up = scenarios._upgrade_street(street, grown, tol_m=15.0, cover_frac=0.5)
     assert int((up.edges["lts"] == 1).sum()) == 1
+
+
+# --- the save path (run_scenario) --------------------------------------------
+
+
+def test_save_variant_shares_base_place_id_so_variants_pair(tmp_path, monkeypatch):
+    """Both variants are stored under the base place_id so build_scenario_table
+    can pair them. Regression: _save_variant used frame.insert("place_id", ...)
+    but results_to_frame already carries a place_id (the scenario context's
+    "<place> [grown]" id), which raised "cannot insert place_id, already exists"
+    and left results/scenarios empty -> the run reported a bare FileNotFoundError.
+    """
+    monkeypatch.setattr(scenarios.settings, "edition_root", tmp_path)
+    ctx = fake_osm_context()
+    grown = _grown_over_street(ctx.street)
+    sctx = scenarios.scenario_context(ctx, grown, place_id=f"{ctx.place_id} [grown]")
+    spec = scenarios.ScenarioSpec(
+        growth_placeid="synth", query=ctx.place_id, place_id=ctx.place_id, country="UK"
+    )
+
+    scenarios._save_variant(ctx, REGISTRY.run(ctx), "baseline", spec, len(grown))
+    scenarios._save_variant(sctx, REGISTRY.run(sctx), "scenario", spec, len(grown))
+
+    long = scenarios.scenario_long()
+    # the "[grown]" context id is overwritten -> both variants under the base id
+    assert set(long["place_id"]) == {ctx.place_id}
+    assert set(long["variant"]) == {"baseline", "scenario"}
+
+    comp = scenarios.build_scenario_table()
+    assert not comp.empty
+    assert {"baseline", "scenario", "delta"} <= set(comp.columns)
+    assert (comp["place_id"] == ctx.place_id).all()

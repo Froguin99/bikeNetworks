@@ -1,50 +1,59 @@
 # cycleform — results summary
 
-_Generated 2026-07-21 · metric_version 0.5.0 · snapshot 2025-01-01_
+_Generated 2026-07-22 · metric_version 0.5.0 · snapshot 2025-01-01_
 
 **Study question.** Is the *form/structure* of a city's cycle network (and the road network it sits in) associated with its cycling rate across many cities, and can cycling rate be predicted from network form? Metrics are computed identically on real OSM cities and on Chapter-5 grown networks. This is a descriptive + predictive screen, not causal inference.
 
 ## 1. Dataset
 
-- **232 places** with metrics; **225** have a cycling rate.
+- **373 input places** with network metrics computed.
+- **366** of them have an observed cycling rate (the modelled sample).
 - UK places: **76**.
-- Outcome sources (deduped per place): {'oecd_fua': 116, 'legacy_max_value': 109}.
-- Top countries by place count: {'UK': 76, 'DE': 41, 'IT': 31, 'FR': 30, 'US': 19, 'PT': 6, 'BE': 6, 'CH': 4}.
+- Top countries by place count: {'UK': 76, 'DE': 71, 'FR': 64, 'IT': 60, 'US': 38, 'PT': 11, 'BE': 10, 'CH': 9}.
+
+Cycling-rate outcome by source (one preferred source per place, OECD FUA first where a place has several):
+
+| source | places used | years |
+| --- | --- | --- |
+| OECD FUA (bicycle commute mode share) | 188 | 2005–2024 |
+| Eurostat + 2011 UK census (legacy max_value.csv, mixed) | 178 | unspecified |
+
+_Eurostat and the 2011 UK census are combined in the legacy `max_value.csv` (year unspecified) and are not separable within it; supplying them as separate files would let them be reported (and modelled) apart._
 
 ## 2. Cycling rate (outcome, % mode share)
 
-- n=225, min=0.0, median=3.6, mean=6.2, max=36.6, sd=6.6.
+- n=366, min=0.0, median=3.3, mean=6.0, max=36.6, sd=6.5.
 - Right-skewed; correlations below use Spearman (rank-based, robust).
 
 ## 3. Metric correlations with cycling rate
 
-Ranked by |Spearman rho|, top 20 of 71 analysed metrics. `significant` = two-sided p < 0.05. Correlation is a signpost, not a model.
+Ranked by |Spearman rho|, top 20 of 67 analysed metrics. `significant` = two-sided p < 0.05. Correlation is a signpost, not a model.
 
 | metric | spearman | spearman_p | pearson | n | significant |
 | --- | --- | --- | --- | --- | --- |
-| intersection_ratio_bike_road | 0.695 | <0.001 | 0.567 | 213 | yes |
-| bikeable_length_share | 0.645 | <0.001 | 0.614 | 225 | yes |
-| circuity_avg_bike | -0.612 | <0.001 | -0.334 | 221 | yes |
-| mean_route_lts | -0.587 | <0.001 | -0.471 | 187 | yes |
-| lts1_coverage | 0.582 | <0.001 | 0.484 | 187 | yes |
-| bike_lcc_share_of_road | 0.582 | <0.001 | 0.547 | 225 | yes |
-| n_nodes_bike | 0.575 | <0.001 | 0.439 | 225 | yes |
-| n_edges_bike | 0.557 | <0.001 | 0.412 | 225 | yes |
-| intersection_count_bike | 0.549 | <0.001 | 0.392 | 225 | yes |
-| low_stress_route_fraction | 0.531 | <0.001 | 0.489 | 225 | yes |
-| edge_length_avg_m_bike | -0.530 | <0.001 | -0.308 | 221 | yes |
-| n_components_bike | 0.525 | <0.001 | 0.420 | 225 | yes |
-| lcc_length_km_bike | 0.519 | <0.001 | 0.422 | 187 | yes |
-| intersection_density_km2_bike | 0.502 | <0.001 | 0.372 | 187 | yes |
-| entropy_gap_kl | -0.499 | <0.001 | -0.215 | 221 | yes |
-| component_size_gini_bike | 0.485 | <0.001 | 0.434 | 220 | yes |
-| intersection_density_per_km_bike | 0.478 | <0.001 | 0.329 | 221 | yes |
-| cycle_network_density_km2 | 0.470 | <0.001 | 0.376 | 187 | yes |
-| gamma_index_road | 0.429 | 0.289 | 0.583 | 8 | no |
-| alpha_index_road | 0.429 | 0.289 | 0.581 | 8 | no |
+| intersection_ratio_bike_road | 0.720 | <0.001 | 0.619 | 363 | yes |
+| bikeable_length_share | 0.681 | <0.001 | 0.635 | 366 | yes |
+| n_nodes_bike | 0.617 | <0.001 | 0.463 | 366 | yes |
+| mean_route_lts | -0.610 | <0.001 | -0.473 | 337 | yes |
+| n_edges_bike | 0.604 | <0.001 | 0.460 | 366 | yes |
+| intersection_count_bike | 0.599 | <0.001 | 0.450 | 366 | yes |
+| bike_lcc_share_of_road | 0.582 | <0.001 | 0.582 | 366 | yes |
+| n_components_bike | 0.573 | <0.001 | 0.426 | 366 | yes |
+| low_stress_route_fraction | 0.567 | <0.001 | 0.582 | 366 | yes |
+| circuity_avg_bike | -0.561 | <0.001 | -0.200 | 361 | yes |
+| entropy_gap_kl | -0.554 | <0.001 | -0.237 | 361 | yes |
+| lcc_length_km_bike | 0.546 | <0.001 | 0.478 | 337 | yes |
+| lts1_coverage | 0.539 | <0.001 | 0.434 | 337 | yes |
+| intersection_density_km2_bike | 0.514 | <0.001 | 0.335 | 337 | yes |
+| edge_length_avg_m_bike | -0.509 | <0.001 | -0.272 | 361 | yes |
+| component_size_gini_bike | 0.498 | <0.001 | 0.462 | 356 | yes |
+| cycle_network_density_km2 | 0.489 | <0.001 | 0.358 | 337 | yes |
+| intersection_density_per_km_bike | 0.478 | <0.001 | 0.332 | 361 | yes |
+| length_km_bike | 0.460 | <0.001 | 0.452 | 366 | yes |
+| orientation_order_bike | -0.416 | <0.001 | -0.287 | 358 | yes |
 
-- Strongest **positive**: intersection_ratio_bike_road, bikeable_length_share, lts1_coverage.
-- Strongest **negative**: circuity_avg_bike, mean_route_lts, edge_length_avg_m_bike.
+- Strongest **positive**: intersection_ratio_bike_road, bikeable_length_share, n_nodes_bike.
+- Strongest **negative**: mean_route_lts, circuity_avg_bike, entropy_gap_kl.
 
 ## 4. Predictive model (cross-validated)
 
@@ -52,41 +61,41 @@ Out-of-sample R² for three feature sets: network **form** only, **country** (na
 
 | feature_set | model | cv_r2 | cv_r2_sd | cv_rmse | n |
 | --- | --- | --- | --- | --- | --- |
-| form | elasticnet | 0.370 | 0.089 | 3.567 | 225 |
-| form | random_forest | 0.430 | 0.154 | 3.335 | 225 |
-| country | elasticnet | 0.327 | 0.187 | 3.615 | 225 |
-| country | random_forest | 0.308 | 0.198 | 3.659 | 225 |
-| form+country | elasticnet | 0.385 | 0.098 | 3.514 | 225 |
-| form+country | random_forest | 0.449 | 0.147 | 3.287 | 225 |
+| form | elasticnet | 0.548 | 0.090 | 3.240 | 366 |
+| form | random_forest | 0.608 | 0.132 | 3.008 | 366 |
+| country | elasticnet | 0.417 | 0.131 | 3.670 | 366 |
+| country | random_forest | 0.412 | 0.134 | 3.681 | 366 |
+| form+country | elasticnet | 0.551 | 0.089 | 3.222 | 366 |
+| form+country | random_forest | 0.615 | 0.131 | 2.977 | 366 |
 
 Top 12 network-form predictors (random-forest permutation importance, form-only model):
 
 | metric | importance | importance_sd |
 | --- | --- | --- |
-| bike_lcc_share_of_road | 0.181 | 0.027 |
-| bikeable_length_share | 0.146 | 0.018 |
-| intersection_ratio_bike_road | 0.096 | 0.012 |
-| circuity_avg_bike | 0.036 | 0.003 |
-| low_stress_route_fraction | 0.028 | 0.006 |
-| n_nodes_bike | 0.025 | 0.004 |
-| betweenness_median_bike | 0.018 | 0.002 |
-| edge_length_avg_m_bike | 0.017 | 0.002 |
-| three_way_proportion_bike | 0.017 | 0.003 |
-| lcc_length_km_bike | 0.017 | 0.004 |
-| length_km_bike | 0.014 | 0.002 |
-| dead_end_proportion_bike | 0.014 | 0.001 |
+| intersection_ratio_bike_road | 0.397 | 0.022 |
+| bike_lcc_share_of_road | 0.119 | 0.009 |
+| modal_directness_gap | 0.046 | 0.005 |
+| low_stress_coverage | 0.036 | 0.005 |
+| n_components_bike | 0.029 | 0.003 |
+| bikeable_length_share | 0.029 | 0.002 |
+| circuity_avg_bike | 0.026 | 0.002 |
+| components_per_km_bike | 0.023 | 0.002 |
+| bike_offroad_share | 0.019 | 0.003 |
+| betweenness_median_bike | 0.016 | 0.001 |
+| edge_length_avg_m_road | 0.015 | 0.002 |
+| lts1_coverage | 0.014 | 0.001 |
 
 ## 5. UK vs rest of sample (key metrics)
 
 | metric | uk_mean | rest_mean | uk_minus_rest | n_uk | n_rest |
 | --- | --- | --- | --- | --- | --- |
-| bike_lcc_share_of_road | 0.110 | 0.196 | -0.086 | 76 | 156 |
-| bikeable_length_share | 0.379 | 0.479 | -0.100 | 76 | 156 |
-| circuity_avg_bike | 1.052 | 1.072 | -0.021 | 76 | 156 |
-| components_per_km_bike | 0.631 | 0.732 | -0.101 | 76 | 156 |
-| intersection_density_per_km_road | 5.648 | 3.737 | 1.911 | 76 | 156 |
-| low_stress_coverage | 0.754 | 0.686 | 0.068 | 76 | 156 |
-| meshedness_bike | 0.474 | 0.441 | 0.033 | 76 | 156 |
+| bike_lcc_share_of_road | 0.110 | 0.185 | -0.075 | 76 | 297 |
+| bikeable_length_share | 0.379 | 0.454 | -0.075 | 76 | 297 |
+| circuity_avg_bike | 1.052 | 1.085 | -0.034 | 76 | 297 |
+| components_per_km_bike | 0.631 | 0.705 | -0.074 | 76 | 297 |
+| intersection_density_per_km_road | 5.648 | 3.726 | 1.922 | 76 | 297 |
+| low_stress_coverage | 0.754 | 0.714 | 0.041 | 76 | 297 |
+| meshedness_bike | 0.474 | 0.449 | 0.025 | 76 | 297 |
 
 ## 6. Bike vs road network form
 
@@ -94,30 +103,54 @@ Top 12 network-form predictors (random-forest permutation importance, form-only 
 
 | metric | road_mean | bike_mean | bike_minus_road_mean | bike_gt_road_share | n |
 | --- | --- | --- | --- | --- | --- |
-| n_nodes | 5753.289 | 3136.711 | -2616.578 | 0.280 | 232 |
-| n_edges | 7129.397 | 5768.784 | -1360.612 | 0.353 | 232 |
-| length_km | 1190.022 | 389.723 | -800.299 | 0.069 | 232 |
-| k_avg | 2.518 | 3.607 | 1.089 | 0.991 | 228 |
-| intersection_density_per_km | 4.405 | 5.243 | 0.838 | 0.632 | 228 |
-| dead_end_proportion | 0.288 | 0.026 | -0.261 | 0.009 | 228 |
-| four_way_proportion | 0.091 | 0.637 | 0.546 | 1 | 228 |
-| circuity_avg | 1.088 | 1.065 | -0.023 | 0.118 | 228 |
-| orientation_entropy | 3.511 | 3.454 | -0.058 | 0.250 | 228 |
-| lcc_length_share | 0.999 | 0.300 | -0.700 | 0.004 | 228 |
-| components_per_km | 0.004 | 0.698 | 0.694 | 1 | 228 |
-| self_loop_proportion | 0.002 | 0.001 | -0.001 | 0.092 | 228 |
-| betweenness_mean | 0.012 | 0.007 | -0.005 | 0.070 | 228 |
-| closeness_mean | 0.000 | 0.000 | 0 | 0.149 | 228 |
-| clustering_mean | 0.023 | 0.009 | -0.013 | 0.140 | 228 |
+| n_nodes | 5368.461 | 3197.917 | -2170.544 | 0.289 | 373 |
+| n_edges | 6757.603 | 5904.389 | -853.215 | 0.375 | 373 |
+| length_km | 1209.320 | 388.804 | -820.516 | 0.078 | 373 |
+| k_avg | 2.558 | 3.595 | 1.038 | 0.989 | 368 |
+| intersection_density_per_km | 4.150 | 5.204 | 1.054 | 0.685 | 368 |
+| dead_end_proportion | 0.273 | 0.026 | -0.247 | 0.008 | 368 |
+| four_way_proportion | 0.102 | 0.632 | 0.530 | 0.997 | 368 |
+| circuity_avg | 1.092 | 1.078 | -0.014 | 0.144 | 368 |
+| orientation_entropy | 3.501 | 3.420 | -0.081 | 0.239 | 368 |
+| lcc_length_share | 0.999 | 0.318 | -0.682 | 0.008 | 368 |
+| components_per_km | 0.004 | 0.690 | 0.685 | 1 | 368 |
+| self_loop_proportion | 0.002 | 0.001 | -0.001 | 0.101 | 368 |
+| betweenness_mean | 0.013 | 0.009 | -0.004 | 0.087 | 367 |
+| closeness_mean | 0.000 | 0.000 | 0 | 0.193 | 368 |
+| clustering_mean | 0.025 | 0.009 | -0.016 | 0.109 | 367 |
 
 ## 7. Network-form typology
 
-Standardise → PCA → k-means. **k=2** (silhouette 0.416); cluster sizes {0: 44, 1: 184}. Profiles are mean standardised (z) values per cluster (features: bikeable_length_share, low_stress_coverage, modal_directness_gap, entropy_gap_kl, bike_lcc_share_of_road, lcc_length_share_bike, circuity_avg_bike, orientation_entropy_bike, intersection_density_per_km_road, orientation_entropy_road, circuity_avg_road):
+Standardise → PCA → k-means. **k=2** (silhouette 0.386); cluster sizes {0: 294, 1: 74}. Profiles are mean standardised (z) values per cluster (features: bikeable_length_share, low_stress_coverage, modal_directness_gap, entropy_gap_kl, bike_lcc_share_of_road, lcc_length_share_bike, circuity_avg_bike, orientation_entropy_bike, intersection_density_per_km_road, orientation_entropy_road, circuity_avg_road):
 
 | type | bikeable_length_share | low_stress_coverage | modal_directness_gap | entropy_gap_kl | bike_lcc_share_of_road | lcc_length_share_bike | circuity_avg_bike | orientation_entropy_bike | intersection_density_per_km_road | orientation_entropy_road | circuity_avg_road |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 0 | -0.950 | -1.400 | -0.850 | 0.950 | -0.570 | -0.180 | 1.420 | -0.910 | -1.170 | -0.730 | 0.930 |
-| 1 | 0.230 | 0.340 | 0.200 | -0.230 | 0.140 | 0.040 | -0.340 | 0.220 | 0.280 | 0.180 | -0.220 |
+| 0 | 0.220 | 0.370 | 0.190 | -0.230 | 0.130 | 0 | -0.200 | 0.220 | 0.290 | 0.140 | -0.250 |
+| 1 | -0.890 | -1.460 | -0.760 | 0.900 | -0.520 | 0 | 0.780 | -0.880 | -1.140 | -0.550 | 1 |
+
+## 8. Grown-network what-if (Tyne & Wear)
+
+Merging each borough's Chapter-5 grown cycle network, then re-measuring.
+
+Predicted cycling rate now vs with the grown network (model fit on the full dataset, borough included):
+
+| place_id | observed | baseline_pred | scenario_pred | shift |
+| --- | --- | --- | --- | --- |
+| Gateshead, United Kingdom | 1.200 | 2.346 | 6.296 | 3.950 |
+| Newcastle upon Tyne, United Kingdom | 2.300 | 2.682 | 5.752 | 3.070 |
+| North Tyneside, United Kingdom | 1.900 | 3.301 | 6.269 | 2.968 |
+| South Tyneside, United Kingdom | 1.800 | 3.331 | 5.822 | 2.491 |
+| Sunderland, United Kingdom | 1.700 | 1.866 | 5.667 | 3.801 |
+
+Out-of-fold predicted rate (each borough held out of training -- the honest estimate):
+
+| place_id | observed | baseline_oof | scenario_oof | shift |
+| --- | --- | --- | --- | --- |
+| Gateshead, United Kingdom | 1.200 | 2.346 | 6.296 | 3.950 |
+| Newcastle upon Tyne, United Kingdom | 2.300 | 3.648 | 5.865 | 2.217 |
+| North Tyneside, United Kingdom | 1.900 | 3.300 | 6.269 | 2.968 |
+| South Tyneside, United Kingdom | 1.800 | 3.331 | 5.822 | 2.491 |
+| Sunderland, United Kingdom | 1.700 | 2.173 | 5.624 | 3.451 |
 
 ## 9. Key caveats
 
