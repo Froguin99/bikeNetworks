@@ -15,8 +15,10 @@ The `all` fetch is done once and split into bike and street (see ingest.py).
 
 from __future__ import annotations
 
+import contextlib
 import logging
 import random
+import threading
 import time
 
 import geopandas as gpd
@@ -119,6 +121,30 @@ def is_cyclable(edges: gpd.GeoDataFrame) -> pd.Series:
     return keep & ~_has(_col(edges, "bicycle"), {"no", "dismount"})
 
 
+@contextlib.contextmanager
+def _heartbeat(label: str, interval: float):
+    """Log '...still fetching' every `interval`s until the block exits, so a slow
+    (large) place looks alive rather than hung. Fast fetches finish before the
+    first beat and stay silent. A no-op when interval <= 0."""
+    if interval <= 0:
+        yield
+        return
+    stop = threading.Event()
+    t0 = time.perf_counter()
+
+    def _beat() -> None:
+        while not stop.wait(interval):
+            log.info("  ... still fetching %s (%.0fs elapsed)", label, time.perf_counter() - t0)
+
+    thread = threading.Thread(target=_beat, daemon=True)
+    thread.start()
+    try:
+        yield
+    finally:
+        stop.set()
+        thread.join(timeout=1.0)
+
+
 def _overpass_reachable(endpoint: str, timeout: float) -> bool:
     """True if the endpoint answers a /status probe within `timeout` (any HTTP
     response counts -- we only care that the TCP connect succeeded, not the code).
@@ -166,10 +192,12 @@ def _edges_from_polygon(
                 time.sleep(2)
                 continue
             ox.settings.overpass_url = endpoint
+            host = endpoint.split("//")[-1].split("/")[0]
             try:
-                graph = ox.graph_from_polygon(
-                    polygon, network_type=network_type, simplify=True, retain_all=False
-                )
+                with _heartbeat(f"{network_type} via {host}", settings.fetch_heartbeat_seconds):
+                    graph = ox.graph_from_polygon(
+                        polygon, network_type=network_type, simplify=True, retain_all=False
+                    )
                 edges = ox.convert.graph_to_gdfs(graph, nodes=False)
                 return edges.to_crs(crs)
             except Exception as exc:  # timeout / connection / server / empty response

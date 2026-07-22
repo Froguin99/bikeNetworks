@@ -84,6 +84,10 @@ class Settings(BaseSettings):
     and bounds how long a stalled endpoint can block a fetch; raise it
     (CYCLEFORM_OVERPASS_QUERY_TIMEOUT) if big 'all'-network queries start failing at
     the timeout, then re-run (resumable)."""
+    fetch_heartbeat_seconds: float = 30.0
+    """While a single Overpass fetch is running, log a '...still fetching' line
+    every N seconds so a slow (large) place visibly looks alive, not hung. Fast
+    fetches finish before the first beat, so small places stay quiet."""
 
     # --- grown-network what-if (cycleform.scenarios) ----------------------
     scenario_prune_measure: str = "demand"
