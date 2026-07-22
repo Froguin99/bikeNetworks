@@ -70,12 +70,20 @@ class Settings(BaseSettings):
     (blocks this use) and overpass.osm.ch is a Switzerland-only extract (empty for
     everywhere else), so both are excluded. Override with CYCLEFORM_OVERPASS_ENDPOINTS
     (a JSON list) to add/reorder mirrors."""
-    network_retries: int = 6
+    network_retries: int = 4
     """Attempts per network fetch, rotating through overpass_endpoints with
-    backoff. Raise it for flakier connections (CYCLEFORM_NETWORK_RETRIES)."""
+    backoff. Kept small so a place that all mirrors are stalling on fails fast and
+    is left for the next (resumable) pass rather than blocking the batch. Raise it
+    for flakier connections (CYCLEFORM_NETWORK_RETRIES)."""
     overpass_probe_timeout: float = 5.0
     """Seconds to wait on the /status reachability probe before skipping a mirror
-    (so a dead endpoint costs ~5s, not the full requests_timeout)."""
+    (so a dead endpoint costs ~5s, not the full query timeout)."""
+    overpass_query_timeout: int = 180
+    """Per-request Overpass timeout (s), used BOTH as the HTTP timeout and the
+    server-side [timeout:N] in the query. 180 covers the large majority of places
+    and bounds how long a stalled endpoint can block a fetch; raise it
+    (CYCLEFORM_OVERPASS_QUERY_TIMEOUT) if big 'all'-network queries start failing at
+    the timeout, then re-run (resumable)."""
 
     # --- grown-network what-if (cycleform.scenarios) ----------------------
     scenario_prune_measure: str = "demand"
