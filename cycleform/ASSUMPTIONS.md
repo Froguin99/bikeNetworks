@@ -332,10 +332,37 @@ section. When you change something here, change it in code too (and vice versa).
 ## Outcomes (cycling rate) — Phase 2
 
 - Harmonised long table from multiple sources with `source` and `measure_type`
-  as fixed effects; constructs are never silently stacked (CLAUDE.md §4).
-- Sources: `max_value.csv` (old project; Eurostat + 2011 census; mixed
-  construct), OECD FUA commute mode share (**most recent year per FUA**), and
-  optionally UK census/Active Lives (to be supplied).
+  as fixed effects; constructs are never silently stacked (CLAUDE.md §4). One
+  outcome is chosen per place by `outcomes.SOURCE_PRIORITY` via `prefer_outcome`.
+- **Primary source (added 2026-07-23): ModalShare.** `modalshare.csv`, the
+  commute-to-work cycling share compiled by Prieto-Curiel & Ospina (see
+  attribution below), latest observation per city (`LastObservation == YES`),
+  stored 0–1 → scaled to %. Preferred over the others because it is broad
+  (~1,050 cities with a cycling value), harmonised across Eurostat / US-CA-AU
+  census / EPOMM / EF China, and agrees with the old values (Pearson ≈ 0.90)
+  while giving stronger, higher-n correlations. Expanded the run list to ~1,450
+  places.
+- **Gap-fill sources** (used only where ModalShare has no value): OECD FUA
+  commute mode share (**most recent year per FUA**), then `max_value.csv` (old
+  project; Eurostat + 2011 UK census; mixed construct, year unknown).
+- All three measure the **same construct** — cycle commute-to-work mode share —
+  so mixing them is defensible; `source` is still carried for a fixed effect /
+  sensitivity check.
+
+### Data attribution
+
+- **ModalShare** — Prieto-Curiel, R. & Ospina, J. P., *"Large cities are less
+  efficient for sustainable transport: The ABC of mobility"* (dataset).
+  Complexity Science Hub / EAFIT. Source repo:
+  <https://github.com/rafaelprietocuriel/ModalShare> (`ModalShare.csv`, accessed
+  2026-07-23; copied to `external/cycling_rates/modalshare.csv`, README preserved
+  as `modalshare_SOURCE.md`, `CITATION.cff` in the repo). The dataset itself is
+  compiled from many underlying sources, referenced per row in its `DataSource` /
+  `DataLink` columns (carried into the `notes` field).
+- **OECD FUA** — OECD Functional Urban Area commute mode share (Eurostat browser
+  `urb_ltran` lineage), `oecd_fua_commute_bicycle.csv`.
+- **Legacy** — `max_value.csv` from the predecessor project (Eurostat + 2011 UK
+  census, mixed).
 
 
 ## "n" differances
