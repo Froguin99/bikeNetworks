@@ -130,21 +130,22 @@ def uk_vs_rest(wide: pd.DataFrame, metrics: list[str] | None = None) -> pd.DataF
 
 
 def correlate_with_outcome(
-    table: pd.DataFrame, outcome: str = "value", source: str = "oecd_fua", min_n: int = 8
+    table: pd.DataFrame, outcome: str = "value", min_n: int = 8
 ) -> pd.DataFrame:
     """Spearman & Pearson correlation (with p-values) of each metric vs cycling rate.
 
-    A Phase 4->5 bridge, not a model: one row per place (preferring `source`),
-    ranked by absolute Spearman. `significant` flags two-sided Spearman p < 0.05.
-    Spearman is primary -- cycling rate is skewed and several relationships are
-    monotonic-but-curved -- with Pearson reported alongside. Correlation is not
-    causation and ignores the confounders Q2 controls for; read it as a signpost.
+    A Phase 4->5 bridge, not a model: one row per place (highest-priority outcome
+    source, ModalShare-first), ranked by absolute Spearman. `significant` flags
+    two-sided Spearman p < 0.05. Spearman is primary -- cycling rate is skewed and
+    several relationships are monotonic-but-curved -- with Pearson reported
+    alongside. Correlation is not causation and ignores the confounders Q2 controls
+    for; read it as a signpost.
     """
     from scipy import stats
 
-    d = table.dropna(subset=[outcome]).copy()
-    if "source" in d.columns and "place_key" in d.columns:
-        d = d.sort_values("source", key=lambda s: s.ne(source)).drop_duplicates("place_key")
+    from cycleform.outcomes import prefer_outcome
+
+    d = prefer_outcome(table.dropna(subset=[outcome]).copy())
     rows = []
     for c in (col for col in _metric_cols(d) if col != outcome):
         pair = d[[c, outcome]].dropna()

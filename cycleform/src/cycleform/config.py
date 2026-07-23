@@ -88,6 +88,12 @@ class Settings(BaseSettings):
     overpass_probe_timeout: float = 5.0
     """Seconds to wait on the /status reachability probe before skipping a mirror
     (so a dead endpoint costs ~5s, not the full query timeout)."""
+    overpass_shuffle_endpoints: bool = True
+    """A single run rotates from a RANDOM starting mirror to spread its own load.
+    Set False (CYCLEFORM_OVERPASS_SHUFFLE_ENDPOINTS=false) to always start at the
+    first endpoint and fail over in order -- use this when running several parallel
+    shard processes each pinned (via CYCLEFORM_OVERPASS_ENDPOINTS) to a different
+    primary mirror, so each keeps affinity to its own server but still fails over."""
     overpass_query_timeout: int = 180
     """Per-request Overpass timeout (s), used BOTH as the HTTP timeout and the
     server-side [timeout:N] in the query. 180 covers the large majority of places
