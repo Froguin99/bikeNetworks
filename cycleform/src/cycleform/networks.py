@@ -178,7 +178,9 @@ def _edges_from_polygon(
     retries = settings.network_retries if retries is None else retries
     probe_timeout = settings.overpass_probe_timeout
     cache_setting = ox.settings.use_cache
-    start = random.randrange(len(endpoints))  # spread batch load across mirrors
+    # random start spreads a single run's load; deterministic start (start=0) lets
+    # parallel pinned shard processes each keep affinity to their own primary mirror
+    start = random.randrange(len(endpoints)) if settings.overpass_shuffle_endpoints else 0
     last: Exception | None = None
     try:
         for attempt in range(retries):

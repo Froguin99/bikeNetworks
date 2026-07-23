@@ -46,15 +46,16 @@ class ModelData:
     place_ids: list[str]
 
 
-def build_model_data(table: pd.DataFrame, source: str = "oecd_fua") -> ModelData:
+def build_model_data(table: pd.DataFrame) -> ModelData:
     """One row per place: network metrics + country + cycling rate.
 
-    Prefers the given outcome `source` where a place has several. Drops places
-    without an outcome; metric NaNs are imputed inside the CV pipeline (not here).
+    Keeps the highest-priority outcome source per place (outcomes.SOURCE_PRIORITY,
+    ModalShare-first). Drops places without an outcome; metric NaNs are imputed
+    inside the CV pipeline (not here).
     """
-    d = table.dropna(subset=["value"]).copy()
-    if "source" in d.columns:
-        d = d.sort_values("source", key=lambda s: s.ne(source)).drop_duplicates("place_key")
+    from cycleform.outcomes import prefer_outcome
+
+    d = prefer_outcome(table.dropna(subset=["value"]).copy())
     feats = _metric_cols(d)
     X = d[feats].copy()
     X["country"] = d["country"].fillna("NA").to_numpy()

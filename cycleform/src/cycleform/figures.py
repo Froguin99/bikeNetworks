@@ -185,19 +185,19 @@ def fig_outcome_relationship(
     table: pd.DataFrame,
     metric: str,
     label: str | None = None,
-    source: str = "oecd_fua",
     labels: bool = False,
 ) -> Path:
     """Scatter of a metric against cycling rate (the Q2 preview).
 
-    One point per place (preferring `source`), coloured by country, with a
-    Spearman correlation in the title. `labels=False` gives a clean points-only
-    figure; `labels=True` annotates the fixed HIGHLIGHT_PLACES exemplars and is
-    saved with a `_labeled` suffix.
+    One point per place (highest-priority outcome source, ModalShare-first),
+    coloured by country, with a Spearman correlation in the title. `labels=False`
+    gives a clean points-only figure; `labels=True` annotates the fixed
+    HIGHLIGHT_PLACES exemplars and is saved with a `_labeled` suffix.
     """
+    from cycleform.outcomes import prefer_outcome
+
     set_style()
-    d = table.dropna(subset=[metric, "value"]).copy()
-    d = d.sort_values("source", key=lambda s: s.ne(source)).drop_duplicates("place_key")
+    d = prefer_outcome(table.dropna(subset=[metric, "value"]).copy())
     folded, cmap = _country_palette(d["country"]) if "country" in d.columns else (None, {})
     d["_cc"] = folded if folded is not None else "?"
     fig, ax = plt.subplots(figsize=(5.2, 4.2))
@@ -260,20 +260,20 @@ def fig_outcome_correlations(corr: pd.DataFrame, top: int = 25) -> Path:
     return save(fig, "correlations_vs_cycling")
 
 
-def fig_top_correlates(
-    table: pd.DataFrame, corr: pd.DataFrame, n: int = 9, source: str = "oecd_fua"
-) -> Path:
+def fig_top_correlates(table: pd.DataFrame, corr: pd.DataFrame, n: int = 9) -> Path:
     """Small-multiples grid of the top-n significant metrics vs cycling rate.
 
     Each panel: scatter + trend line + Spearman rho and p. Points are one per
-    place (preferring `source`); panels share the cycling-rate y-axis.
+    place (highest-priority outcome source, ModalShare-first); panels share the
+    cycling-rate y-axis.
     """
+    from cycleform.outcomes import prefer_outcome
+
     set_style()
     sig = corr[corr.get("significant", True)].head(n)
     if sig.empty:
         sig = corr.head(n)
-    d = table.dropna(subset=["value"]).copy()
-    d = d.sort_values("source", key=lambda s: s.ne(source)).drop_duplicates("place_key")
+    d = prefer_outcome(table.dropna(subset=["value"]).copy())
     ncol = 3
     nrow = int(np.ceil(len(sig) / ncol))
     fig, axes = plt.subplots(nrow, ncol, figsize=(3.2 * ncol, 2.8 * nrow), squeeze=False)

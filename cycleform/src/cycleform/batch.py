@@ -18,6 +18,7 @@ from cycleform.config import settings
 from cycleform.ingest import context_from_osm
 from cycleform.metrics import REGISTRY
 from cycleform.networks import NetworkTooLarge
+from cycleform.outcomes import COUNTRY_NAMES
 from cycleform.places import BoundaryTooLarge
 from cycleform.results import build_combined, is_cached, save_place
 
@@ -135,49 +136,21 @@ PILOT: list[PlaceSpec] = [
 ]
 
 
-# OECD 2-letter REF_AREA prefixes -> country name for Nominatim geocoding.
-COUNTRY_NAMES: dict[str, str] = {
-    "UK": "United Kingdom",
-    "DE": "Germany",
-    "FR": "France",
-    "IT": "Italy",
-    "BE": "Belgium",
-    "CH": "Switzerland",
-    "SE": "Sweden",
-    "NO": "Norway",
-    "FI": "Finland",
-    "PT": "Portugal",
-    "IE": "Ireland",
-    "US": "United States",
-    "CA": "Canada",
-    "AU": "Australia",
-    "JP": "Japan",
-    "CZ": "Czechia",
-    "EE": "Estonia",
-    "LV": "Latvia",
-    "SK": "Slovakia",
-    "BG": "Bulgaria",
-    "CL": "Chile",
-    "NZ": "New Zealand",
-    "KO": "South Korea",
-    "ME": "Mexico",
-}
-
-
 def all_outcome_specs() -> list[PlaceSpec]:
-    """One PlaceSpec per place we have a cycling rate for (OECD FUAs + legacy).
+    """One PlaceSpec per place we have a cycling rate for (ModalShare + OECD + legacy).
 
-    OECD places geocode as "Name, Country" with the country from the FUA code;
-    legacy-only places (not in OECD) fall back to a bare-name query with no
-    country. Deduplicated on (place_key, country). Names that Nominatim can't
-    resolve to a polygon will fail at run time and be logged, never silently lost.
+    ModalShare and OECD places geocode as "Name, Country" with the country from the
+    code; legacy-only places (not elsewhere) fall back to a bare-name query with no
+    country. Deduplicated on (place_key, country). Names that Nominatim can't resolve
+    to a polygon will fail at run time and be logged, never silently lost.
     """
     from cycleform.outcomes import build_outcomes
 
     out = build_outcomes(save=False)
     specs: dict[tuple, PlaceSpec] = {}
-    # OECD first (country known), so it wins over a legacy duplicate.
-    for src in ("oecd_fua", "legacy_max_value"):
+    # ModalShare first (broad, country known), then OECD, then legacy: the first to
+    # add a (place_key, country) wins the geocode query for that place.
+    for src in ("modalshare", "oecd_fua", "legacy_max_value"):
         for _, r in out[out["source"] == src].iterrows():
             key = (r["place_key"], r.get("country") or "")
             if key in specs or not str(r["place_id"]).strip():

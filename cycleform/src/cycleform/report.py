@@ -166,9 +166,8 @@ def make_scenario_report() -> dict:
     # is in max_value.csv but has no computed metrics, so a table-based lookup left
     # it blank). Prefer the OECD FUA construct where a place has several, to match
     # the outcome the model is trained on.
-    obs = outcomes.build_outcomes(save=False).dropna(subset=["value"])
-    obs = obs.sort_values("source", key=lambda s: s.ne("oecd_fua"))
-    observed = obs.drop_duplicates("place_key").set_index("place_key")["value"].astype(float)
+    obs = outcomes.prefer_outcome(outcomes.build_outcomes(save=False).dropna(subset=["value"]))
+    observed = obs.set_index("place_key")["value"].astype(float)
     pred["observed"] = pred["place_id"].map(place_key).map(observed)
     paths.append(figures.fig_scenario_prediction_shift(pred))
 
@@ -295,7 +294,7 @@ def text_report(path: Path | str | None = None, top_corr: int = 20, top_pred: in
 
     labelled = table.dropna(subset=["value"])
     n_out = labelled["place_key"].nunique() if "place_key" in labelled.columns else len(labelled)
-    used = labelled.drop_duplicates("place_key") if "place_key" in labelled.columns else labelled
+    used = outcomes.prefer_outcome(labelled) if "place_key" in labelled.columns else labelled
     src_counts = used["source"].value_counts().to_dict() if "source" in used.columns else {}
     top_countries = wide["country"].value_counts().head(8).to_dict() if "country" in wide else {}
 
@@ -303,9 +302,9 @@ def text_report(path: Path | str | None = None, top_corr: int = 20, top_pred: in
     # which carry the definitive year info). Eurostat and the 2011 UK census are
     # combined in the legacy max_value.csv and cannot be split from it.
     src_labels = {
+        "modalshare": "ModalShare (Prieto-Curiel et al.; commute cycling share)",
         "oecd_fua": "OECD FUA (bicycle commute mode share)",
         "legacy_max_value": "Eurostat + 2011 UK census (legacy max_value.csv, mixed)",
-        "uk_census": "UK Census",
     }
     try:
         allout = outcomes.build_outcomes(save=False)
@@ -332,20 +331,21 @@ def text_report(path: Path | str | None = None, top_corr: int = 20, top_pred: in
         f"- UK places: **{int(wide['is_uk'].sum()) if 'is_uk' in wide else 0}**.",
         f"- Top countries by place count: {top_countries}.",
         "",
-        "Cycling-rate outcome by source (one preferred source per place, OECD FUA "
-        "first where a place has several):",
+        "Cycling-rate outcome by source (one preferred source per place, "
+        "ModalShare first, then OECD FUA, then legacy):",
         "",
         _md_table(src_table) if not src_table.empty else "_no outcome sources_",
         "",
-        "_Eurostat and the 2011 UK census are combined in the legacy `max_value.csv` "
-        "(year unspecified) and are not separable within it; supplying them as "
-        "separate files would let them be reported (and modelled) apart._",
+        "_All three sources measure commute-to-work cycling share. ModalShare is a "
+        "harmonised multi-source dataset and takes priority; OECD FUA and the legacy "
+        "max_value.csv (mixed Eurostat + 2011 UK census, year unspecified) fill the "
+        "places ModalShare doesn't cover._",
         "",
     )
 
     # --- 2. cycling rate outcome ------------------------------------------
     if not labelled.empty:
-        v = labelled.drop_duplicates("place_key")["value"].astype(float)
+        v = used["value"].astype(float)
         w(
             "## 2. Cycling rate (outcome, % mode share)",
             "",
