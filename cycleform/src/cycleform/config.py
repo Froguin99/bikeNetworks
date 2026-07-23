@@ -56,6 +56,16 @@ class Settings(BaseSettings):
     cache invalidation needed (this is not part of metric_version)."""
     batch_pause_seconds: float = 1.0
     """Small pause between places in a batch, easing sustained Overpass load."""
+    max_boundary_km2: float = 4000.0
+    """Skip a place whose geocoded boundary exceeds this area (km2): a guard against
+    region-scale mis-geocodes -- e.g. Auckland resolving to the 16,159 km2 Auckland
+    Region (an amalgamated council with no separate city boundary), which osmnx then
+    tiles into ~7 slow sub-queries and burns hours. Checked BEFORE any Overpass
+    fetch, so the skip is instant and logged. Complements max_road_edges, which only
+    sees the drive-edge count and misses sparse-but-huge areas (Auckland's drive net
+    is only ~38k edges). Cities sit well under this; raise it
+    (CYCLEFORM_MAX_BOUNDARY_KM2) to admit a genuinely huge metro. Not part of
+    metric_version."""
 
     # --- Overpass fetching (long batches hit transient timeouts/overload) -
     overpass_endpoints: tuple[str, ...] = (

@@ -17,6 +17,8 @@ import pandas as pd
 from cycleform.config import settings
 from cycleform.ingest import context_from_osm
 from cycleform.metrics import REGISTRY
+from cycleform.networks import NetworkTooLarge
+from cycleform.places import BoundaryTooLarge
 from cycleform.results import build_combined, is_cached, save_place
 
 log = logging.getLogger(__name__)
@@ -67,6 +69,20 @@ def run_place(spec: PlaceSpec, *, simplify: bool = True, force: bool = False) ->
             "metrics_error": n_bad,
             "seconds": round(time.perf_counter() - t0, 1),
             "detail": "",
+        }
+    except (BoundaryTooLarge, NetworkTooLarge) as exc:
+        # too big to be a useful city fetch: skip fast (no traceback), resumable
+        log.warning("%s skipped: %s", spec.place_id, exc)
+        return {
+            "place_id": spec.place_id,
+            "country": spec.country,
+            "status": "skipped",
+            "road_edges": 0,
+            "bike_edges": 0,
+            "metrics_ok": 0,
+            "metrics_error": 0,
+            "seconds": round(time.perf_counter() - t0, 1),
+            "detail": f"{type(exc).__name__}: {exc}",
         }
     except Exception as exc:
         log.exception("%s failed", spec.place_id)

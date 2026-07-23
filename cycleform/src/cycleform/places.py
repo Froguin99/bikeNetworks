@@ -32,6 +32,12 @@ _OVERSIZED_ADMIN = {
 _SETTLEMENT_TYPES = {"city", "town", "village", "municipality", "borough", "suburb", "hamlet"}
 
 
+class BoundaryTooLarge(RuntimeError):
+    """Geocoded boundary exceeds settings.max_boundary_km2 -- a region-scale
+    mis-geocode; skip it before fetching (osmnx would tile it into many slow
+    sub-queries)."""
+
+
 @dataclass
 class Boundary:
     place_id: str

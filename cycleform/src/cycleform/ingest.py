@@ -20,7 +20,7 @@ from cycleform.networks import (
     road_network,
 )
 from cycleform.osm import configure_osmnx
-from cycleform.places import resolve_boundary
+from cycleform.places import BoundaryTooLarge, resolve_boundary
 
 log = logging.getLogger(__name__)
 
@@ -46,6 +46,11 @@ def context_from_osm(
     pid = place_id or query
     boundary = resolve_boundary(query, place_id=pid)
     log.info("%s: boundary %.1f km² in %s", pid, boundary.area_km2, boundary.crs)
+    if boundary.area_km2 > settings.max_boundary_km2:
+        raise BoundaryTooLarge(
+            f"boundary {boundary.area_km2:.0f} km² > max_boundary_km2 "
+            f"{settings.max_boundary_km2:.0f} -- region-scale geocode, skipping fetch"
+        )
 
     # road (drive, neatnet) first: its size guard fails fast before the "all" fetch
     road = road_network(boundary.geometry_wgs84, boundary.crs, simplify=simplify)
