@@ -17,12 +17,14 @@ param(
 $py = "C:\Users\b8008458\AppData\Local\miniforge3\envs\neatnetenv\python.exe"
 $here = "C:\Users\b8008458\OneDrive - Newcastle University\2022 to 2023\PhD\bikeNetworksEDA\2026_edition\cycleform"
 
-# Each entry lists all mirrors with a DIFFERENT one first (its primary); with
-# SHUFFLE off, a process prefers its primary and only fails over to the rest.
+# Each entry lists all mirrors (COMMA-SEPARATED, no quotes) with a DIFFERENT one
+# first (its primary); with SHUFFLE off a process prefers its primary and only
+# fails over to the rest. Comma-separated (not JSON) so it survives PowerShell
+# quoting when passed to the child process.
 $mirrors = @(
-    '["https://overpass-api.de/api","https://overpass.kumi.systems/api","https://overpass.private.coffee/api"]',
-    '["https://overpass.kumi.systems/api","https://overpass.private.coffee/api","https://overpass-api.de/api"]',
-    '["https://overpass.private.coffee/api","https://overpass-api.de/api","https://overpass.kumi.systems/api"]'
+    'https://overpass-api.de/api,https://overpass.kumi.systems/api,https://overpass.private.coffee/api',
+    'https://overpass.kumi.systems/api,https://overpass.private.coffee/api,https://overpass-api.de/api',
+    'https://overpass.private.coffee/api,https://overpass-api.de/api,https://overpass.kumi.systems/api'
 )
 
 for ($k = 0; $k -lt $Count; $k++) {
@@ -37,6 +39,6 @@ for ($k = 0; $k -lt $Count; $k++) {
         Write-Output "  $inner`n"
     } else {
         Start-Process powershell -ArgumentList '-NoExit', '-Command', $inner
-        Write-Output "launched shard $i/$N (primary $($ep.Split(',')[0].Trim('[\"')))"
+        Write-Output "launched shard $i/$N (primary $($ep.Split(',')[0]))"
     }
 }

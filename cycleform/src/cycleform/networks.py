@@ -174,7 +174,7 @@ def _edges_from_polygon(
     entry from failing the place on every future run.
     """
     configure_osmnx()
-    endpoints = list(settings.overpass_endpoints) or [ox.settings.overpass_url]
+    endpoints = list(settings.overpass_endpoint_list) or [ox.settings.overpass_url]
     retries = settings.network_retries if retries is None else retries
     probe_timeout = settings.overpass_probe_timeout
     cache_setting = ox.settings.use_cache

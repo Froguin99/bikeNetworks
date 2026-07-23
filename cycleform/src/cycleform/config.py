@@ -68,18 +68,20 @@ class Settings(BaseSettings):
     metric_version."""
 
     # --- Overpass fetching (long batches hit transient timeouts/overload) -
-    overpass_endpoints: tuple[str, ...] = (
-        "https://overpass-api.de/api",
-        "https://overpass.kumi.systems/api",
-        "https://overpass.private.coffee/api",
+    overpass_endpoints: str = (
+        "https://overpass-api.de/api,"
+        "https://overpass.kumi.systems/api,"
+        "https://overpass.private.coffee/api"
     )
-    """GLOBAL Overpass mirrors rotated (from a random start, to spread load) for
-    each network fetch. A hard-down endpoint is skipped after a quick reachability
-    probe; a slow/failing one is retried on the next mirror. Only global mirrors
-    belong here: probing (2026-07) showed overpass.openstreetmap.fr returns 403
-    (blocks this use) and overpass.osm.ch is a Switzerland-only extract (empty for
-    everywhere else), so both are excluded. Override with CYCLEFORM_OVERPASS_ENDPOINTS
-    (a JSON list) to add/reorder mirrors."""
+    """GLOBAL Overpass mirrors (COMMA-SEPARATED) rotated for each network fetch. A
+    hard-down endpoint is skipped after a quick reachability probe; a slow/failing
+    one is retried on the next mirror. Only global mirrors belong here: probing
+    (2026-07) showed overpass.openstreetmap.fr returns 403 (blocks this use) and
+    overpass.osm.ch is a Switzerland-only extract (empty elsewhere), so both are
+    excluded. Override with CYCLEFORM_OVERPASS_ENDPOINTS as a plain comma-separated
+    list (no quotes/brackets), e.g.
+    CYCLEFORM_OVERPASS_ENDPOINTS="https://overpass.kumi.systems/api,https://overpass-api.de/api".
+    Read via `overpass_endpoint_list`."""
     network_retries: int = 4
     """Attempts per network fetch, rotating through overpass_endpoints with
     backoff. Kept small so a place that all mirrors are stalling on fails fast and
@@ -104,6 +106,11 @@ class Settings(BaseSettings):
     """While a single Overpass fetch is running, log a '...still fetching' line
     every N seconds so a slow (large) place visibly looks alive, not hung. Fast
     fetches finish before the first beat, so small places stay quiet."""
+
+    @property
+    def overpass_endpoint_list(self) -> tuple[str, ...]:
+        """`overpass_endpoints` parsed into a tuple (comma-separated, whitespace ok)."""
+        return tuple(e.strip() for e in self.overpass_endpoints.split(",") if e.strip())
 
     # --- grown-network what-if (cycleform.scenarios) ----------------------
     scenario_prune_measure: str = "demand"
