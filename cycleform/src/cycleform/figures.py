@@ -91,13 +91,23 @@ def _country_palette(countries: pd.Series) -> tuple[pd.Series, dict[str, str]]:
     return folded, cmap
 
 
-def fig_metric_ranked(wide: pd.DataFrame, metric: str, label: str | None = None) -> Path:
+def fig_metric_ranked(
+    wide: pd.DataFrame, metric: str, label: str | None = None, max_places: int = 40
+) -> Path:
     """Ranked dot plot of one metric across places, coloured by country.
 
-    Answers 'where does each city sit in the distribution' -- the Q1 framing.
+    Answers 'where does each city sit in the distribution' -- the Q1 framing. With
+    more than `max_places` places the full ranking is unreadable (and overflows
+    matplotlib's 65,536-px height limit), so it shows the lowest and highest
+    `max_places // 2` with a break between them.
     """
     set_style()
     d = wide.dropna(subset=[metric]).sort_values(metric)
+    n_total = len(d)
+    truncated = n_total > max_places
+    if truncated:
+        h = max_places // 2
+        d = pd.concat([d.head(h), d.tail(h)])
     folded, cmap = _country_palette(d["country"]) if "country" in d.columns else (None, {})
     fig, ax = plt.subplots(figsize=(5.5, max(2.5, 0.28 * len(d))))
     y = np.arange(len(d))
@@ -108,6 +118,10 @@ def fig_metric_ranked(wide: pd.DataFrame, metric: str, label: str | None = None)
     ax.set_yticklabels(d["place_id"] if "place_id" in d.columns else d.index)
     ax.set_xlabel(label or metric)
     ax.grid(axis="y", visible=False)
+    if truncated:
+        h = max_places // 2
+        ax.axhline(h - 0.5, color="0.7", ls=":", lw=0.8)  # break between bottom & top
+        ax.set_title(f"lowest {h} + highest {h} of {n_total} places", fontsize=8)
     if cmap:
         handles = [plt.Line2D([], [], marker="o", ls="", color=v, label=k) for k, v in cmap.items()]
         ax.legend(handles=handles, title="", loc="lower right", ncol=1)
@@ -208,13 +222,15 @@ def fig_outcome_relationship(
         )
     if labels:
         _annotate_highlights(ax, d, metric, "value")
+    # The fit line is drawn with a label so it lands in the legend, directly under
+    # the country colour dots -- a stable spot that dense points / a shifting
+    # legend never overwrite (loc="best" keeps the whole box clear of the data).
     _add_trend(ax, d[metric].to_numpy(), d["value"].to_numpy())
     rho, p = _spearman(d[metric], d["value"])
     ax.set_xlabel(label or metric)
     ax.set_ylabel("cycling rate (% mode share)")
     ax.set_title(f"n={len(d)}   Spearman rho={rho:.2f}, p={_pfmt(p)}")
-    if cmap:
-        ax.legend(title="", loc="best", ncol=2)
+    ax.legend(title="", loc="best", ncol=2 if cmap else 1, fontsize=7)
     return save(fig, f"outcome_vs_{metric}" + ("_labeled" if labels else ""))
 
 
@@ -229,14 +245,83 @@ def _pfmt(p: float) -> str:
     return "<0.001" if p < 0.001 else f"{p:.3f}"
 
 
-def _add_trend(ax, x: np.ndarray, y: np.ndarray) -> None:
-    """Least-squares trend line over the current x-range (guide to the eye)."""
+def _fit_trend(x: np.ndarray, y: np.ndarray):
+    """Best-fitting monotone guide from a FIXED candidate set, chosen by AICc.
+
+    The line is only a guide to the eye -- the reported inference is the Spearman
+    rho (monotone, form-free). To let the shape vary between panels without
+    cherry-picking, the SAME three monotone forms are fitted to every panel and
+    the winner is picked by one objective criterion (AICc); the procedure is
+    uniform even though the chosen form differs. See cycleform ASSUMPTIONS.md.
+
+    Candidates (both monotone, both fitted on the RAW cycling-rate scale so their
+    AICc is directly comparable -- the exponential via non-linear least squares,
+    NOT by regressing log y, which would put its residuals on a different scale):
+      - linear:      y = a + b*x
+      - exponential: y = a*exp(b*x)       (multiplicative; stays >= 0)
+    Both have the same parameter count, so AICc, AIC and R^2 rank them identically
+    here; AICc is used so the method stays valid if a higher-order form is ever
+    added. Returns (name, predict_fn, r2) or None.
+    """
+    from scipy.optimize import curve_fit
+
     ok = np.isfinite(x) & np.isfinite(y)
-    if ok.sum() < 3:
-        return
-    b, a = np.polyfit(x[ok], y[ok], 1)
-    xs = np.linspace(x[ok].min(), x[ok].max(), 50)
-    ax.plot(xs, a + b * xs, color="0.35", lw=1.2, ls="-", zorder=1)
+    x, y = x[ok], y[ok]
+    n = x.size
+    if n < 5:
+        return None
+    ss_tot = float(np.sum((y - y.mean()) ** 2)) or 1e-12
+    cands: dict[str, tuple] = {}
+    b, a = np.polyfit(x, y, 1)
+    cands["linear"] = (lambda xx, a=a, b=b: a + b * xx, 2)
+    try:
+        popt, _ = curve_fit(
+            lambda xx, a, b: a * np.exp(b * xx), x, y,
+            p0=[max(float(y.mean()), 1e-3), 0.0], maxfev=10000,
+        )
+        cands["exponential"] = (lambda xx, a=popt[0], b=popt[1]: a * np.exp(b * xx), 2)
+    except Exception:  # curve_fit may not converge; just drop this candidate
+        pass
+    best = None
+    for name, (fn, k) in cands.items():
+        resid = y - fn(x)
+        rss = float(np.sum(resid ** 2))
+        if not np.isfinite(rss):
+            continue
+        rss = max(rss, 1e-12)
+        kk = k + 1  # +1 for the residual variance
+        aic = n * np.log(rss / n) + 2 * kk
+        aicc = aic + (2 * kk * (kk + 1)) / max(n - kk - 1, 1)
+        r2 = 1.0 - rss / ss_tot
+        if best is None or aicc < best[0]:
+            best = (aicc, name, fn, r2)
+    if best is None:
+        return None
+    _, name, fn, r2 = best
+    return name, fn, r2
+
+
+def _add_trend(ax, x: np.ndarray, y: np.ndarray) -> str | None:
+    """Draw the best-fitting monotone guide curve and floor the axis at 0.
+
+    Drawn ON TOP of the points (points are often dense enough to hide a line
+    behind them), dashed and semi-transparent so it reads as a guide rather than
+    a fitted model, and clipped at 0 -- cycling rate can never be negative.
+    Returns a short 'exponential fit (R²=0.34)' label for the caller to place in
+    the legend or title (NOT floating on the axes, where dense points or a
+    shifting legend would overwrite it); None if too few points to fit.
+    """
+    fit = _fit_trend(np.asarray(x, dtype=float), np.asarray(y, dtype=float))
+    if fit is None:
+        return None
+    name, fn, r2 = fit
+    ok = np.isfinite(x) & np.isfinite(y)
+    xs = np.linspace(float(np.min(x[ok])), float(np.max(x[ok])), 100)
+    ys = np.clip(fn(xs), 0.0, None)
+    label = f"{name} fit (R²={r2:.2f})"
+    ax.plot(xs, ys, color="0.15", lw=1.4, ls=(0, (5, 2)), alpha=0.85, zorder=6, label=label)
+    ax.set_ylim(bottom=0)
+    return label
 
 
 def fig_outcome_correlations(corr: pd.DataFrame, top: int = 25) -> Path:
@@ -293,13 +378,127 @@ def fig_top_correlates(table: pd.DataFrame, corr: pd.DataFrame, n: int = 9) -> P
             edgecolor="white",
             linewidth=0.3,
         )
-        _add_trend(ax, sub[m].to_numpy(), sub["value"].to_numpy())
-        ax.set_title(f"{m}\nrho={row['spearman']:.2f}, p={_pfmt(row['spearman_p'])}", fontsize=7.5)
+        lbl = _add_trend(ax, sub[m].to_numpy(), sub["value"].to_numpy())
+        sub_t = f"\n{lbl}" if lbl else ""
+        ax.set_title(
+            f"{m}\nrho={row['spearman']:.2f}, p={_pfmt(row['spearman_p'])}{sub_t}", fontsize=7.5
+        )
         ax.tick_params(labelsize=6)
         if i % ncol == 0:
             ax.set_ylabel("cycling %", fontsize=7)
     fig.tight_layout()
     return save(fig, "top_correlates_grid")
+
+
+# Metric taxonomy for the grouped small-multiple grids (fig_metric_group_grid).
+# Groups follow the thesis subsections so each figure backs one paragraph. Entries
+# are BASE names -- the _bike / _road layer variants present in the table are added
+# automatically -- or exact single-layer metric names. Order here sets panel order.
+METRIC_GROUPS: dict[str, list[str]] = {
+    "size": [
+        "length_km", "n_edges", "n_nodes", "intersection_count", "edge_length_avg_m",
+        "street_density_km2", "cycle_network_density_km2",
+        "intersection_density_km2", "intersection_density_per_km",
+    ],
+    "connectivity_edge": ["connectivity_ratio", "meshedness", "k_avg"],
+    "connectivity_node": [
+        "dead_end_proportion", "three_way_proportion", "four_way_proportion",
+        "self_loop_proportion",
+    ],
+    "fragmentation": [
+        "n_components", "components_per_km", "lcc_length_km",
+        "lcc_length_share", "component_size_gini",
+    ],
+    "shape_orientation": ["circuity_avg", "orientation_entropy", "orientation_order"],
+    "centrality": [
+        "betweenness_mean", "betweenness_median", "closeness_mean",
+        "closeness_median", "clustering_mean",
+    ],
+    "lts_coverage": ["low_stress_coverage", "lts1_coverage", "lts2_coverage"],
+    "relational": [
+        "bikeable_length_share", "bike_offroad_share", "bike_lcc_share_of_road",
+        "intersection_ratio_bike_road", "entropy_gap_kl", "modal_directness_gap",
+        "low_stress_route_fraction", "mean_route_lts",
+    ],
+}
+GROUP_LABELS: dict[str, str] = {
+    "size": "Size",
+    "connectivity_edge": "Connectivity (edge-based)",
+    "connectivity_node": "Connectivity (node-based)",
+    "fragmentation": "Fragmentation",
+    "shape_orientation": "Shape and orientation",
+    "centrality": "Centrality",
+    "lts_coverage": "LTS coverage",
+    "relational": "Relational comparisons",
+}
+
+
+def _resolve_group_metrics(base: str, columns) -> list[str]:
+    """A base name -> the actual metric columns present (exact, or _bike/_road)."""
+    if base in columns:
+        return [base]
+    return [base + s for s in ("_bike", "_road") if base + s in columns]
+
+
+def fig_metric_group_grid(
+    table: pd.DataFrame, group: str, corr: pd.DataFrame | None = None
+) -> Path | None:
+    """Compact small-multiple grid of one metric family vs cycling rate.
+
+    A deliberately small-panelled companion to the individual scatters, so a paper
+    can discuss one metric family (Size, Connectivity, ...) at a time. Every metric
+    in the group gets a panel (both bike and road layers where they exist); each has
+    the same guide curve as the main scatters (dashed, on top, clipped at 0) and a
+    title carrying Spearman rho (if `corr` given) and the fit type + R². Returns the
+    saved path, or None if the group has no metrics present.
+    """
+    from cycleform.outcomes import prefer_outcome
+
+    set_style()
+    metrics = [
+        m for base in METRIC_GROUPS[group] for m in _resolve_group_metrics(base, table.columns)
+    ]
+    if not metrics:
+        return None
+    d = prefer_outcome(table.dropna(subset=["value"]).copy())
+    rho = dict(zip(corr["metric"], corr["spearman"])) if corr is not None else {}
+    ncol = min(4, len(metrics))
+    nrow = int(np.ceil(len(metrics) / ncol))
+    fig, axes = plt.subplots(nrow, ncol, figsize=(2.5 * ncol, 2.15 * nrow), squeeze=False)
+    for ax in axes.flat:
+        ax.set_visible(False)
+    for i, m in enumerate(metrics):
+        ax = axes.flat[i]
+        ax.set_visible(True)
+        sub = d.dropna(subset=[m])
+        ax.scatter(
+            sub[m], sub["value"], s=7, color=OKABE_ITO[0], alpha=0.5,
+            edgecolor="white", linewidth=0.2, zorder=2,
+        )
+        lbl = _add_trend(ax, sub[m].to_numpy(), sub["value"].to_numpy())
+        bits = []
+        if m in rho:
+            bits.append(f"ρ={rho[m]:.2f}")
+        if lbl:
+            bits.append(lbl)
+        subtitle = ("\n" + "  ·  ".join(bits)) if bits else ""
+        ax.set_title(f"{m}{subtitle}", fontsize=6.5)
+        ax.tick_params(labelsize=5.5)
+        if i % ncol == 0:
+            ax.set_ylabel("cycling %", fontsize=6)
+    fig.suptitle(GROUP_LABELS.get(group, group), fontsize=11, fontweight="bold")
+    fig.tight_layout(rect=(0, 0, 1, 0.98))
+    return save(fig, f"group_{group}")
+
+
+def fig_metric_group_grids(table: pd.DataFrame, corr: pd.DataFrame | None = None) -> list[Path]:
+    """Draw every metric-family grid (see METRIC_GROUPS); returns the saved paths."""
+    out = []
+    for group in METRIC_GROUPS:
+        p = fig_metric_group_grid(table, group, corr=corr)
+        if p is not None:
+            out.append(p)
+    return out
 
 
 def fig_pred_vs_actual(pred: pd.DataFrame, r2: float | None = None, labels: bool = False) -> Path:

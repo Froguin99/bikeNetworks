@@ -139,6 +139,32 @@ section. When you change something here, change it in code too (and vice versa).
 - The metric-vs-cycling scatter shows one point per place (preferring OECD),
   labels only the extremes, and reports Spearman rho. It is a descriptive
   signpost, NOT a model (no confounder control) -- Q2 (Phase 5) does that.
+- **Trend guide on the scatters (2026-07-24).** The overlaid curve is a *guide to
+  the eye only*; the reported inference is the Spearman rho (monotone, form-free),
+  so the curve carries no statistical weight. To let the shape vary between panels
+  WITHOUT per-plot cherry-picking, a FIXED candidate set of two monotone forms is
+  fitted to every panel -- **linear** (`a+b*x`) and **exponential** (`a*exp(b*x)`,
+  multiplicative) -- and the winner is chosen by one objective criterion (**AICc**).
+  (A log form was trialled and dropped, 2026-07-24, on visual grounds.) The procedure
+  is identical for every figure even though the selected form differs, which is what
+  makes it principled model selection rather than fishing. Two rigour points: (1) both
+  are fitted on the RAW cycling-rate scale (the exponential by non-linear least
+  squares, not by regressing `log y`), so their AICc is directly comparable -- fitting
+  one form on a transformed axis and another on the raw axis is the classic invalid
+  comparison; (2) the two forms share a parameter count, so AICc, AIC and R^2 rank
+  them identically here, but AICc is used so the method stays valid if a higher-order
+  form is added. The curve is drawn ON TOP of the points (dashed, semi-transparent, so
+  it reads as a guide and is visible over dense scatter), is **clipped at 0 and the
+  y-axis floored at 0** (cycling mode share cannot be negative -- previously a steep
+  linear fit descended below zero and dragged the autoscaled axis negative), and its
+  form + R^2 is reported in the legend / panel title (never floating on the axes, where
+  dense points or a shifting legend would overwrite it). `figures._fit_trend`.
+- **Metric-family grids (2026-07-24).** Alongside the one-scatter-per-metric figures,
+  `figures.fig_metric_group_grids` draws a compact small-multiple grid per metric
+  family (Size, Connectivity edge/node, Fragmentation, Shape & orientation, Centrality,
+  LTS coverage, Relational comparisons -- the thesis subsections), so a paragraph can
+  discuss one family at a time. Same guide curve as the individual scatters; both bike
+  and road layers get a panel where they exist. Taxonomy in `figures.METRIC_GROUPS`.
 
 ## Correlation analysis decisions (2026-07-20)
 
