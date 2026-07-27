@@ -16,6 +16,10 @@ param(
 
 $py = "C:\Users\b8008458\AppData\Local\miniforge3\envs\neatnetenv\python.exe"
 $here = "C:\Users\b8008458\OneDrive - Newcastle University\2022 to 2023\PhD\bikeNetworksEDA\2026_edition\cycleform"
+# Activate the env in each child window: without activation the env's Library\bin
+# DLLs are off PATH and python dies with a SILENT hard crash (0xc06d007f delay-load
+# failure) at the first native call -- seen at the Overpass fetch on machine B.
+$hook = "C:\Users\b8008458\AppData\Local\miniforge3\shell\condabin\conda-hook.ps1"
 
 # Each entry lists all mirrors (COMMA-SEPARATED, no quotes) with a DIFFERENT one
 # first (its primary); with SHUFFLE off a process prefers its primary and only
@@ -30,7 +34,8 @@ $mirrors = @(
 for ($k = 0; $k -lt $Count; $k++) {
     $i = $Start + $k
     $ep = $mirrors[$i % $mirrors.Count]
-    $inner = "`$env:CYCLEFORM_OVERPASS_SHUFFLE_ENDPOINTS='false'; " +
+    $inner = "& '$hook'; conda activate neatnetenv; " +
+             "`$env:CYCLEFORM_OVERPASS_SHUFFLE_ENDPOINTS='false'; " +
              "`$env:CYCLEFORM_OVERPASS_ENDPOINTS='$ep'; " +
              "Set-Location '$here'; " +
              "& '$py' run_all.py --shard $i/$N"

@@ -87,6 +87,8 @@ def make_figures(
         paths.append(figures.fig_outcome_correlations(corr, top=None))  # every metric
         paths.append(figures.fig_top_correlates(table, corr, n=top_n))
         paths.append(figures.fig_metric_correlation_heatmap(wide))  # every metric
+        # compact grids, one per metric family, for discussing a group at a time
+        paths.extend(figures.fig_metric_group_grids(table, corr))
     # one scatter per analysed metric, in both unlabelled and labelled variants
     if all_scatters and not corr.empty:
         for m in corr["metric"]:

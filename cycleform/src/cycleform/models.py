@@ -124,7 +124,18 @@ def feature_importance(table: pd.DataFrame, top: int = 20) -> pd.DataFrame:
     data = build_model_data(table)
     pipe = _pipeline(_models()["random_forest"], data.features, use_metrics=True, use_country=False)
     pipe.fit(data.X, data.y)
-    imp = permutation_importance(pipe, data.X, data.y, n_repeats=20, random_state=SEED, n_jobs=-1)
+    # permutation_importance defaults to joblib's loky (process) backend, which
+    # crashes in a Jupyter kernel on Windows (OSError [Errno 22] from the loky
+    # resource tracker on worker spawn). Force the THREADING backend instead: its
+    # inner work is RF.predict, which releases the GIL (Cython), so threads still
+    # parallelise well and no worker process is ever spawned. (The RF itself uses
+    # n_jobs=-1 for the same reason -- tree building is threaded, so it is safe.)
+    import joblib
+
+    with joblib.parallel_backend("threading"):
+        imp = permutation_importance(
+            pipe, data.X, data.y, n_repeats=20, random_state=SEED, n_jobs=-1
+        )
     out = pd.DataFrame(
         {
             "metric": list(data.X.columns),  # metrics + the unused country column
