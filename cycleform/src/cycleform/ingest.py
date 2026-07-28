@@ -32,6 +32,8 @@ def context_from_osm(
     country: str = "",
     simplify: bool = True,
     cache: bool = True,
+    expect_lat: float | None = None,
+    expect_lon: float | None = None,
 ) -> PlaceContext:
     """Build a PlaceContext for one real place from OSM.
 
@@ -41,10 +43,12 @@ def context_from_osm(
         country: 2-letter code (UK, DE, ...) used to disambiguate the outcome join.
         simplify: run neatnet on the road network (recommended; §3).
         cache: use osmnx's on-disk Overpass cache.
+        expect_lat/expect_lon: when given (e.g. a ModalShare coordinate), the
+            boundary is coordinate-anchored so a wrong same-named place is rejected.
     """
     configure_osmnx(cache=cache)
     pid = place_id or query
-    boundary = resolve_boundary(query, place_id=pid)
+    boundary = resolve_boundary(query, place_id=pid, expect_lat=expect_lat, expect_lon=expect_lon)
     log.info("%s: boundary %.1f km² in %s", pid, boundary.area_km2, boundary.crs)
     if boundary.area_km2 > settings.max_boundary_km2:
         raise BoundaryTooLarge(

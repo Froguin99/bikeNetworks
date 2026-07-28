@@ -772,6 +772,209 @@ def fig_scenario_typology_shift(proj: dict, place_ids: list[str]) -> Path:
     return save(fig, "scenario_typology_shift")
 
 
+# Key metrics for the UK-vs-rest contrasts (provision, connectivity, directness).
+UK_KEY_METRICS = [
+    "bikeable_length_share", "intersection_ratio_bike_road", "bike_lcc_share_of_road",
+    "cycle_network_density_km2", "circuity_avg_bike", "low_stress_coverage",
+    "components_per_km_bike", "mean_route_lts", "meshedness_bike",
+    "modal_directness_gap", "orientation_order_bike", "street_density_km2",
+]
+
+
+def _one_per_place(table: pd.DataFrame) -> pd.DataFrame:
+    """Highest-priority outcome row per place (ModalShare-first), value present."""
+    from cycleform.outcomes import prefer_outcome
+
+    return prefer_outcome(table.dropna(subset=["value"]).copy())
+
+
+def fig_cycling_rate_distribution(table: pd.DataFrame) -> Path:
+    """Distribution of cycling rate across all places (a single violin).
+
+    One horizontal axis: the violin is the density; thin reference lines mark the
+    median and mean. Plain title -- describe the skew in the caption.
+    """
+    set_style()
+    d = _one_per_place(table)
+    v = d["value"].astype(float).to_numpy()
+    med, mean = float(np.median(v)), float(v.mean())
+    fig, ax = plt.subplots(figsize=(6.2, 2.9))
+    parts = ax.violinplot(v, positions=[0], vert=False, showextrema=False, widths=1.4)
+    for body in parts["bodies"]:
+        body.set_facecolor(OKABE_ITO[0])
+        body.set_alpha(0.30)
+        body.set_edgecolor("none")
+    ax.axvline(med, color=OKABE_ITO[3], lw=1.4, zorder=5, label=f"median {med:.1f}%")
+    ax.axvline(mean, color="0.2", lw=1.2, ls="--", zorder=5, label=f"mean {mean:.1f}%")
+    ax.set_yticks([])
+    ax.set_ylim(-1.0, 1.0)
+    ax.set_xlabel("cycling rate (% commute mode share)")
+    ax.set_xlim(left=0)
+    ax.set_title(f"Cycling rate across {len(v)} places")
+    ax.grid(axis="y", visible=False)
+    ax.legend(title="", loc="upper right")
+    return save(fig, "cycling_rate_distribution")
+
+
+def fig_cycling_rate_by_country(table: pd.DataFrame, min_places: int = 3) -> Path:
+    """Two panels sharing a country axis: mean cycling rate and the number of places
+    per country. Sorted by mean rate; the UK is highlighted.
+
+    Two panels rather than one dual-axis chart (a dataviz non-negotiable): rate and
+    count are different scales, so each gets its own axis. Countries with fewer than
+    `min_places` places are dropped: a 'national mean' from 1-2 cities is noise and
+    would misleadingly top the ranking (Albania, Greece, ... on a single city). The
+    count of dropped countries is noted in the title. Pass min_places=1 to show all.
+    """
+    set_style()
+    d = _one_per_place(table)
+    g = d.groupby("country")["value"]
+    stat = pd.DataFrame({"n": g.size(), "mean": g.mean()}).dropna(subset=["mean"])
+    dropped = int((stat["n"] < min_places).sum())
+    stat = stat[stat["n"] >= min_places].sort_values("mean")
+    y = np.arange(len(stat))
+    is_uk = stat.index == "UK"
+    rate_c = [OKABE_ITO[3] if u else OKABE_ITO[0] for u in is_uk]
+    n_c = [OKABE_ITO[3] if u else NEUTRAL for u in is_uk]
+    fig, (axL, axR) = plt.subplots(
+        1, 2, figsize=(7.6, max(3.0, 0.24 * len(stat) + 0.8)),
+        sharey=True, gridspec_kw={"width_ratios": [3, 1]},
+    )
+    axL.barh(y, stat["mean"], color=rate_c, zorder=2)
+    axL.set_yticks(y)
+    axL.set_yticklabels(stat.index)
+    axL.set_xlabel("mean cycling rate (%)")
+    axL.grid(axis="y", visible=False)
+    for tick, u in zip(axL.get_yticklabels(), is_uk):
+        if u:
+            tick.set_color(OKABE_ITO[3])
+            tick.set_fontweight("bold")
+    axR.barh(y, stat["n"], color=n_c, zorder=2)
+    axR.set_xlabel("n places")
+    axR.grid(axis="y", visible=False)
+    note = f"  ({dropped} countries with < {min_places} places omitted)" if dropped else ""
+    fig.suptitle(f"Mean cycling rate and number of places, by country{note}", fontsize=10)
+    fig.tight_layout(rect=(0, 0, 1, 0.98))
+    return save(fig, "cycling_rate_by_country")
+
+
+def _cohens_d(a: np.ndarray, b: np.ndarray) -> float:
+    """Pooled-SD standardised mean difference (a - b)."""
+    na, nb = len(a), len(b)
+    sp = np.sqrt(((na - 1) * a.var(ddof=1) + (nb - 1) * b.var(ddof=1)) / (na + nb - 2))
+    return float((a.mean() - b.mean()) / sp) if sp else np.nan
+
+
+def fig_uk_vs_rest_metrics(table: pd.DataFrame, metrics: list[str] | None = None) -> Path:
+    """How UK cycle-network form differs from the rest, per metric, as a standardised
+    difference (Cohen's d, UK minus rest). Blue = UK higher, orange = UK lower; a
+    solid edge marks a significant Mann-Whitney difference (p < 0.05).
+    """
+    from scipy import stats
+
+    set_style()
+    d = _one_per_place(table)
+    uk, rest = d[d["country"].eq("UK")], d[~d["country"].eq("UK")]
+    rows = []
+    for m in metrics or UK_KEY_METRICS:
+        if m not in d.columns:
+            continue
+        a, b = uk[m].dropna().to_numpy(), rest[m].dropna().to_numpy()
+        if len(a) < 3 or len(b) < 3:
+            continue
+        p = stats.mannwhitneyu(a, b, alternative="two-sided").pvalue
+        rows.append({"metric": m, "d": _cohens_d(a, b), "sig": p < 0.05})
+    s = pd.DataFrame(rows).dropna(subset=["d"]).sort_values("d")
+    colors = [OKABE_ITO[0] if v >= 0 else OKABE_ITO[3] for v in s["d"]]
+    edges = ["black" if x else "none" for x in s["sig"]]
+    fig, ax = plt.subplots(figsize=(6.0, max(2.6, 0.34 * len(s))))
+    ax.barh(range(len(s)), s["d"], color=colors, edgecolor=edges, linewidth=0.9, zorder=2)
+    ax.axvline(0, color="0.4", lw=0.6)
+    ax.set_yticks(range(len(s)))
+    ax.set_yticklabels(s["metric"], fontsize=7)
+    ax.set_xlabel("UK − rest  (SD units, Cohen's d)")
+    ax.set_title("UK − rest difference in cycle-network form  (solid edge: p<0.05)")
+    ax.grid(axis="y", visible=False)
+    return save(fig, "uk_vs_rest_metrics")
+
+
+def fig_uk_vs_rest_relationship(
+    table: pd.DataFrame, metric: str = "bikeable_length_share", label: str | None = None
+) -> Path:
+    """The metric-vs-cycling relationship, UK vs the rest, with a trend line for each.
+
+    The headline 'different trends' figure: rest cities are grey with their fit, UK
+    cities are highlighted with theirs. The UK slope is flatter and sits lower --
+    form predicts UK cycling more weakly, and the UK cycles below what its provision
+    predicts. Spearman rho for each group is in the legend.
+    """
+    from scipy import stats
+
+    set_style()
+    d = _one_per_place(table).dropna(subset=[metric, "value"])
+    uk, rest = d[d["country"].eq("UK")], d[~d["country"].eq("UK")]
+    fig, ax = plt.subplots(figsize=(5.6, 4.4))
+    ax.scatter(rest[metric], rest["value"], s=16, color=NEUTRAL, alpha=0.55,
+               edgecolor="white", linewidth=0.3, zorder=2, label="rest of sample")
+    ax.scatter(uk[metric], uk["value"], s=26, color=OKABE_ITO[3],
+               edgecolor="white", linewidth=0.4, zorder=3, label="UK")
+
+    def _fit_line(sub, color, name):
+        x = sub[metric].to_numpy(dtype=float)
+        yv = sub["value"].to_numpy(dtype=float)
+        if len(x) < 5:
+            return
+        b, a = np.polyfit(x, yv, 1)
+        xs = np.linspace(x.min(), x.max(), 50)
+        rho, _ = stats.spearmanr(x, yv)
+        ax.plot(xs, np.clip(a + b * xs, 0, None), color=color, lw=1.8, zorder=4,
+                label=f"{name} fit (ρ={rho:.2f}, n={len(x)})")
+
+    _fit_line(rest, "0.35", "rest")
+    _fit_line(uk, OKABE_ITO[3], "UK")
+    ax.set_xlabel(label or metric)
+    ax.set_ylabel("cycling rate (% mode share)")
+    ax.set_ylim(bottom=0)
+    ax.set_title(f"Cycling rate vs {label or metric}, UK vs rest")
+    ax.legend(title="", loc="upper left", fontsize=7.5)
+    return save(fig, "uk_vs_rest_relationship")
+
+
+def fig_implementation_gap_by_country(pred: pd.DataFrame, min_places: int = 5) -> Path:
+    """Implementation gap: does a country cycle more or less than its network form
+    predicts? Mean out-of-fold residual (observed − predicted, form-only model) per
+    country, ±SEM. Blue = cycles above what its form predicts, orange = below; the
+    UK bar is outlined and its label bold.
+
+    `pred` is a models.predictions(feature_set="form") frame (place_id, country,
+    actual, predicted). Countries with < min_places places are dropped.
+    """
+    set_style()
+    d = pred.dropna(subset=["actual", "predicted", "country"]).copy()
+    d["resid"] = d["actual"].astype(float) - d["predicted"].astype(float)
+    g = d.groupby("country")["resid"]
+    s = pd.DataFrame({"n": g.size(), "mean": g.mean(), "sem": g.sem()})
+    s = s[s["n"] >= min_places].sort_values("mean")
+    y = np.arange(len(s))
+    is_uk = s.index == "UK"
+    colors = [OKABE_ITO[0] if v >= 0 else OKABE_ITO[3] for v in s["mean"]]
+    edges = ["black" if u else "none" for u in is_uk]
+    fig, ax = plt.subplots(figsize=(6.0, max(2.6, 0.30 * len(s))))
+    ax.barh(y, s["mean"], xerr=s["sem"], color=colors, edgecolor=edges, linewidth=1.2,
+            error_kw={"elinewidth": 0.6, "ecolor": "0.5"}, zorder=2)
+    ax.axvline(0, color="0.4", lw=0.6)
+    ax.set_yticks(y)
+    ax.set_yticklabels(s.index)
+    for tick, u in zip(ax.get_yticklabels(), is_uk):
+        if u:
+            tick.set_color(OKABE_ITO[3])
+            tick.set_fontweight("bold")
+    ax.set_xlabel("observed − predicted cycling rate (percentage points)")
+    ax.set_title("Observed − predicted cycling rate, by country")
+    ax.grid(axis="y", visible=False)
+    return save(fig, "implementation_gap_by_country")
+
+
 def fig_metric_correlation_heatmap(wide: pd.DataFrame, metrics: list[str] | None = None) -> Path:
     """Metric x metric Spearman correlation heatmap (shows redundancy among metrics).
 

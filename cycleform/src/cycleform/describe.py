@@ -129,6 +129,45 @@ def uk_vs_rest(wide: pd.DataFrame, metrics: list[str] | None = None) -> pd.DataF
     return out.round(4)
 
 
+# Default metrics for the UK-vs-rest trend comparison (provision + connectivity +
+# directness -- the strongest correlates).
+_UK_TREND_METRICS = [
+    "bikeable_length_share", "intersection_ratio_bike_road", "bike_lcc_share_of_road",
+    "cycle_network_density_km2", "circuity_avg_bike", "modal_directness_gap",
+]
+
+
+def uk_vs_rest_trends(
+    table: pd.DataFrame, metrics: list[str] | None = None, min_n: int = 10
+) -> pd.DataFrame:
+    """Spearman(metric, cycling) computed WITHIN the UK vs WITHIN the rest.
+
+    Answers 'does the form->cycling relationship differ for the UK?'. One row per
+    place (highest-priority outcome). Returns metric, rho_uk, rho_rest, their
+    difference, and n_uk; metrics with too few UK/rest pairs are skipped.
+    """
+    from scipy import stats
+
+    from cycleform.outcomes import prefer_outcome
+
+    d = prefer_outcome(table.dropna(subset=["value"]).copy())
+    if "country" not in d.columns:
+        return pd.DataFrame()
+    uk, rest = d[d["country"].eq("UK")], d[~d["country"].eq("UK")]
+    rows = []
+    for m in metrics or _UK_TREND_METRICS:
+        if m not in d.columns:
+            continue
+        a, b = uk[[m, "value"]].dropna(), rest[[m, "value"]].dropna()
+        if len(a) < min_n or len(b) < min_n or a[m].nunique() < 3 or b[m].nunique() < 3:
+            continue
+        ru, _ = stats.spearmanr(a[m], a["value"])
+        rr, _ = stats.spearmanr(b[m], b["value"])
+        rows.append({"metric": m, "rho_uk": ru, "rho_rest": rr, "diff": ru - rr, "n_uk": len(a)})
+    out = pd.DataFrame(rows)
+    return out.round(3) if not out.empty else out
+
+
 def correlate_with_outcome(
     table: pd.DataFrame, outcome: str = "value", min_n: int = 8
 ) -> pd.DataFrame:

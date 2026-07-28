@@ -19,10 +19,14 @@ from cycleform.ingest import context_from_osm
 from cycleform.metrics import REGISTRY
 from cycleform.networks import NetworkTooLarge
 from cycleform.outcomes import COUNTRY_NAMES
-from cycleform.places import BoundaryTooLarge
+from cycleform.places import BoundaryTooLarge, GeocodeMismatch
 from cycleform.results import build_combined, is_cached, save_place
 
 log = logging.getLogger(__name__)
+
+# Countries whose census places are named by a city inside a state; appending the
+# state disambiguates the geocode query (e.g. "California, Maryland, United States").
+_STATE_QUERY_COUNTRIES = {"US", "CA", "AU"}
 
 
 @dataclass
@@ -30,6 +34,8 @@ class PlaceSpec:
     query: str
     place_id: str
     country: str = ""
+    lat: float | None = None
+    lon: float | None = None
 
 
 def run_place(spec: PlaceSpec, *, simplify: bool = True, force: bool = False) -> dict:
@@ -54,7 +60,8 @@ def run_place(spec: PlaceSpec, *, simplify: bool = True, force: bool = False) ->
     t0 = time.perf_counter()
     try:
         ctx = context_from_osm(
-            spec.query, place_id=spec.place_id, country=spec.country, simplify=simplify
+            spec.query, place_id=spec.place_id, country=spec.country, simplify=simplify,
+            expect_lat=spec.lat, expect_lon=spec.lon,
         )
         results = REGISTRY.run(ctx)
         save_place(ctx, results)
@@ -71,8 +78,8 @@ def run_place(spec: PlaceSpec, *, simplify: bool = True, force: bool = False) ->
             "seconds": round(time.perf_counter() - t0, 1),
             "detail": "",
         }
-    except (BoundaryTooLarge, NetworkTooLarge) as exc:
-        # too big to be a useful city fetch: skip fast (no traceback), resumable
+    except (BoundaryTooLarge, NetworkTooLarge, GeocodeMismatch) as exc:
+        # too big, or geocoded to the wrong place: skip fast (no traceback), resumable
         log.warning("%s skipped: %s", spec.place_id, exc)
         return {
             "place_id": spec.place_id,
@@ -144,9 +151,10 @@ def all_outcome_specs() -> list[PlaceSpec]:
     country. Deduplicated on (place_key, country). Names that Nominatim can't resolve
     to a polygon will fail at run time and be logged, never silently lost.
     """
-    from cycleform.outcomes import build_outcomes
+    from cycleform.outcomes import build_outcomes, modalshare_coords
 
     out = build_outcomes(save=False)
+    ms_coords = modalshare_coords()  # (place_key, cc) -> (lat, lon, state_name)
     specs: dict[tuple, PlaceSpec] = {}
     # ModalShare first (broad, country known), then OECD, then legacy: the first to
     # add a (place_key, country) wins the geocode query for that place.
@@ -156,11 +164,17 @@ def all_outcome_specs() -> list[PlaceSpec]:
             if key in specs or not str(r["place_id"]).strip():
                 continue
             cc = str(r["country"]) if pd.notna(r.get("country")) else ""
-            if cc and cc in COUNTRY_NAMES:
-                label = f"{r['place_id']}, {COUNTRY_NAMES[cc]}"
-                specs[key] = PlaceSpec(label, label, cc)
-            else:
-                specs[key] = PlaceSpec(str(r["place_id"]), str(r["place_id"]), cc)
+            # stable output id = "Name, Country" (kept fixed so re-runs overwrite the
+            # same per-place file and the outcome join still matches).
+            pid = f"{r['place_id']}, {COUNTRY_NAMES[cc]}" if cc in COUNTRY_NAMES else str(r["place_id"])
+            query, lat, lon = pid, None, None
+            meta = ms_coords.get(key) if src == "modalshare" else None
+            if meta is not None:
+                lat, lon, state = meta
+                # append the state to disambiguate US/CA/AU census city names
+                if state and cc in _STATE_QUERY_COUNTRIES:
+                    query = f"{r['place_id']}, {state}, {COUNTRY_NAMES.get(cc, cc)}"
+            specs[key] = PlaceSpec(query, pid, cc, lat=lat, lon=lon)
     # dedupe again on place_key alone, preferring the entry that carries a country
     by_place: dict[str, PlaceSpec] = {}
     for (pk, cc), spec in specs.items():

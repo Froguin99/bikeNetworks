@@ -186,6 +186,29 @@ def load_modalshare(latest_only: bool = True) -> pd.DataFrame:
     return out[COLUMNS]
 
 
+def modalshare_coords() -> dict[tuple[str, str], tuple[float, float, str | None]]:
+    """(place_key, country_code) -> (lat, lon, state_name) from the ModalShare raw file.
+
+    Used by batch.all_outcome_specs to coordinate-anchor geocoding (and to append a
+    state to US/CA/AU queries), so ambiguous city names resolve to the right place.
+    Keeps the latest observation per city; rows with no usable coordinate are skipped.
+    """
+    path = settings.external / "cycling_rates" / "modalshare.csv"
+    raw = _read_csv_resilient(path)
+    raw = raw[raw["LastObservation"].astype(str).str.upper() == "YES"]
+    out: dict[tuple[str, str], tuple[float, float, str | None]] = {}
+    for _, r in raw.iterrows():
+        cc = _NAME_TO_CODE.get(r.get("Country"))
+        lat = pd.to_numeric(r.get("latitude"), errors="coerce")
+        lon = pd.to_numeric(r.get("longitude"), errors="coerce")
+        if cc is None or pd.isna(lat) or pd.isna(lon):
+            continue
+        state = r.get("state_name")
+        state = str(state) if pd.notna(state) else None
+        out.setdefault((place_key(r["City"]), cc), (float(lat), float(lon), state))
+    return out
+
+
 def build_outcomes(save: bool = True) -> pd.DataFrame:
     """Concatenate all available sources into the harmonised long table.
 

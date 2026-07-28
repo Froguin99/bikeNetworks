@@ -83,6 +83,12 @@ def make_figures(
     typ = build_typology(wide)
     # typology + prediction-style figures come in unlabelled and labelled variants
     paths = [figures.fig_typology(typ, labels=False), figures.fig_typology(typ, labels=True)]
+    # descriptive + UK-vs-rest paper figures (outcome distribution, by-country,
+    # UK-vs-rest form differences, and the UK-vs-rest relationship)
+    paths.append(figures.fig_cycling_rate_distribution(table))
+    paths.append(figures.fig_cycling_rate_by_country(table))
+    paths.append(figures.fig_uk_vs_rest_metrics(table))
+    paths.append(figures.fig_uk_vs_rest_relationship(table))
     if not corr.empty:
         paths.append(figures.fig_outcome_correlations(corr, top=None))  # every metric
         paths.append(figures.fig_top_correlates(table, corr, n=top_n))
@@ -122,6 +128,7 @@ def make_model_report() -> dict:
     figures.fig_pred_vs_actual(pred, r2=best_r2, labels=False)
     figures.fig_pred_vs_actual(pred, r2=best_r2, labels=True)
     figures.fig_feature_importance(imp)
+    figures.fig_implementation_gap_by_country(pred)  # per-country over/under-cycling vs form
     perf.to_csv(settings.results / "model_performance.csv", index=False)
     imp.to_csv(settings.results / "model_feature_importance.csv", index=False)
     return {"performance": perf, "importance": imp}
@@ -421,12 +428,63 @@ def text_report(path: Path | str | None = None, top_corr: int = 20, top_pred: in
     uvr = describe.uk_vs_rest(wide)
     uvr_k = uvr[uvr.index.isin(key)].reset_index().rename(columns={"index": "metric"})
     if not uvr_k.empty:
+        w("## 5. UK vs rest of sample", "")
+        # 5a. cycling rate: UK vs rest (one row per place)
+        rate_line = ""
+        if "value" in table.columns and "country" in table.columns:
+            from cycleform.outcomes import prefer_outcome
+
+            dd = prefer_outcome(table.dropna(subset=["value"]).copy())
+            u = dd[dd["country"].eq("UK")]["value"].astype(float)
+            r = dd[~dd["country"].eq("UK")]["value"].astype(float)
+            if len(u) and len(r):
+                rate_line = (
+                    f"**Cycling rate.** UK n={len(u)}, median {u.median():.1f}% / mean "
+                    f"{u.mean():.1f}%; rest median {r.median():.1f}% / mean {r.mean():.1f}%. "
+                    f"UK is middling and compressed (max {u.max():.0f}% vs {r.max():.0f}%): "
+                    "it lacks both the near-zero and the very-high tails."
+                )
+        if rate_line:
+            w(rate_line, "")
         w(
-            "## 5. UK vs rest of sample (key metrics)",
+            "**Network form (key metrics).** Similar bikeable *share*, but the UK cycle "
+            "network is more fragmented and less connected:",
             "",
             _md_table(uvr_k[["metric", "uk_mean", "rest_mean", "uk_minus_rest", "n_uk", "n_rest"]]),
             "",
         )
+        # 5b. does the form->cycling relationship differ for the UK?
+        trends = describe.uk_vs_rest_trends(table)
+        if not trends.empty:
+            w(
+                "**Different trends?** Spearman(metric, cycling) computed *within* the UK "
+                "vs *within* the rest -- the UK relationships are markedly weaker (partly "
+                "restriction of range, as the UK spans a narrower band of both form and rate):",
+                "",
+                _md_table(trends[["metric", "rho_uk", "rho_rest", "diff", "n_uk"]]),
+                "",
+            )
+        # 5c. implementation gap (single-predictor, no model needed)
+        if rate_line and "bikeable_length_share" in table.columns:
+            b = r  # rest rates
+            m = "bikeable_length_share"
+            rest_fit = dd[~dd["country"].eq("UK")][[m, "value"]].dropna()
+            uk_fit = dd[dd["country"].eq("UK")][[m, "value"]].dropna()
+            if len(rest_fit) > 5 and len(uk_fit) > 5:
+                import numpy as _np
+
+                sl, ic = _np.polyfit(rest_fit[m], rest_fit["value"], 1)
+                pred_uk = (ic + sl * uk_fit[m]).mean()
+                obs_uk = uk_fit["value"].mean()
+                w(
+                    f"**Implementation gap.** Fitting cycling ~ bikeable_share on the rest "
+                    f"(slope {sl:.1f}) and applying it to UK provision predicts "
+                    f"{pred_uk:.1f}% for the UK, but the UK observes {obs_uk:.1f}% -- it "
+                    f"cycles **{obs_uk - pred_uk:+.1f} pp** relative to what its provision "
+                    "predicts. See `implementation_gap_by_country.png` for the full-form, "
+                    "per-country version.",
+                    "",
+                )
 
     # --- 6. bike vs road --------------------------------------------------
     bvr = describe.bike_vs_road(wide)
