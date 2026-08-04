@@ -122,7 +122,7 @@ def make_model_report() -> dict:
 
     table = load_analysis()
     perf = models.evaluate(table)
-    imp = models.feature_importance(table)
+    imp = models.feature_importance(table, top=100)  # all form metrics (report shows them all)
     best_r2 = perf.loc[perf["feature_set"].eq("form"), "cv_r2"].max()
     pred = models.predictions(table, feature_set="form")
     figures.fig_pred_vs_actual(pred, r2=best_r2, labels=False)
@@ -131,7 +131,8 @@ def make_model_report() -> dict:
     figures.fig_implementation_gap_by_country(pred)  # per-country over/under-cycling vs form
     perf.to_csv(settings.results / "model_performance.csv", index=False)
     imp.to_csv(settings.results / "model_feature_importance.csv", index=False)
-    return {"performance": perf, "importance": imp}
+    pred.to_csv(settings.results / "model_predictions.csv", index=False)  # for the gap table
+    return {"performance": perf, "importance": imp, "predictions": pred}
 
 
 def make_scenario_report() -> dict:
@@ -155,9 +156,10 @@ def make_scenario_report() -> dict:
     table = load_analysis()
     paths = []
 
-    # 1. metric-shift dumbbell per borough
+    # 1. metric-shift dumbbell per borough, + a combined average over all boroughs
     for pid in comp["place_id"].unique():
         paths.append(figures.fig_scenario_shift(comp, pid, dataset_wide))
+    paths.append(figures.fig_scenario_shift_combined(comp, dataset_wide))
 
     # 2. predicted cycling-rate shift (model fit on the full dataset, form features)
     pipe, feats = models.fit_predictor(table, feature_set="form")
@@ -262,14 +264,17 @@ def _md_table(df: pd.DataFrame, cols: list[str] | None = None) -> str:
     return "\n".join([head, rule, *rows])
 
 
-def text_report(path: Path | str | None = None, top_corr: int = 20, top_pred: int = 12) -> Path:
+def text_report(
+    path: Path | str | None = None, top_corr: int | None = None, top_pred: int | None = None
+) -> Path:
     """Write a markdown digest of the results to results/report.md and return the path.
 
-    Assembles the dataset snapshot, metric-vs-cycling correlations, model
-    performance/predictors (from the saved model CSVs), UK-vs-rest and
-    bike-vs-road contrasts, the typology, and the grown-network what-if (if run).
-    Reads only saved tables -- fast, no recompute -- so it is safe to call any
-    time. Designed to be self-describing so an LLM can reason about it directly.
+    Assembles the dataset snapshot, cycling rate by country, the FULL metric-vs-
+    cycling correlation table, model performance + predictors (from the saved model
+    CSVs), UK-vs-rest and bike-vs-road contrasts, the typology, and the grown-network
+    what-if (if run). `top_corr`/`top_pred` default to None = show every row (the
+    whole thing, for pasting into an LLM); pass an int to truncate. Reads only saved
+    tables -- fast, no recompute. Self-describing so an LLM can reason about it.
     """
     import datetime as _dt
 
@@ -363,20 +368,36 @@ def text_report(path: Path | str | None = None, top_corr: int = 20, top_pred: in
             "- Right-skewed; correlations below use Spearman (rank-based, robust).",
             "",
         )
+        if "country" in used.columns:
+            bc = (
+                used.groupby("country")["value"]
+                .agg(n="size", mean="mean", median="median")
+                .sort_values("mean", ascending=False)
+                .round(1)
+                .reset_index()
+            )
+            w(
+                "Cycling rate by country (every country; one row per place, preferred "
+                "source; sorted by mean). Small-n means are noisy -- read with the `n` column:",
+                "",
+                _md_table(bc[["country", "n", "mean", "median"]]),
+                "",
+            )
 
     # --- 3. correlations with cycling rate --------------------------------
     corr = describe.correlate_with_outcome(table)
     if not corr.empty:
-        show = corr.head(top_corr)[
+        show = (corr if top_corr is None else corr.head(top_corr))[
             ["metric", "spearman", "spearman_p", "pearson", "n", "significant"]
         ].copy()
         show["spearman_p"] = show["spearman_p"].map(lambda p: "<0.001" if p < 0.001 else f"{p:.3f}")
         pos = corr[corr["spearman"] > 0].head(3)["metric"].tolist()
         neg = corr[corr["spearman"] < 0].head(3)["metric"].tolist()
+        scope = "all" if top_corr is None else f"top {len(show)}"
         w(
             "## 3. Metric correlations with cycling rate",
             "",
-            f"Ranked by |Spearman rho|, top {len(show)} of {len(corr)} analysed metrics. "
+            f"Ranked by |Spearman rho|, {scope} of {len(corr)} analysed metrics. "
             "`significant` = two-sided p < 0.05. Correlation is a signpost, not a model.",
             "",
             _md_table(show),
@@ -402,14 +423,38 @@ def text_report(path: Path | str | None = None, top_corr: int = 20, top_pred: in
             "",
         )
         if imp_p.exists():
-            imp = pd.read_csv(imp_p).head(top_pred)
+            imp = pd.read_csv(imp_p)
+            if top_pred is not None:
+                imp = imp.head(top_pred)
             w(
-                f"Top {len(imp)} network-form predictors (random-forest permutation "
+                f"Network-form predictors ({len(imp)} shown; random-forest permutation "
                 "importance, form-only model):",
                 "",
                 _md_table(imp[["metric", "importance", "importance_sd"]]),
                 "",
             )
+        pred_p = settings.results / "model_predictions.csv"
+        if pred_p.exists():
+            pr = pd.read_csv(pred_p)
+            if {"country", "actual", "predicted"} <= set(pr.columns):
+                pr = pr.dropna(subset=["actual", "predicted", "country"]).copy()
+                pr["gap"] = pr["actual"].astype(float) - pr["predicted"].astype(float)
+                gap = (
+                    pr.groupby("country")["gap"]
+                    .agg(n="size", mean_gap="mean")
+                    .sort_values("mean_gap", ascending=False)
+                    .round(2)
+                    .reset_index()
+                )
+                w(
+                    "**Implementation gap by country** — mean (observed − predicted) cycling "
+                    "rate in percentage points, form-only out-of-fold model. Positive = the "
+                    "country cycles MORE than its network form predicts (culture/policy amplify "
+                    "form); negative = less. Small-n is noisy -- read with `n`.",
+                    "",
+                    _md_table(gap[["country", "n", "mean_gap"]]),
+                    "",
+                )
     else:
         w(
             "## 4. Predictive model",
@@ -546,6 +591,33 @@ def text_report(path: Path | str | None = None, top_corr: int = 20, top_pred: in
                     if c in oof.columns]
             w("Out-of-fold predicted rate (each borough held out of training -- the "
               "honest estimate):", "", _md_table(oof[cols]), "")
+
+    # 8b. growth curve: predicted rate vs distance invested
+    curve = scenarios.load_growth_curve()
+    if not curve.empty:
+        if comp.empty:
+            w("## 8. Grown-network what-if (Tyne & Wear)", "")
+        summ = scenarios.growth_curve_summary(curve)
+        w(
+            "### Growth curve: predicted cycling rate vs distance invested",
+            "",
+            "Sweeping the grown network's build-out stages (GTs prune quantiles). "
+            "**Distance invested** = new protected cycleway that must actually be built "
+            "(grown corridors already present as cycle infrastructure are excluded). The "
+            "**elbow** is the best trade-off -- the km built where the predicted-rate gain "
+            "starts to plateau (`elbow_gain_captured_frac` = share of the total predicted "
+            "gain reached by then). Figures: `growth_curve_predicted_rate.png` (level) and "
+            "`growth_marginal.png` (gain per km).",
+            "",
+            _md_table(summ[["place_id", "total_invested_km", "total_gain_pp", "elbow_km",
+                            "elbow_km_frac", "elbow_gain_captured_frac"]]),
+            "",
+            "_Caveats: predicted rates are the cross-national form model extrapolated to "
+            "networks far denser than typical UK -- read as directional (relative build "
+            "value), not literal forecasts. The growth model's prune order is not "
+            "benefit-ordered, so per-borough marginal returns are bumpy (growth_marginal.png)._",
+            "",
+        )
 
     # --- 9. caveats -------------------------------------------------------
     w(
