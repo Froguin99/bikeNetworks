@@ -418,6 +418,297 @@ def run_scenarios(
 # --- reading the results back -------------------------------------------------
 
 
+# --- growth curve: form / prediction vs DISTANCE INVESTED, over prune stages ----
+#
+# The grown pickle holds ~100 graphs GTs[i] at increasing prune quantiles (GTs[-1] =
+# fully grown). Sweeping them shows how network form / predicted cycling rate improve
+# as more of the proposed network is built. The x-axis is DISTANCE INVESTED, not the
+# grown network's size: grown corridors that already exist as cycle infrastructure
+# (same OSM node pair) cost nothing, so only the genuinely-new length is counted
+# (mirrors the _merged_bike de-dup). This finds the best trade-off (predicted gain per
+# km built).
+
+# Compact set of metrics tracked along the curve (the full metric set is still
+# computed for the prediction).
+CURVE_METRICS = [
+    "bikeable_length_share", "bike_lcc_share_of_road", "low_stress_coverage",
+    "low_stress_route_fraction", "mean_route_lts", "cycle_network_density_km2",
+    "circuity_avg_bike", "modal_directness_gap",
+]
+
+
+def _invested_km(bike: Network, grown_edges: gpd.GeoDataFrame) -> float:
+    """New protected length (km) the grown corridors ADD -- grown minus the corridors
+    the base cycle network already provides (matched by undirected OSM node pair).
+
+    This is the *distance invested*: grown corridors already present as cycle
+    infrastructure cost nothing to build, so they are excluded (same de-dup as
+    `_merged_bike`). Falls back to total grown length when OSM ids are absent.
+    """
+    if grown_edges is None or not len(grown_edges):
+        return 0.0
+    new = grown_edges
+    ids = {"osm_u", "osm_v"}
+    if ids <= set(bike.edges.columns) and ids <= set(grown_edges.columns):
+        base_uv = {
+            _uv_key(a, b) for a, b in zip(bike.edges["osm_u"], bike.edges["osm_v"], strict=True)
+        }
+        new = grown_edges[[
+            _uv_key(a, b) not in base_uv
+            for a, b in zip(grown_edges["osm_u"], grown_edges["osm_v"], strict=True)
+        ]]
+    return round(float(new["length"].sum()) / 1000.0, 3)
+
+
+def _default_growth_stages(n_total: int) -> list[int]:
+    """Clean round prune-stage indices into the GTs list: every 10th (0, 10, 20, ...,
+    90), plus the very first grown stage (index 1) and the final network (n_total-1).
+    Not linspace 11ths."""
+    stages = {0, 1, n_total - 1} | set(range(0, n_total, 10))
+    return sorted(s for s in stages if 0 <= s < n_total)
+
+
+def _curve_row(spec: ScenarioSpec, metrics_frame, *, stage, quantile, invested, predictor, features):
+    """One growth-curve row: id, stage, invested km, key metrics, predicted rate."""
+    ok = metrics_frame[metrics_frame["status"] == "ok"]
+    vals = dict(zip(ok["metric"], ok["value"]))
+    row = {
+        "place_id": spec.place_id, "stage": stage, "quantile": round(quantile, 3),
+        "invested_km": invested,
+    }
+    for m in CURVE_METRICS:
+        row[m] = vals.get(m)
+    if predictor is not None:
+        from cycleform import models
+
+        wide = pd.DataFrame([vals])
+        wide["country"] = spec.country
+        row["predicted_rate"] = round(float(models.predict_rate(predictor, wide, features)[0]), 3)
+    return row
+
+
+def run_growth_curve(
+    spec: ScenarioSpec,
+    *,
+    stages: list[int] | None = None,
+    simplify: bool = True,
+    predictor=None,
+    features=None,
+) -> pd.DataFrame:
+    """Sweep one borough's grown-network prune stages: at each stage merge the grown
+    corridors, measure metrics, record the distance invested, and (if a fitted form
+    predictor is given) predict the cycling rate.
+
+    `stages` are GTs prune-quantile indices; default = 0, 1, 10, 20, ..., 90, final.
+    The base context is built once and reused, so only the merge+measure repeats.
+    Returns one row per stage; stage=-1 is the current network (0 km invested).
+    """
+    configure_osmnx()
+    ctx = scenario_base_context(spec, simplify=simplify)
+    with grown_pickle_path(spec.growth_placeid).open("rb") as fh:
+        n_total = len(pickle.load(fh)["GTs"])
+    stages = stages if stages is not None else _default_growth_stages(n_total)
+    rows = [_curve_row(spec, results_to_frame(REGISTRY.run(ctx)), stage=-1, quantile=0.0,
+                       invested=0.0, predictor=predictor, features=features)]
+    for q in stages:
+        grown = load_grown_edges(spec.growth_placeid, ctx.road.crs, quantile_index=q)
+        invested = _invested_km(ctx.bike, grown)
+        sctx = scenario_context(ctx, grown, place_id=f"{spec.place_id} [q{q}]")
+        rows.append(_curve_row(spec, results_to_frame(REGISTRY.run(sctx)), stage=q,
+                               quantile=round((q + 1) / n_total, 3), invested=invested,
+                               predictor=predictor, features=features))
+        log.info("%s stage q%d: invested %.1f km, predicted %.2f%%", spec.place_id, q,
+                 invested, rows[-1].get("predicted_rate", float("nan")))
+    return pd.DataFrame(rows)
+
+
+def run_growth_curves(
+    specs: list[ScenarioSpec] | None = None,
+    *,
+    stages: list[int] | None = None,
+    simplify: bool = True,
+    save: bool = True,
+) -> pd.DataFrame:
+    """Growth-curve sweep for each borough (default Tyne & Wear), predicting cycling
+    rate with the form model fit on the full dataset. Saves + returns the combined
+    per-(place, stage) table (results/scenarios/growth_curve.csv). `stages` default =
+    0, 1, 10, 20, ..., 90, final."""
+    from cycleform import models
+    from cycleform.report import load_analysis
+
+    specs = specs or TYNE_AND_WEAR
+    predictor, features = models.fit_predictor(load_analysis(), feature_set="form")
+    frames = []
+    for i, spec in enumerate(specs, 1):
+        log.info("[%d/%d] growth curve %s", i, len(specs), spec.place_id)
+        try:
+            df = run_growth_curve(spec, stages=stages, simplify=simplify,
+                                  predictor=predictor, features=features)
+        except Exception:  # a failed borough is logged, never kills the multi-hour run
+            log.exception("%s growth curve failed", spec.place_id)
+            continue
+        frames.append(df)
+        if save:  # save incrementally so a long run keeps partial progress
+            settings.results_scenarios.mkdir(parents=True, exist_ok=True)
+            pd.concat(frames, ignore_index=True).to_csv(
+                settings.results_scenarios / "growth_curve.csv", index=False
+            )
+    return pd.concat(frames, ignore_index=True) if frames else pd.DataFrame()
+
+
+def load_growth_curve() -> pd.DataFrame:
+    """The saved growth-curve table (results/scenarios/growth_curve.csv), or empty."""
+    p = settings.results_scenarios / "growth_curve.csv"
+    return pd.read_csv(p) if p.exists() else pd.DataFrame()
+
+
+def _elbow_index(km: np.ndarray, y: np.ndarray) -> int:
+    """Index of the diminishing-returns 'knee' on a (distance, benefit) curve.
+
+    The point of greatest perpendicular distance from the chord joining the first
+    and last points, after scaling both axes to [0, 1] (Kneedle-style). For a
+    saturating curve this is the best trade-off: most benefit captured per km before
+    it plateaus. Returns 0 if the curve is degenerate.
+    """
+    if len(km) < 3 or km.max() == km.min():
+        return 0
+    xn = (km - km.min()) / (km.max() - km.min())
+    yn = (y - y.min()) / (y.max() - y.min()) if y.max() > y.min() else np.zeros_like(y)
+    dx, dy = xn[-1] - xn[0], yn[-1] - yn[0]
+    denom = np.hypot(dx, dy) or 1.0
+    dist = np.abs(dy * (xn - xn[0]) - dx * (yn - yn[0])) / denom
+    return int(np.argmax(dist))
+
+
+def growth_curve_summary(curve: pd.DataFrame, y: str = "predicted_rate") -> pd.DataFrame:
+    """Per-place best-trade-off summary of a growth curve.
+
+    For each place: total km invested to fully build the grown network, the total
+    predicted-rate gain, and the diminishing-returns elbow -- the km built, the
+    fraction of the total km that is, and the fraction of the total predicted gain
+    already captured there. The averaged row (place_id 'AVERAGE') means over places.
+    """
+    rows = []
+    for pid, g in curve.groupby("place_id"):
+        g = g.sort_values("invested_km")
+        km = g["invested_km"].to_numpy(float)
+        yv = g[y].to_numpy(float)
+        if len(g) < 2 or km.max() == 0:
+            continue
+        ei = _elbow_index(km, yv)
+        total_gain = yv[-1] - yv[0]
+        elbow_gain = yv[ei] - yv[0]
+        rows.append({
+            "place_id": pid,
+            "total_invested_km": round(float(km[-1]), 1),
+            "total_gain_pp": round(float(total_gain), 2),
+            "elbow_km": round(float(km[ei]), 1),
+            "elbow_km_frac": round(float(km[ei] / km[-1]), 2) if km[-1] else float("nan"),
+            f"elbow_{y}": round(float(yv[ei]), 2),
+            "elbow_gain_captured_frac": round(float(elbow_gain / total_gain), 2)
+            if total_gain else float("nan"),
+        })
+    out = pd.DataFrame(rows)
+    if len(out) > 1:
+        avg = out.drop(columns="place_id").mean(numeric_only=True).round(2)
+        avg["place_id"] = "AVERAGE"
+        out = pd.concat([out, pd.DataFrame([avg])[out.columns]], ignore_index=True)
+    return out
+
+
+def growth_curve_marginals(curve: pd.DataFrame, y: str = "predicted_rate") -> pd.DataFrame:
+    """Per-step marginal analysis of a growth curve: the discrete gain each step adds.
+
+    One row per (place, step): the step's added km, the marginal gain in `y`
+    (percentage points), the efficiency (gain per km built), and the % increase in
+    `y` relative to the previous step. Answers 'where does each extra km pay off'.
+    """
+    rows = []
+    for pid, g in curve.groupby("place_id"):
+        g = g.sort_values("invested_km").reset_index(drop=True)
+        for i in range(1, len(g)):
+            d_km = float(g["invested_km"][i] - g["invested_km"][i - 1])
+            d_gain = float(g[y][i] - g[y][i - 1])
+            prev = float(g[y][i - 1])
+            rows.append({
+                "place_id": pid,
+                "stage": g["stage"][i],
+                "invested_km": round(float(g["invested_km"][i]), 1),
+                y: round(float(g[y][i]), 2),
+                "step_km": round(d_km, 1),
+                "marginal_gain_pp": round(d_gain, 2),
+                "gain_per_km": round(d_gain / d_km, 3) if d_km else float("nan"),
+                "pct_increase": round(100 * d_gain / prev, 1) if prev else float("nan"),
+            })
+    return pd.DataFrame(rows)
+
+
+def fit_growth_logistic(km, y) -> dict | None:
+    """Fit a 4-parameter logistic to (distance invested, benefit).
+
+    y = c + (L - c) / (1 + exp(-k (x - x0))). Returns the floor `c`, asymptote `L`
+    (the ceiling the metric saturates toward), inflection `x0` (km of STEEPEST gain
+    = where each km buys the most -- the 'best marginal gain'), steepness `k`, a
+    `predict` fn, and R². None if it will not fit. For a purely concave (no slow
+    start) curve x0 comes out at/below 0, i.e. the best gains are right at the start.
+    """
+    from scipy.optimize import curve_fit
+
+    km = np.asarray(km, dtype=float)
+    y = np.asarray(y, dtype=float)
+    ok = np.isfinite(km) & np.isfinite(y)
+    km, y = km[ok], y[ok]
+    if len(km) < 4 or km.max() == km.min():
+        return None
+
+    def logistic(x, c, L, x0, k):
+        return c + (L - c) / (1 + np.exp(-k * (x - x0)))
+
+    span = km.max() - km.min()
+    p0 = [y.min(), y.max(), km[int(np.argmax(np.gradient(y, km)))], 4.0 / span]
+    try:
+        popt, _ = curve_fit(
+            logistic, km, y, p0=p0, maxfev=20000,
+            bounds=([y.min() - 5, y.min(), km.min() - span, 1e-4],
+                    [y.max() + 5, y.max() + 20, km.max() + span, 10.0]),
+        )
+    except Exception:
+        return None
+    resid = y - logistic(km, *popt)
+    ss_tot = float(np.sum((y - y.mean()) ** 2)) or 1e-12
+    c, ll, x0, k = (float(v) for v in popt)
+    return {
+        "c": c, "L": ll, "x0": x0, "k": k,
+        "r2": round(1 - float(np.sum(resid ** 2)) / ss_tot, 3),
+        "predict": lambda x, p=popt: logistic(np.asarray(x, dtype=float), *p),
+    }
+
+
+def growth_logistic_summary(curve: pd.DataFrame, y: str = "predicted_rate") -> pd.DataFrame:
+    """Per-place logistic fit of the growth curve: asymptote (ceiling), inflection km
+    (steepest / best marginal gain), steepness, and R². Adds an AVERAGE row.
+    """
+    rows = []
+    for pid, g in curve.groupby("place_id"):
+        g = g.sort_values("invested_km")
+        fit = fit_growth_logistic(g["invested_km"], g[y])
+        if fit is None:
+            continue
+        rows.append({
+            "place_id": pid,
+            "asymptote_pp": round(fit["L"], 2),
+            "inflection_km": round(fit["x0"], 1),
+            "steepness_k": round(fit["k"], 4),
+            "r2": fit["r2"],
+        })
+    out = pd.DataFrame(rows)
+    if len(out) > 1:
+        avg = out.drop(columns="place_id").mean(numeric_only=True).round(2)
+        avg["place_id"] = "AVERAGE"
+        out = pd.concat([out, pd.DataFrame([avg])[out.columns]], ignore_index=True)
+    return out
+
+
 def scenario_long() -> pd.DataFrame:
     """Tidy long table of every saved scenario cell (ok cells only)."""
     files = sorted(settings.results_scenarios.glob("*__*.csv"))

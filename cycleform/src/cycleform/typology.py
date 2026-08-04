@@ -60,34 +60,68 @@ def prepare_features(
     return sub, feats
 
 
+def _kmeans_by_silhouette(X: np.ndarray, k_range: range = range(2, 7)):
+    """Fit k-means for each k in k_range, keep the best by silhouette.
+
+    Returns (k, labels, fitted_model, silhouette). Falls back to a single cluster if
+    there are too few rows.
+    """
+    best = None
+    for k in k_range:
+        if k >= len(X):
+            break
+        km = KMeans(n_clusters=k, n_init=10, random_state=42).fit(X)
+        score = silhouette_score(X, km.labels_) if len(set(km.labels_)) > 1 else -1.0
+        if best is None or score > best[3]:
+            best = (k, km.labels_, km, score)
+    if best is None:
+        return 1, np.zeros(len(X), int), None, float("nan")
+    return best
+
+
 def project_scenario(
     dataset_wide: pd.DataFrame,
     base_wide: pd.DataFrame,
     scen_wide: pd.DataFrame,
     features: list[str] | None = None,
 ) -> dict:
-    """Fit standardise->PCA(2) on the full dataset, then project baseline & scenario.
+    """Fit standardise->PCA(2) + k-means on the full dataset, then project & cluster
+    the baseline & scenario.
 
-    Used by the grown-network what-if to show where a place moves in form-space
-    when its cycle network grows. New rows with a missing feature are imputed with
-    the dataset median so a place is never dropped for one gap. Returns the dataset
-    scores + ids, the baseline/scenario scores, and the explained-variance ratios.
+    Used by the grown-network what-if to show where a place moves in form-space when
+    its cycle network grows, and whether that move crosses into a different typology
+    cluster. New rows with a missing feature are imputed with the dataset median so a
+    place is never dropped for one gap. Returns the dataset scores + ids + cluster
+    labels, the baseline/scenario scores + cluster labels, and explained variance.
     """
     sub, feats = prepare_features(dataset_wide, features)
     med = sub[feats].median()
     scaler = StandardScaler().fit(sub[feats].to_numpy())
-    pca = PCA(n_components=min(2, len(feats))).fit(scaler.transform(sub[feats].to_numpy()))
+    Xs = scaler.transform(sub[feats].to_numpy())
+    pca = PCA(n_components=min(2, len(feats))).fit(Xs)
+    k, ds_labels, km, sil = _kmeans_by_silhouette(Xs)
 
     def project(w: pd.DataFrame) -> np.ndarray:
         X = w.reindex(columns=feats).fillna(med)
         return pca.transform(scaler.transform(X.to_numpy()))
 
+    def cluster(w: pd.DataFrame) -> np.ndarray:
+        if km is None:
+            return np.zeros(len(w), int)
+        X = w.reindex(columns=feats).fillna(med)
+        return km.predict(scaler.transform(X.to_numpy()))
+
     ids = sub["place_id"].tolist() if "place_id" in sub.columns else sub.index.tolist()
     return {
-        "dataset": pca.transform(scaler.transform(sub[feats].to_numpy())),
+        "dataset": pca.transform(Xs),
         "dataset_ids": ids,
+        "dataset_labels": ds_labels,
         "base": project(base_wide),
         "scen": project(scen_wide),
+        "base_labels": cluster(base_wide),
+        "scen_labels": cluster(scen_wide),
+        "k": k,
+        "silhouette": round(float(sil), 3) if sil == sil else float("nan"),
         "explained_variance": pca.explained_variance_ratio_,
         "features": feats,
     }
@@ -107,15 +141,7 @@ def build_typology(
         pca.components_.T, index=feats, columns=[f"PC{i + 1}" for i in range(pca.n_components_)]
     )
 
-    best = None
-    for k in k_range:
-        if k >= len(ids):  # need more places than clusters
-            break
-        labels = KMeans(n_clusters=k, n_init=10, random_state=42).fit_predict(X)
-        score = silhouette_score(X, labels) if len(set(labels)) > 1 else -1.0
-        if best is None or score > best[2]:
-            best = (k, labels, score)
-    k, labels, sil = best if best else (1, np.zeros(len(ids), int), float("nan"))
+    k, labels, _km, sil = _kmeans_by_silhouette(X, k_range)
 
     profiles = (
         pd.DataFrame(X, columns=feats, index=ids)

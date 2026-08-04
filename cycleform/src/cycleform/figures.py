@@ -21,6 +21,9 @@ from cycleform.config import settings
 OKABE_ITO = ["#0072B2", "#E69F00", "#009E73", "#D55E00", "#CC79A7", "#56B4E9", "#F0E442", "#000000"]
 NEUTRAL = "#9A9A9A"  # for the folded "Other" category
 MAX_HUES = 6  # never cycle the palette; rarer categories fold into "Other"
+# A clear red for annotation lines (elbow / peak markers) -- distinct from the
+# Okabe-Ito vermillion #D55E00 used for the 4th series, so they never clash.
+ACCENT_RED = "#D7191C"
 
 # A fixed, consistent set of exemplar cities to label on the "_labeled" figures --
 # spread across countries and the cycling-rate range. Matched by de-accented
@@ -742,34 +745,183 @@ def fig_scenario_pred_vs_actual_shift(oof: pd.DataFrame, dataset_oof: pd.DataFra
 
 
 def fig_scenario_typology_shift(proj: dict, place_ids: list[str]) -> Path:
-    """Movement of each place in form-space (PCA) when the grown network is added.
+    """Movement of each place in form-space (PCA) when the grown network is added,
+    over the typology clusters.
 
-    Dataset cities are grey context; each place is an arrow from its current
-    position (open) to its grown-network position (filled), labelled by name.
+    Dataset cities are coloured by typology cluster; each borough is an arrow from
+    its current position (open) to its grown-network position (filled). The label
+    carries the cluster it belongs to, and `type a->b` when the grown network moves
+    it into a different cluster.
     """
     set_style()
     ev = proj["explained_variance"]
     ds, base, scen = proj["dataset"], proj["base"], proj["scen"]
-    fig, ax = plt.subplots(figsize=(5.8, 5.0))
-    ax.scatter(ds[:, 0], ds[:, 1], s=16, color="0.8", zorder=1, label="all cities")
+    ds_lab = proj.get("dataset_labels")
+    base_lab, scen_lab = proj.get("base_labels"), proj.get("scen_labels")
+    fig, ax = plt.subplots(figsize=(6.6, 5.2))
+    handles = []
+    if ds_lab is not None:
+        for cl in sorted({int(c) for c in ds_lab}):
+            col = OKABE_ITO[cl % len(OKABE_ITO)]
+            ax.scatter(ds[ds_lab == cl, 0], ds[ds_lab == cl, 1], s=16, color=col, alpha=0.45, zorder=1)
+            handles.append(plt.Line2D([], [], marker="o", ls="", color=col, alpha=0.8, label=f"type {cl}"))
+    else:
+        ax.scatter(ds[:, 0], ds[:, 1], s=16, color="0.8", zorder=1)
+    info = []  # (x1, y1, label) for the stacked de-cluttered labels
     for i, pid in enumerate(place_ids):
-        x0, y0 = base[i, 0], base[i, 1]
-        x1, y1 = scen[i, 0], scen[i, 1]
-        ax.annotate(
-            "", xy=(x1, y1), xytext=(x0, y0),
-            arrowprops={"arrowstyle": "->", "color": OKABE_ITO[3], "lw": 1.2}, zorder=2,
-        )
-        ax.scatter([x0], [y0], s=36, facecolor="white", edgecolor=OKABE_ITO[0], zorder=3)
-        ax.scatter([x1], [y1], s=36, color=OKABE_ITO[0], zorder=3)
-        ax.annotate(
-            _short(pid), (x1, y1), fontsize=7, xytext=(3, 3),
-            textcoords="offset points", color="0.25",
-        )
+        x0, y0, x1, y1 = base[i, 0], base[i, 1], scen[i, 0], scen[i, 1]
+        ax.annotate("", xy=(x1, y1), xytext=(x0, y0),
+                    arrowprops={"arrowstyle": "->", "color": "0.15", "lw": 1.3}, zorder=3)
+        ax.scatter([x0], [y0], s=44, facecolor="white", edgecolor="0.15", linewidth=1.2, zorder=4)
+        ax.scatter([x1], [y1], s=44, color="0.15", zorder=4)
+        lbl = _short(pid)
+        if base_lab is not None and scen_lab is not None:
+            b, s = int(base_lab[i]), int(scen_lab[i])
+            lbl += f"  (type {b}→{s})" if b != s else f"  (type {b})"
+        info.append((x1, y1, lbl))
+    # boroughs cluster tightly, so stack labels in a vertical column to the right of
+    # them with thin leader lines (in-place labels overlapped).
+    if info:
+        xmin, xmax = float(ds[:, 0].min()), float(ds[:, 0].max())
+        ymin, ymax = float(ds[:, 1].min()), float(ds[:, 1].max())
+        lab_x = max(x for x, _, _ in info) + (xmax - xmin) * 0.10
+        order = sorted(range(len(info)), key=lambda i: info[i][1], reverse=True)
+        gap = (ymax - ymin) * 0.09
+        ytop = float(np.mean([y for _, y, _ in info])) + gap * (len(info) - 1) / 2
+        for rank, i in enumerate(order):
+            x1, y1, lbl = info[i]
+            ax.annotate(
+                lbl, xy=(x1, y1), xytext=(lab_x, ytop - rank * gap),
+                fontsize=7, color="0.1", va="center", ha="left",
+                arrowprops={"arrowstyle": "-", "color": "0.6", "lw": 0.5},
+            )
+    handles += [
+        plt.Line2D([], [], marker="o", ls="", markerfacecolor="white", markeredgecolor="0.15",
+                   label="current network"),
+        plt.Line2D([], [], marker="o", ls="", color="0.15", label="future network"),
+    ]
     ax.set_xlabel(f"PC1 ({ev[0]:.0%} var)")
     ax.set_ylabel(f"PC2 ({ev[1]:.0%} var)" if len(ev) > 1 else "PC2")
-    ax.set_title("Form-space movement with the grown cycle network")
-    ax.legend(title="", loc="best")
+    kbit = f" (k={proj.get('k')})" if proj.get("k") else ""
+    ax.set_title(f"Form-space movement with the grown cycle network{kbit}")
+    ax.legend(handles=handles, title="", loc="best", fontsize=7)
     return save(fig, "scenario_typology_shift")
+
+
+def fig_scenario_shift_combined(
+    comparison: pd.DataFrame, dataset_wide: pd.DataFrame, top: int = 15
+) -> Path:
+    """Average metric shift across all grown boroughs -- the top `top` by |shift|.
+
+    A compact summary of the per-borough fig_scenario_shift: each metric is z-scored
+    per borough against the full city dataset, then averaged over boroughs (grey =
+    current, blue = with the grown network). Only the most-shifted metrics are shown
+    so it stays readable instead of listing all ~60.
+    """
+    set_style()
+    recs = []
+    for _, r in comparison.iterrows():
+        m = r["metric"]
+        if m not in dataset_wide.columns or pd.isna(r.get("baseline")) or pd.isna(r.get("scenario")):
+            continue
+        col = pd.to_numeric(dataset_wide[m], errors="coerce").dropna()
+        sd = col.std(ddof=0)
+        if len(col) < 3 or not np.isfinite(sd) or sd == 0:
+            continue
+        mu = col.mean()
+        recs.append({"metric": m, "base_z": (r["baseline"] - mu) / sd, "scen_z": (r["scenario"] - mu) / sd})
+    z = pd.DataFrame(recs)
+    if z.empty:
+        raise ValueError("no comparable metrics for the combined scenario shift")
+    agg = z.groupby("metric")[["base_z", "scen_z"]].mean()
+    agg["shift"] = agg["scen_z"] - agg["base_z"]
+    agg = agg.reindex(agg["shift"].abs().sort_values().index).tail(top)  # biggest shift at top
+    y = np.arange(len(agg))
+    fig, ax = plt.subplots(figsize=(6.4, max(2.6, 0.32 * len(agg))))
+    ax.axvline(0, color="0.4", lw=0.6, zorder=0)
+    ax.hlines(y, agg["base_z"], agg["scen_z"], color="0.8", lw=1.8, zorder=1)
+    ax.scatter(agg["base_z"], y, s=30, color=NEUTRAL, label="current", zorder=2)
+    ax.scatter(agg["scen_z"], y, s=30, color=OKABE_ITO[0], label="+ grown network", zorder=3)
+    ax.set_yticks(y)
+    ax.set_yticklabels(agg.index, fontsize=7)
+    ax.set_xlabel("standardised value (SD from all-city mean), averaged over LADs")
+    n = comparison["place_id"].nunique()
+    ax.set_title(f"Average network-form shift with the grown network  ({n} LADs, top {len(agg)} metrics)")
+    ax.grid(axis="y", visible=False)
+    # legend outside the panel (upper right) so it never sits on a dumbbell
+    ax.legend(title="", loc="upper left", bbox_to_anchor=(1.01, 1.0), fontsize=8)
+    return save(fig, "scenario_shift_combined")
+
+
+def fig_growth_curve(curve: pd.DataFrame, y: str = "predicted_rate", ylabel: str | None = None) -> Path:
+    """Performance vs distance invested along the grown-network build-out.
+
+    One line per place (predicted cycling rate, or any metric column `y`, against the
+    km of new protected cycleway built), plus a bold Tyne & Wear average with the
+    diminishing-returns elbow (the best trade-off) marked.
+    """
+    from cycleform.scenarios import _elbow_index
+
+    set_style()
+    fig, ax = plt.subplots(figsize=(6.4, 4.6))
+    for i, pid in enumerate(sorted(curve["place_id"].unique())):
+        g = curve[curve["place_id"] == pid].sort_values("invested_km")
+        ax.plot(g["invested_km"], g[y], marker="o", ms=3.5, lw=1.0,
+                color=OKABE_ITO[i % len(OKABE_ITO)], alpha=0.45, label=_short(pid), zorder=2)
+    avg = (
+        curve.groupby("stage").agg(invested_km=("invested_km", "mean"), yv=(y, "mean"))
+        .reset_index().sort_values("invested_km")
+    )
+    ax.plot(avg["invested_km"], avg["yv"], color="0.1", lw=2.6, marker="s", ms=5,
+            label="Tyne & Wear avg", zorder=5)
+    km, yv = avg["invested_km"].to_numpy(float), avg["yv"].to_numpy(float)
+    ei = _elbow_index(km, yv)
+    if ei:
+        ax.axvline(km[ei], color=ACCENT_RED, ls="--", lw=1.3, zorder=1,
+                   label="Elbow (best trade-off)")
+        ax.scatter([km[ei]], [yv[ei]], s=70, facecolor="none", edgecolor=ACCENT_RED,
+                   lw=1.6, zorder=6)
+    ax.set_xlabel("distance invested (km of new protected cycleway)")
+    ax.set_ylabel(ylabel or ("predicted cycling rate (%)" if y == "predicted_rate" else y))
+    ax.set_title(
+        "Predicted cycling rate vs distance invested" if y == "predicted_rate"
+        else f"{y} vs distance invested"
+    )
+    ax.legend(title="", loc="best", fontsize=7)
+    return save(fig, f"growth_curve_{y}")
+
+
+def fig_growth_marginal(curve: pd.DataFrame, y: str = "predicted_rate") -> Path:
+    """Marginal return along the build-out: predicted-rate gain PER KM at each step,
+    one line per place + the average, with the logistic inflection (steepest gain)
+    marked. The peak of this curve is where each extra km buys the most.
+    """
+    from cycleform.scenarios import growth_curve_marginals
+
+    set_style()
+    marg = growth_curve_marginals(curve, y=y)
+    fig, ax = plt.subplots(figsize=(6.4, 4.4))
+    for i, pid in enumerate(sorted(marg["place_id"].unique())):
+        g = marg[marg["place_id"] == pid].sort_values("invested_km")
+        ax.plot(g["invested_km"], g["gain_per_km"], marker="o", ms=3.5, lw=1.0,
+                color=OKABE_ITO[i % len(OKABE_ITO)], alpha=0.45, label=_short(pid), zorder=2)
+    avg = (
+        marg.groupby("stage").agg(invested_km=("invested_km", "mean"), gpk=("gain_per_km", "mean"))
+        .reset_index().sort_values("invested_km")
+    )
+    ax.plot(avg["invested_km"], avg["gpk"], color="0.1", lw=2.4, marker="s", ms=5,
+            label="Tyne & Wear avg", zorder=5)
+    # empirical peak of the average marginal (data-driven 'best gain per km')
+    if len(avg):
+        pk = avg.iloc[int(avg["gpk"].to_numpy().argmax())]
+        ax.axvline(pk["invested_km"], color=ACCENT_RED, ls="--", lw=1.3, zorder=1,
+                   label="Peak marginal efficiency")
+    ax.axhline(0, color="0.6", lw=0.5, zorder=0)
+    ax.set_xlabel("distance invested (km of new protected cycleway)")
+    ax.set_ylabel("marginal gain (pp of predicted rate, per km)")
+    ax.set_title("Marginal return: predicted-rate gain per km built")
+    ax.legend(title="", loc="best", fontsize=7)
+    return save(fig, "growth_marginal")
 
 
 # Key metrics for the UK-vs-rest contrasts (provision, connectivity, directness).
@@ -816,15 +968,14 @@ def fig_cycling_rate_distribution(table: pd.DataFrame) -> Path:
     return save(fig, "cycling_rate_distribution")
 
 
-def fig_cycling_rate_by_country(table: pd.DataFrame, min_places: int = 3) -> Path:
+def fig_cycling_rate_by_country(table: pd.DataFrame, min_places: int = 1) -> Path:
     """Two panels sharing a country axis: mean cycling rate and the number of places
     per country. Sorted by mean rate; the UK is highlighted.
 
     Two panels rather than one dual-axis chart (a dataviz non-negotiable): rate and
-    count are different scales, so each gets its own axis. Countries with fewer than
-    `min_places` places are dropped: a 'national mean' from 1-2 cities is noise and
-    would misleadingly top the ranking (Albania, Greece, ... on a single city). The
-    count of dropped countries is noted in the title. Pass min_places=1 to show all.
+    count are different scales, so each gets its own axis. Every country is shown by
+    default (min_places=1); the n-places panel makes small samples visible so the
+    reader can weight a 1-city 'mean' accordingly. Raise min_places to hide them.
     """
     set_style()
     d = _one_per_place(table)
